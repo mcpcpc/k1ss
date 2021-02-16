@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <title>KISS Linux</title>
+    <meta charset="UTF-8">
+    <link href='data:image/gif;base64,R0lGODlhEAAQAPH/AAAAAP8AAP8AN////yH5BAUAAAQALAAAAAAQABAAAAM2SLrc/jA+QBUFM2iqA2bAMHSktwCCWJIYEIyvKLOuJt+wV69ry5cfwu7WCVp2RSPoUpE4n4sEADs=' rel=icon>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name=Description content="An independent Linux distribution with a focus on simplicity and the concept of less is more.">
+    <style>
+      html {
+        max-width: 80ch; 
+        margin: 0 auto !important; 
+        float: none !important; 
+      }
+
+      body {
+        padding: 1ch;
+        font:16px monospace,monospace;
+      }
+
+      ul {
+        position: relative;
+        list-style: none;
+        margin-left: 0;
+        padding-left: 3ch;
+      }
+
+      ul li:before {
+        content: "*";
+        position: absolute;
+        left: 0;
+      }
+
+      h2 {
+        background-color: black;
+        color:white;
+      }
+      
+      h2, h3 {
+        font-size: 1em;
+        padding: 0;
+        margin-bottom: 1ch;
+      }
+
+      h2:before{
+        content:"## ";
+        position:relative;
+        left:0
+      }
+
+      h3:before{
+        content:"### ";
+        position:relative;
+        left:0
+      }
+
+      div code {
+        margin-left: 4ch;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      {% for item in site.data.navigation %}
+        <a href="{{ item.link }}"{% if page.url == item.link %}class="current"{% endif %}>{{ item.name }}</a> 
+      {% endfor %}
+    </nav>
+    {{ content }}
+  </body>
+</html>
