@@ -12,9 +12,7 @@ NOTE: Disks should be setup and fully mounted to /mnt.
 
 Start by declaring a variable.
 
-```
-$ url=https://github.com/kiss-community/repo/releases/download/2020.9-2  
-```
+> $ url=https://github.com/kiss-community/repo/releases/download/2020.9-2  
 
 ### Download the latest release
 
