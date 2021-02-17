@@ -67,7 +67,6 @@
   </head>
   <body>
     <nav>
-      <img alt="KISS" height="1ch" src="data:image/gif;base64,R0lGODlhEAAQAPH/AAAAAP8AAP8AN////yH5BAUAAAQALAAAAAAQABAAAAM2SLrc/jA+QBUFM2iqA2bAMHSktwCCWJIYEIyvKLOuJt+wV69ry5cfwu7WCVp2RSPoUpE4n4sEADs=">
       {% for item in site.data.navigation %}
          <a href="{{ item.link }}"{% if page.url == item.link %}class="current"{% endif %}>{{ item.name }}</a> 
       {% endfor %}
