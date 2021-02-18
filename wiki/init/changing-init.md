@@ -1,4 +1,5 @@
-# Changing Init Systems
+Changing Init Systems
+=====================
 
 KISS' default init system and service manager are provided by busybox. The
 service manager being an independent implementation of runit's utilities. This
@@ -8,14 +9,8 @@ swap to the init system and service manager of their choosing.
 This is very easily done via the package manager's alternatives system as
 nothing is tightly coupled or dependent on a specific init or service manager.
 
-## [0.0] Index
-
-- Rebooting after switching init systems                                   [1.0]
-- runit                                                                    [2.0]
-- Hummingbird                                                              [3.0]
-    - Setting up runsvdir                                                  [3.1]
-
-## [1.0] Rebooting after switching init systems
+[1.0] Rebooting after switching init systems
+--------------------------------------------
 
 After switching init systems, your running init system may not accept the
 new poweroff commands. You will need to reboot/poweroff using the running init's
@@ -31,7 +26,8 @@ currently running on your system and not the one you are switching to.
     # sinit/shinit and Hummingbird 
     $ kill -s INT 1
 
-## [2.0] runit
+[2.0] runit
+-----------
 
 Begin by first verifying that runit is installed.
 
@@ -45,7 +41,8 @@ Finally, use the alternatives system to swap to runit.
     $ kiss a runit /usr/bin/poweroff
     $ kiss a runit /usr/bin/reboot
 
-## [3.0] Hummingbird
+[3.0] Hummingbird
+-----------------
 
 Make sure to install Hummingbird.
 
@@ -60,7 +57,8 @@ Then, swap to Hummingbird by using the alternatives system.
 Once you have booted using Hummingbird, take note that the command used to
 turn the system off is "shutdown".
 
-### [3.1] Setting up runsvdir
+[3.1] Setting up runsvdir
+-------------------------
 
 Hummingbird doesn't provide a service manager, and doesn't read from
 inittab either. Some people find it useful to have one, such as runsvdir.
