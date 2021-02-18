@@ -336,7 +336,8 @@ Kernel releases:
 *   https://kernel.org (vanilla)
 *   https://www.fsfla.org (libre)
 
-A larger list of kernels can be found here: https://wiki.archlinux.org/index.php/Kernel
+A larger list of kernels can be found here:
+https://wiki.archlinux.org/index.php/Kernel
 
     # Download the kernel sources. 
     $ wget KERNEL_SOURCE
@@ -347,7 +348,10 @@ A larger list of kernels can be found here: https://wiki.archlinux.org/index.php
 
 ### Download firmware blobs (if required)
 
-To keep the KISS repositories entirely FOSS, the proprietary kernel firmware is omitted. This also makes sense as the kernel itself is manually managedv by the user. This step is only required if your hardware utilizes makes useb of this firmware.
+To keep the KISS repositories entirely FOSS, the proprietary kernel firmware is 
+omitted. This also makes sense as the kernel itself is manually managedv by the 
+user. This step is only required if your hardware utilizes makes useb of this 
+firmware.
 
 https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
 
@@ -361,14 +365,17 @@ https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
 
 ### Configure the kernel
 
-You can determine which drivers you need by searching the web for your hardware and the Linux kernel.
+You can determine which drivers you need by searching the web for your hardware
+and the Linux kernel.
 
-If you require firmware blobs, the drivers you enable must be enabled as [m] (modules). You can also optionally include the firmware in the kernel itself.
+If you require firmware blobs, the drivers you enable must be enabled as [m]
+(modules). You can also optionally include the firmware in the kernel itself.
 
     # Generate a default config with most drivers built into the kernel. 
     $ make defconfig
 
-    # Open an interactive menu to edit the generated .config and enable anything extra you may need.
+    # Open an interactive menu to edit the generated .config and enable anything 
+      extra you may need.
     $ make menuconfig
 
     # Store the generated config for reuse later.
@@ -378,7 +385,9 @@ If you require firmware blobs, the drivers you enable must be enabled as [m] (mo
 
 ### Build the kernel
 
-This may take a while to complete. The compilation time depends on your hardware and kernel configuration. The 'nproc' command outputs the total number of threads which we pass to make for a multi-threaded build.
+This may take a while to complete. The compilation time depends on your hardware
+and kernel configuration. The 'nproc' command outputs the total number of
+threads which we pass to make for a multi-threaded build.
 
     $ make -j "$(nproc)" 
 
@@ -396,7 +405,9 @@ This may take a while to complete. The compilation time depends on your hardware
 
 ## The bootloader
 
-The default bootloader is grub (though nothing prevents the use of another bootloader). This default was chosen as most people are familiar with it, both BIOS and UEFI are supported and vast amounts of documentation for it exists.
+The default bootloader is grub (though nothing prevents the use of another 
+bootloader). This default was chosen as most people are familiar with it, both
+BIOS and UEFI are supported and vast amounts of documentation for it exists.
 
 ### Recommended
 
@@ -425,7 +436,9 @@ Have an /etc/fstab file ready.
 
 ## Install init scripts
 
-The default init is busybox init (though nothing ties you to it). The below commands install the bootup and shutdown scripts as well as the default inittab config.
+The default init is busybox init (though nothing ties you to it). The below
+commands install the bootup and shutdown scripts as well as the default inittab 
+config.
 
 Source code: $/kisslinux/init
 
@@ -442,7 +455,8 @@ Source code: $/kisslinux/init
 
 ## Install Xorg (optional)
 
-To install Xorg, the input drivers and a basic default set of fonts, run the following commands. See @/wiki/xorg
+To install Xorg, the input drivers and a basic default set of fonts, run the 
+following commands. See @/wiki/xorg
 
     $ kiss b xorg-server xinit xf86-input-libinput
 
@@ -452,7 +466,8 @@ To install Xorg, the input drivers and a basic default set of fonts, run the fol
 
 ### Add your user to the relevant groups
 
-This groups based permissions model may not be suitable if KISS will be used as a multi-seat system. Further configuration can be done at your own discretion.
+This groups based permissions model may not be suitable if KISS will be used as
+a multi-seat system. Further configuration can be done at your own discretion.
 
     # Replace 'USERNAME' with the name of the user created earlier. 
     $ addgroup USERNAME video
@@ -460,7 +475,9 @@ This groups based permissions model may not be suitable if KISS will be used as 
 
 ## Further steps
 
-You should now be able to reboot into your KISS installation. Typical configuration should follow (creation of users, service configuration, installing a window manager, terminal etc).
+You should now be able to reboot into your KISS installation. Typical
+configuration should follow (creation of users, service configuration, 
+installing a window manager, terminal etc).
 
 The KISS Wiki is a good place to look for post-installation information.
 
@@ -476,6 +493,8 @@ The KISS Wiki is a good place to look for post-installation information.
     $ kiss help wiki/software
     $ kiss help wiki/software/man-pages
 
-If you encountered any issues, don't hesitate to open an issue on one of our GitHub repositories, post on https://reddit.com/r/kisslinux or join the IRC server.
+If you encountered any issues, don't hesitate to open an issue on one of our 
+GitHub repositories, post on https://reddit.com/r/kisslinux or join the IRC
+server.
 
 See: @/contact
