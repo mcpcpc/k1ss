@@ -15,7 +15,8 @@ I do. I hope you find it as useful as I have.
 
 - Dylan Araps
 
-## Users
+Users
+-----
 
 KISS is the vessel with which to shape your system in your own way and to
 optionally share your ideas with others.
@@ -39,7 +40,8 @@ Most importantly. LEARN TO LEARN. Don't jump into irc at a moment's notice. Try
 and solve the issue yourself first. Learn to solve your own problems, gain a 
 better understanding over your system and take control. Be a doer.
 
-## KISS
+KISS
+----
 
 There must always be a sole commander-in-chief in charge of the distribution.
 There must never be a below governance structure.
@@ -86,7 +88,8 @@ There shall never be rules centred around speech or the way in which one must
 carry themselves to communicate. Do unto others as you would have them do unto
 you.
 
-## Official Repositories
+Official Repositories
+---------------------
 
 The number of packages in the repositories shall never exceed that which is 
 maintainable by a single person with minimal effort.
@@ -127,7 +130,8 @@ These above rules may apply to other software at the discretion of the BDFL.
 No package shall ship with telemetry enabled by default and if at all feasible
 it must be patched out entirely.
 
-## Community Repository
+Community Repository
+--------------------
 
 The community repository is maintained by the users of KISS. Each maintainer is 
 responsible for the packages they have opted to add.
@@ -140,7 +144,8 @@ Only the maintainer of a package is allowed to make any changes to said package.
 Contact the maintainer of the package via their set git email if you would like
 to report an out-of-date package or request changes.
 
-## Package Manager
+Package Manager
+---------------
 
 The package manager must not exceed 1000 lines of code. This number excludes
 blank lines and comments which make up around 50% of the program's current size.
@@ -157,7 +162,8 @@ the package manager.
 
 Circular dependencies are a bug and not a feature. See: freetype-harfbuzz
 
-## Init System
+Init System
+-----------
 
 The user should not be tied to a single provider of PID 1. No unrelated piece of 
 software should require a specific init be in use.
