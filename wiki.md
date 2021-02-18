@@ -18,8 +18,8 @@ same exact function as above and place it in their shell rc (e.g. ~/.ashrc) file
 
     # added to one's ~/.ashrc file
     wiki() {
-        url='http://mcpcpc.com/kiss/wiki/'
-        curl "$url/$1.txt" | less
+        url='http://mcpcpc.com/kiss/wiki'
+        curl "$url/${1}.txt" | less
     }
 
 To use the script and view the example article from above, one would simply use
