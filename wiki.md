@@ -35,8 +35,9 @@ the community repository: http://github.com/mcpcpc/k1ss
 Each new article will be reviewed by the KISS wiki index owner for compliance
 with the following style requirements:
 
-* syntax is pandoc markdown (strict)
-* character width does not exceed 80
+*   Syntax is pandoc markdown (strict). 
+    See https://pandoc.org/MANUAL.html#pandocs-markdown for more information.
+*   Character width does not exceed 80.
 
 ## Article Index
 
