@@ -1,8 +1,10 @@
-# MANAGING SERVICES WITH BUSYBOX
+MANAGING SERVICES WITH BUSYBOX
+==============================
 
 KISS uses busybox's init with busybox's runit utilities for services by default.
 
-## Basic usage
+Basic usage
+-----------
 
 | Action  | Command                                                            |
 |---------+--------------------------------------------------------------------|
@@ -16,12 +18,14 @@ KISS uses busybox's init with busybox's runit utilities for services by default.
 
 See https://git.busybox.net/busybox/tree/runit/sv.c for full usage.
 
-## Running commands during boot/shutdown
+Running commands during boot/shutdown
+-------------------------------------
 
 This can be accomplished in a generic way (using /etc/rc.d) or by modifying the
 busybox-init only /etc/inittab file.
 
-### Using /etc/rc.d
+Using /etc/rc.d
+---------------
 
 This method of configuration works with every init system which uses the KISS 
 init framework. See $/kisslinux/init
@@ -35,7 +39,8 @@ init framework. See $/kisslinux/init
     echo "hwclock -w" > /etc/rc.d/hwclock.pre.shutdown
     ## TIP: .post.shutdown can also be used.
 
-### Using /etc/inittab
+Using /etc/inittab
+------------------
 
     # Run command during boot.
     ## Load the iwlwifi kernel module.
