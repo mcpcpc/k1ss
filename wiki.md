@@ -11,7 +11,7 @@ The wiki article index was designed for viewing in a terminal or your preferred
 markdown viewer. For example, one could use 'curl' to download any one of the
 pages below and pipe the resulting output into 'less':
 
-    curl https://mcpcpc.com/k1ss/wiki/boot/efistub.txt | less
+    curl https://mcpcpc.com/k1ss/wiki/boot/efistub.md | less
 
 To simplify the command above, one could create a shell script function and 
 place it in their shell rc file (e.g. ~/.ashrc). For example:
@@ -19,7 +19,7 @@ place it in their shell rc file (e.g. ~/.ashrc). For example:
     # added to one's ~/.ashrc file
     wiki() {
         url='https://mcpcpc.com/k1ss/wiki'
-        curl "$url/${1:-kiss/style-guide}.txt" | less
+        curl "$url/${1:-kiss/style-guide}.md" | less
     }
 
 To use the example script and view the example article from above, one would
