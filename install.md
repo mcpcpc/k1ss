@@ -12,24 +12,18 @@ NOTE: Disks should be setup and fully mounted to /mnt.
 
 Start by declaring a variable.
 
-```
-$ url=https://github.com/kiss-community/repo/releases/download/2020.9-2  
-```
+    $ url=https://github.com/kiss-community/repo/releases/download/2020.9-2  
 
 ### Download the latest release
 
-```
-$ wget "$url/kiss-chroot-2020.9-2.tar.xz"
-```
+    $ wget "$url/kiss-chroot-2020.9-2.tar.xz"
 
 ### Verify the checksums (recommended)
 
 This step verifies that the release matches the checksums generated upon its creation and also ensures that the download completed successfully.
 
-```
-$ wget "$url/kiss-chroot-2020.9-2.tar.xz.sha256" 
-$ sha256sum -c < kiss-chroot-2020.9-2.tar.xz.sha256 
-```
+    $ wget "$url/kiss-chroot-2020.9-2.tar.xz.sha256" 
+    $ sha256sum -c < kiss-chroot-2020.9-2.tar.xz.sha256 
 
 ### Verify the signature (recommended)
 
