@@ -33,7 +33,7 @@ the entry was added with 'efibootmgr --verbose'.
           --label    KISS \
           --loader   /vmlinuz \
           --unicode  'root=/dev/sdYM' \
-          --verbose                                                            ```
+          --verbose
 
 The root partition can also be referred to by its partition UUID which can be
 found using blkid.
