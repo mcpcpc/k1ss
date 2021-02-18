@@ -1,9 +1,11 @@
-# CHANGING THE CONSOLE FONT
+CHANGING THE CONSOLE FONT
+=========================
 
 The Linux console font can be changed using the setfont utility (part of busybox
 and installed by default).
 
-## Available Fonts
+Available Fonts
+---------------
 
 Currently packaged Linux console fonts.
 
@@ -11,7 +13,8 @@ Currently packaged Linux console fonts.
 - spleen-font (Community).
 - unifont (Community).
 
-## Changing the Console Font
+Changing the Console Font
+-------------------------
 
 Use the following command to set the console font _after_ a user has logged in.
 Add it to your ~/.profile or /etc/profile to make the change permanent.
