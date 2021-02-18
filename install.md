@@ -27,27 +27,23 @@ This step verifies that the release matches the checksums generated upon its cre
 
 ### Verify the signature (recommended)
 
-This step verifies that the release was signed by its creator, Dylan Araps. If the live OS of your choice does not include GPG, this step can also be done on another machine (with the same tarball).
+    This step verifies that the release was signed by its creator, Dylan Araps. If the live OS of your choice does not include GPG, this step can also be done on another machine (with the same tarball).
 
-```
-# Download the armored ASCII file.
-$ wget "$url/kiss-chroot-2020.9-2.tar.xz.asc"
+    # Download the armored ASCII file.
+    $ wget "$url/kiss-chroot-2020.9-2.tar.xz.asc"
 
-# Import my public key (if this fails, try another keyserver).
-$ gpg --keyserver keys.gnupg.net --recv-key 46D62DD9F1DE636E 
+    # Import my public key (if this fails, try another keyserver).
+    $ gpg --keyserver keys.gnupg.net --recv-key 46D62DD9F1DE636E 
 
-# Verify the signature.
-$ gpg --verify "kiss-chroot-2020.9-2.tar.xz.asc" 
-```
+    # Verify the signature.
+    $ gpg --verify "kiss-chroot-2020.9-2.tar.xz.asc" 
 
 ### Unpack the tarball
 
 This step effectively installs KISS to /mnt. The tarball contains a full system minus the bootloader, kernel and optional utilities.
 
-```
-$ cd /mnt
-$ tar xvf /path/to/kiss-chroot-2020.9-2.tar.xz
-```
+    $ cd /mnt
+    $ tar xvf /path/to/kiss-chroot-2020.9-2.tar.xz
 
 ### Enter the chroot
 
@@ -55,9 +51,7 @@ This is a simple script to chroot into /mnt and set up the environment for the r
 
 On execution of this step you will be running KISS! The next steps involve the kernel, software compilation and system setup.
 
-```
-$ /mnt/bin/kiss-chroot /mnt 
-```
+    $ /mnt/bin/kiss-chroot /mnt 
 
 ## Setup repositories
 
@@ -73,24 +67,22 @@ The variable can be set system-wide, per-user, per-session, per-command, and eve
 
 Take this layout:
 
-```
-~/repos/
-  |
-  +- repo/
-  |  - .git/
-  |  - core/
-  |  - extra/
-  |  - xorg/
-  |
-  +- community/
-  |  - .git/
-  |  - community/
-  |
-  +- personal/
-  |  - games/
-  |  - web
-  |     
-```
+    ~/repos/
+      |
+      +- repo/
+      |  - .git/
+      |  - core/
+      |  - extra/
+      |  - xorg/
+      |
+      +- community/
+      |  - .git/
+      |  - community/
+      |
+      +- personal/
+      |  - games/
+      |  - web
+      |     
 
 *   Repositories are stored in ~/repos/ which is a per-user configuration.
 *   There are two git repositories containing four KISS repositories.
@@ -99,27 +91,23 @@ Take this layout:
 
 This user's KISS_PATH could look like this:
 
-```
-$ cat ~/.profile
-...
-export KISS_PATH=''
-KISS_PATH=$KISS_PATH:$HOME/repos/personal/games
-KISS_PATH=$KISS_PATH:$HOME/repos/personal/web
-KISS_PATH=$KISS_PATH:$HOME/repos/repo/core 
-KISS_PATH=$KISS_PATH:$HOME/repos/repo/extra
-KISS_PATH=$KISS_PATH:$HOME/repos/repo/xorg
-KISS_PATH=$KISS_PATH:$HOME/repos/community/community
-...
-```
+    $ cat ~/.profile
+    ...
+    export KISS_PATH=''
+    KISS_PATH=$KISS_PATH:$HOME/repos/personal/games
+    KISS_PATH=$KISS_PATH:$HOME/repos/personal/web
+    KISS_PATH=$KISS_PATH:$HOME/repos/repo/core 
+    KISS_PATH=$KISS_PATH:$HOME/repos/repo/extra
+    KISS_PATH=$KISS_PATH:$HOME/repos/repo/xorg
+    KISS_PATH=$KISS_PATH:$HOME/repos/community/community
+    ...
 
 *   All repositories are enabled.
 *   This is a per-user configuration using ~/.profile
 *   The package manager will search this list in the order it is defined.
 
-```
-TIP: Run '. ~/.profile' for changes to immediately take effect.
-TIP: Run 'echo "$KISS_PATH"' to check if properly set.
-```
+> TIP: Run '. ~/.profile' for changes to immediately take effect.
+> TIP: Run 'echo "$KISS_PATH"' to check if properly set.
 
 ### Official repositories
 
@@ -127,9 +115,7 @@ The official repositories contain everything from the base system to a working w
 
 Clone the repository to the directory of your choosing.
 
-```
-$ git clone https://github.com/kiss-community/repo 
-```
+    $ git clone https://github.com/kiss-community/repo 
 
 This will be cloned to a directory called 'repo'. This directory contains multiple KISS repositories (core, extra, testing and xorg). Core and Extra must be enabled as this guide requires their use. Xorg is optional.
 
@@ -139,9 +125,7 @@ The community repository contains packages submitted and maintained by users of 
 
 Clone the repository to the directory of your choosing.
 
-```
-$ git clone https://github.com/kiss-community/community
-```
+    $ git clone https://github.com/kiss-community/community
 
 This will be cloned to a directory called 'community'. This directory contains a single KISS repository bearing the same name.
 
@@ -164,22 +148,18 @@ This step is optional and can also be done after the installation. Repository si
 
 Welcome to the KISS package manager! These two commands are how individual packages are built and installed on a KISS system.
 
-```
-$ kiss build   gnupg1
-$ kiss install gnupg1
-```
+    $ kiss build   gnupg1
+    $ kiss install gnupg1
 
 ### Import my (Dylan Araps') key
 
 If the GNU keyserver fails on your network, try an alternative mirror.
 
-```
-# Import my public key. 
-$ gpg --keyserver keys.gnupg.net --recv-key 46D62DD9F1DE636E
-# Trust my public key.
-
-$ echo trusted-key 0x46d62dd9f1de636e >>/root/.gnupg/gpg.conf 
-```
+    # Import my public key. 
+    $ gpg --keyserver keys.gnupg.net --recv-key 46D62DD9F1DE636E
+    
+    # Trust my public key.
+    $ echo trusted-key 0x46d62dd9f1de636e >>/root/.gnupg/gpg.conf 
 
 ### Enable signature verification
 
@@ -187,10 +167,8 @@ Repository signature verification uses a feature built into git itself (merge.ve
 
 The same steps can also be followed with 3rd-party repositories if the owner chooses to sign their commits.
 
-```
-$ cd /var/db/kiss/repo
-$ git config merge.verifySignatures true
-```
+    $ cd /var/db/kiss/repo
+    $ git config merge.verifySignatures true
 
 ## Rebuild kiss
 
@@ -206,31 +184,25 @@ If you intend to transfer packages between machines, omit -march=native. This op
 
 The `-jX` option should match the number of CPU threads available. You can omit this, however builds will then be limited to a single thread.
 
-```
-# CFLAGS/CXXFLAGS 
-## NOTE: The 'O' in '-O3' is the letter O and NOT 0 (ZERO). 
-$ export CFLAGS="-O3 -pipe -march=native"
-$ export CXXFLAGS="$CFLAGS"
+    # CFLAGS/CXXFLAGS 
+    ## NOTE: The 'O' in '-O3' is the letter O and NOT 0 (ZERO). 
+    $ export CFLAGS="-O3 -pipe -march=native"
+    $ export CXXFLAGS="$CFLAGS"
 
-# MAKEFLAGS 
-## NOTE: 4 should be changed to match the number of threads.
-$ export MAKEFLAGS="-j4"
-```
+    # MAKEFLAGS 
+    ## NOTE: 4 should be changed to match the number of threads.
+    $ export MAKEFLAGS="-j4"
 
 ### Update all base packages to the latest version
 
 This is how updates are performed on a KISS system. This command uses git to pull down changes from all enabled repositories and will then optionally handle the build/install process.
 
-```
-$ kiss update
-```
+    $ kiss update
 
 ### Rebuild all packages
 We simply cd to the installed packages database and use a glob to grab the name of every installed package. This glob is then passed to the package manager as a list of packages to build.
 
-```
-$ cd /var/db/kiss/installed && kiss build *
-```
+    $ cd /var/db/kiss/installed && kiss build *
 
 ## Userspace tools
 
@@ -242,60 +214,49 @@ The software below is required unless stated otherwise.
 
 NOTE: Open an issue for additional filesystem support.
 
-```
-# EXT2, EXT3, EXT4
-$ kiss b e2fsprogs
-$ kiss i e2fsprogs
+    # EXT2, EXT3, EXT4
+    $ kiss b e2fsprogs
+    $ kiss i e2fsprogs
 
-# FAT, VFAT
-$ kiss b dosfstools 
-$ kiss i dosfstools
+    # FAT, VFAT
+    $ kiss b dosfstools 
+    $ kiss i dosfstools
 
-# XFS
-$ kiss b xfsprogs
-$ kiss i xfsprogs
-```
+    # XFS
+    $ kiss b xfsprogs
+    $ kiss i xfsprogs
 
 ### Device management
 
 NOTE: If you choose to not install eudev, mdev will automatically be used in its place. Eudev is recommended as a lot of software requires it. See: @/wiki/dev/replacing-udev for more information.
 
-```
-# Needed for blkid support in eudev (recommended but not required). 
-$ kiss b util-linux 
-$ kiss i util-linux
+    # Needed for blkid support in eudev (recommended but not required). 
+    $ kiss b util-linux 
+    $ kiss i util-linux
 
-# The device manager. 
-$ kiss b eudev 
-$ kiss i eudev
-```
+    # The device manager. 
+    $ kiss b eudev 
+    $ kiss i eudev
 
 ### WiFi (optional)
 
-```
-$ kiss b wpa_supplicant
-$ kiss i wpa_supplicant 
-```
+    $ kiss b wpa_supplicant
+    $ kiss i wpa_supplicant 
 
 ### Dynamic IP addressing (optional)
 
-```
-$ kiss b dhcpcd
-$ kiss i dhcpcd
-```
+    $ kiss b dhcpcd
+    $ kiss i dhcpcd
 
 ## The hostname
 
-```
-# Create the /etc/hostname file
-$ echo HOSTNAME > /etc/hostname
-```
-```
-# Update the /etc/hosts file
-# NOTE: This step must be done every time the hostname is changed.
-127.0.0.1  HOSTNAME.localdomain  HOSTNAME
-::1        HOSTNAME.localdomain  HOSTNAME  ip6-localhost
-```
+    # Create the /etc/hostname file
+    $ echo HOSTNAME > /etc/hostname
+
+    # Update the /etc/hosts file
+    # NOTE: This step must be done every time the hostname is changed.
+    127.0.0.1  HOSTNAME.localdomain  HOSTNAME
+    ::1        HOSTNAME.localdomain  HOSTNAME  ip6-localhost
 
 ## The kernel
 
@@ -315,23 +276,21 @@ TIP: The Wiki contains a basic kernel configuration page. @/wiki/kernel/config
 
 ### Install required packages
 
-```
-# libelf (required in most if not all cases). 
-$ kiss b libelf
-$ kiss i libelf
+    # libelf (required in most if not all cases). 
+    $ kiss b libelf
+    $ kiss i libelf
 
-# ncurses (required only for 'make menuconfig'). 
-$ kiss b ncurses
-$ kiss i ncurses
+    # ncurses (required only for 'make menuconfig'). 
+    $ kiss b ncurses
+    $ kiss i ncurses
 
-# perl (required in nearly all cases).
-$ kiss b perl
-$ kiss i perl
+    # perl (required in nearly all cases).
+    $ kiss b perl
+    $ kiss i perl
 
-#TIP: A patch can be applied to remove this requirement.
-#        - @/wiki/kernel/config#5.0
-#        - /usr/share/doc/kiss/wiki/kernel/patches/kernel-no-perl.patch
-```
+> TIP: A patch can be applied to remove this requirement.
+>         - @/wiki/kernel/config#5.0
+>         - /usr/share/doc/kiss/wiki/kernel/patches/kernel-no-perl.patch
 
 ### Download the kernel sources
 
@@ -340,18 +299,14 @@ Kernel releases:
 *   https://kernel.org (vanilla)
 *   https://www.fsfla.org (libre)
 
-A larger list of kernels can be found here:
+A larger list of kernels can be found here: https://wiki.archlinux.org/index.php/Kernel
 
-*   https://wiki.archlinux.org/index.php/Kernel
+    # Download the kernel sources. 
+    $ wget KERNEL_SOURCE
 
-```
-# Download the kernel sources. 
-$ wget KERNEL_SOURCE
-
-# Extract the kernel sources.
-$ tar xvf KERNEL_SOURCE 
-$ cd linux-*
-```
+    # Extract the kernel sources.
+    $ tar xvf KERNEL_SOURCE 
+    $ cd linux-*
 
 ### Download firmware blobs (if required)
 
@@ -359,15 +314,13 @@ To keep the KISS repositories entirely FOSS, the proprietary kernel firmware is 
 
 https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
 
-```
-# Download and extract the firmware.
-$ wget FIRMWARE_SOURCE.tar.gz
-$ tar xvf linux-firmware-20191022.tar.gz
+    # Download and extract the firmware.
+    $ wget FIRMWARE_SOURCE.tar.gz
+    $ tar xvf linux-firmware-20191022.tar.gz
 
-# Copy the required drivers to '/usr/lib/firmware'.
-$ mkdir -p /usr/lib/firmware
-$ cp -R ./path/to/driver /usr/lib/firmware
-```
+    # Copy the required drivers to '/usr/lib/firmware'.
+    $ mkdir -p /usr/lib/firmware
+    $ cp -R ./path/to/driver /usr/lib/firmware
 
 ### Configure the kernel
 
@@ -375,40 +328,34 @@ You can determine which drivers you need by searching the web for your hardware 
 
 If you require firmware blobs, the drivers you enable must be enabled as [m] (modules). You can also optionally include the firmware in the kernel itself.
 
-```
-# Generate a default config with most drivers built into the kernel. 
-$ make defconfig
+    # Generate a default config with most drivers built into the kernel. 
+    $ make defconfig
 
-# Open an interactive menu to edit the generated .config and enable anything extra you may need.
-$ make menuconfig
+    # Open an interactive menu to edit the generated .config and enable anything extra you may need.
+    $ make menuconfig
 
-# Store the generated config for reuse later.
-$ cp .config /path/to/somewhere
+    # Store the generated config for reuse later.
+    $ cp .config /path/to/somewhere
 
-# TIP: The kernel can backup its own .config file. @/wiki/kernel/config#2.0
-```
+> TIP: The kernel can backup its own .config file. @/wiki/kernel/config#2.0
 
 ### Build the kernel
 
 This may take a while to complete. The compilation time depends on your hardware and kernel configuration. The 'nproc' command outputs the total number of threads which we pass to make for a multi-threaded build.
 
-```
-$ make -j "$(nproc)" 
-```
+    $ make -j "$(nproc)" 
 
 ### Install the kernel
 
-```
-# Install the built modules (to /usr/lib).
-$ make INSTALL_MOD_STRIP=1 modules_install
+    # Install the built modules (to /usr/lib).
+    $ make INSTALL_MOD_STRIP=1 modules_install
 
-# Install the built kernel (to /boot). (Ignore the LILO error).  
-$ make install
+    # Install the built kernel (to /boot). (Ignore the LILO error).  
+    $ make install
 
-# Rename the kernel/system.map (vmlinuz -> vmlinuz-VERSION).
-$ mv /boot/vmlinuz    /boot/vmlinuz-VERSION
-$ mv /boot/System.map /boot/System.map-VERSION
-```
+    # Rename the kernel/system.map (vmlinuz -> vmlinuz-VERSION).
+    $ mv /boot/vmlinuz    /boot/vmlinuz-VERSION
+    $ mv /boot/System.map /boot/System.map-VERSION
 
 ## The bootloader
 
@@ -420,28 +367,24 @@ Have an /etc/fstab file ready.
 
 ### Build and install grub
 
-```
-$ kiss b grub
-$ kiss i grub 
+    $ kiss b grub
+    $ kiss i grub 
 
-# Required for UEFI.
-$ kiss b efibootmgr
-$ kiss i efibootmgr
-```
+    # Required for UEFI.
+    $ kiss b efibootmgr
+    $ kiss i efibootmgr
 
 ### Setup grub
 
-```
-# BIOS
-$ grub-install /dev/sdX
-$ grub-mkconfig -o /boot/grub/grub.cfg
+    # BIOS
+    $ grub-install /dev/sdX
+    $ grub-mkconfig -o /boot/grub/grub.cfg
 
-# UEFI (replace 'esp' with the EFI mount point)
-$ grub-install --target=x86_64-efi \
-               --efi-directory=esp \
-               --bootloader-id=kiss
-$ grub-mkconfig -o /boot/grub/grub.cfg
-```
+    # UEFI (replace 'esp' with the EFI mount point)
+    $ grub-install --target=x86_64-efi \
+                   --efi-directory=esp \
+                   --bootloader-id=kiss
+    $ grub-mkconfig -o /boot/grub/grub.cfg
 
 ## Install init scripts
 
@@ -449,44 +392,34 @@ The default init is busybox init (though nothing ties you to it). The below comm
 
 Source code: $/kisslinux/init
 
-```
-$ kiss b baseinit
-$ kiss i baseinit
-```
+    $ kiss b baseinit
+    $ kiss i baseinit
 
 ## Change the root password (recommended)
 
-```
-$ passwd root
-```
+    $ passwd root
 
 ## Add a normal user (recommended)
 
-```
-$ adduser USERNAME
-```
+    $ adduser USERNAME
 
 ## Install Xorg (optional)
 
 To install Xorg, the input drivers and a basic default set of fonts, run the following commands. See @/wiki/xorg
 
-```
-$ kiss b xorg-server xinit xf86-input-libinput
+    $ kiss b xorg-server xinit xf86-input-libinput
 
-# Installing a base font is recommended as nothing will work without fonts. 
-$ kiss b liberation-fonts
-$ kiss i liberation-fonts
-```
+    # Installing a base font is recommended as nothing will work without fonts. 
+    $ kiss b liberation-fonts
+    $ kiss i liberation-fonts
 
 ### Add your user to the relevant groups
 
 This groups based permissions model may not be suitable if KISS will be used as a multi-seat system. Further configuration can be done at your own discretion.
 
-```
-# Replace 'USERNAME' with the name of the user created earlier. 
-$ addgroup USERNAME video
-$ addgroup USERNAME audio
-```
+    # Replace 'USERNAME' with the name of the user created earlier. 
+    $ addgroup USERNAME video
+    $ addgroup USERNAME audio
 
 ## Further steps
 
@@ -494,19 +427,17 @@ You should now be able to reboot into your KISS installation. Typical configurat
 
 The KISS Wiki is a good place to look for post-installation information.
 
-```
-# TIP!
-#
-# The Wiki is available offline via 'kiss help wiki'.
-$ kiss help wiki
+    # TIP!
+    #
+    # The Wiki is available offline via 'kiss help wiki'.
+    $ kiss help wiki
 
-$ kiss help wiki/xorg
-$ kiss help wiki/xorg/xinit
-$ kiss help wiki/xorg/xinit
+    $ kiss help wiki/xorg
+    $ kiss help wiki/xorg/xinit
+    $ kiss help wiki/xorg/xinit
 
-$ kiss help wiki/software
-$ kiss help wiki/software/man-pages
-```
+    $ kiss help wiki/software
+    $ kiss help wiki/software/man-pages
 
 If you encountered any issues, don't hesitate to open an issue on one of our GitHub repositories, post on https://reddit.com/r/kisslinux or join the IRC server.
 
