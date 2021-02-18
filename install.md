@@ -1,10 +1,15 @@
 Welcome to the installation guide for KISS Linux.
 
-The installation utilizes a tarball which is unpacked to '/'. This same tarball is also directly usable as a chroot from any Linux distribution.
+The installation utilizes a tarball which is unpacked to '/'. This same tarball
+is also directly usable as a chroot from any Linux distribution.
 
-A live-CD from a another distribution is required to bootstrap KISS. It does not matter which distribution is used so long as it includes 'tar' and other basic utilities.
+A live-CD from a another distribution is required to bootstrap KISS. It does not
+matter which distribution is used so long as it includes 'tar' and other basic
+utilities.
 
-From this point on, the guide assumes you have booted a live-CD, are logged in as root, have your disks, partitions and filesystems setup and have an internet connection.
+From this point on, the guide assumes you have booted a live-CD, are logged
+in as root, have your disks, partitions and filesystems setup and have an
+internet connection.
 
 ## Install KISS
 
@@ -20,14 +25,17 @@ Start by declaring a variable.
 
 ### Verify the checksums (recommended)
 
-This step verifies that the release matches the checksums generated upon its creation and also ensures that the download completed successfully.
+This step verifies that the release matches the checksums generated uponits 
+creation and also ensures that the download completed successfully.
 
     $ wget "$url/kiss-chroot-2020.9-2.tar.xz.sha256" 
     $ sha256sum -c < kiss-chroot-2020.9-2.tar.xz.sha256 
 
 ### Verify the signature (recommended)
 
-    This step verifies that the release was signed by its creator, Dylan Araps. If the live OS of your choice does not include GPG, this step can also be done on another machine (with the same tarball).
+This step verifies that the release was signed by its creator, Dylan Araps. If
+the live OS of your choice does not include GPG, this step can also be done on
+another machine (with the same tarball).
 
     # Download the armored ASCII file.
     $ wget "$url/kiss-chroot-2020.9-2.tar.xz.asc"
@@ -40,30 +48,42 @@ This step verifies that the release matches the checksums generated upon its cre
 
 ### Unpack the tarball
 
-This step effectively installs KISS to /mnt. The tarball contains a full system minus the bootloader, kernel and optional utilities.
+This step effectively installs KISS to /mnt. The tarball contains a full system 
+minus the bootloader, kernel and optional utilities.
 
     $ cd /mnt
     $ tar xvf /path/to/kiss-chroot-2020.9-2.tar.xz
 
 ### Enter the chroot
 
-This is a simple script to chroot into /mnt and set up the environment for the rest of the installation. The script handles mounting pseudo filesystems (/proc, /dev, /sys), enabling network inside the chroot, etc.
+This is a simple script to chroot into /mnt and set up the environment for the
+rest of the installation. The script handles mounting pseudo filesystems (/proc, 
+/dev, /sys), enabling network inside the chroot, etc.
 
-On execution of this step you will be running KISS! The next steps involve the kernel, software compilation and system setup.
+On execution of this step you will be running KISS! The next steps involve the 
+kernel, software compilation and system setup.
 
     $ /mnt/bin/kiss-chroot /mnt 
 
 ## Setup repositories
 
-The repository system is quite different to that of other distributions. The system is controlled via an environment variable called KISS_PATH. This variable is analogous to PATH, a colon separated list of absolute paths.
+The repository system is quite different to that of other distributions. The 
+system is controlled via an environment variable called KISS_PATH. This variable
+is analogous to PATH, a colon separated list of absolute paths.
 
-A repository is merely a directory (repo) containing directories (packages) and can be located anywhere on the file-system. The full path to the directory is the value to KISS_PATH.
+A repository is merely a directory (repo) containing directories (packages) and
+can be located anywhere on the file-system. The full path to the directory is
+the value to KISS_PATH.
 
-The chroot/installation tarball does not come with any repositories by default, nor does the package manager expect or /assume/ that any exist in a given location. This is entirely up to the user.
+The chroot/installation tarball does not come with any repositories by default,
+nor does the package manager expect or /assume/ that any exist in a given 
+location. This is entirely up to the user.
 
 ### Setting KISS_PATH
 
-The variable can be set system-wide, per-user, per-session, per-command, and even programmatically. This guide will cover setting it for the current user with an example repository layout.
+The variable can be set system-wide, per-user, per-session, per-command, and 
+even programmatically. This guide will cover setting it for the current user 
+with an example repository layout.
 
 Take this layout:
 
@@ -111,13 +131,17 @@ This user's KISS_PATH could look like this:
 
 ### Official repositories
 
-The official repositories contain everything from the base system to a working web browser (Firefox) and media player (mpv). This includes Xorg, rust, nodejs and a lot of other useful software.
+The official repositories contain everything from the base system to a working
+web browser (Firefox) and media player (mpv). This includes Xorg, rust, nodejs
+and a lot of other useful software.
 
 Clone the repository to the directory of your choosing.
 
     $ git clone https://github.com/kiss-community/repo 
 
-This will be cloned to a directory called 'repo'. This directory contains multiple KISS repositories (core, extra, testing and xorg). Core and Extra must be enabled as this guide requires their use. Xorg is optional.
+This will be cloned to a directory called 'repo'. This directory contains
+multiple KISS repositories (core, extra, testing and xorg). Core and Extra must
+be enabled as this guide requires their use. Xorg is optional.
 
 ### Community
 
