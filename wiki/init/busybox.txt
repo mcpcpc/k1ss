@@ -47,4 +47,3 @@ busybox-init only /etc/inittab file.
     ## Save system time to hwclock.
     ::shutdown:/bin/hwclock -w
     ```
-
