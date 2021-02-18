@@ -145,17 +145,22 @@ be enabled as this guide requires their use. Xorg is optional.
 
 ### Community
 
-The community repository contains packages submitted and maintained by users of the distribution. It is twice the size of the official repositories and contains a lot of useful software.
+The community repository contains packages submitted and maintained by users of
+the distribution. It is twice the size of the official repositories and contains
+a lot of useful software.
 
 Clone the repository to the directory of your choosing.
 
     $ git clone https://github.com/kiss-community/community
 
-This will be cloned to a directory called 'community'. This directory contains a single KISS repository bearing the same name.
+This will be cloned to a directory called 'community'. This directory contains a 
+single KISS repository bearing the same name.
 
 ### Universe
 
-There are many more repositories in existence, each providing a unique set of software. These are all independently created and managed by users. This has been called the "KISS Universe".
+There are many more repositories in existence, each providing a unique set of
+software. These are all independently created and managed by users. This has
+been called the "KISS Universe".
 
 *   https://k1ss.armaanb.net/wiki/community/repositories
 *   https://github.com/topics/kiss-repo
@@ -187,9 +192,12 @@ If the GNU keyserver fails on your network, try an alternative mirror.
 
 ### Enable signature verification
 
-Repository signature verification uses a feature built into git itself (merge.verifySignatures)!  This can be disabled at any time using the inverse of the below git command.
+Repository signature verification uses a feature built into git itself 
+(merge.verifySignatures)!  This can be disabled at any time using the inverse of
+the below git command.
 
-The same steps can also be followed with 3rd-party repositories if the owner chooses to sign their commits.
+The same steps can also be followed with 3rd-party repositories if the owner
+chooses to sign their commits.
 
     $ cd /var/db/kiss/repo
     $ git config merge.verifySignatures true
