@@ -4,3 +4,6 @@ description: >-
 url: "https://k1ss.net"
 author: Dylan Araps
 email: xxx@xxxx.com
+
+plugins:
+    - jekyll-minifier
