@@ -38,8 +38,8 @@ with the following style requirements:
 *   Syntax is pandoc markdown (strict). 
     See https://pandoc.org/MANUAL.html#pandocs-markdown for more information.
 *   Character width does not exceed 80. An exception may be made for strings
-    where a carriage return is cannot be reasonably placed or would impact 
-    readability (e.g. long URLs).
+    where a CR-LF cannot be reasonably placed or would impact readability 
+    (e.g. long URLs).
 
 ## Article Index
 
