@@ -1,9 +1,11 @@
-# EFISTUB [0]
+EFISTUB [0]
+===========
 
 The Linux kernel has the ability to act as an EFI executable which simplifies
 the boot process by removing the need for a bootloader.
 
-## Prerequisites
+Prerequisites
+-------------
 
 Begin by first verifying that you have efibootmgr installed:
 
@@ -20,7 +22,8 @@ See: @/efivarfs
 > TIP: Keep your kernel's name as 'vmlinuz' to avoid having to update the
 >      EFI entries with each kernel update.
 
-## Create an UEFI boot entry
+Create an UEFI boot entry
+-------------------------
 
 Use the following command to create a boot entry. Replace /dev/sdXN with your
 EFI system partition and /dev/sdYM with your root partition. Check to see that
@@ -50,6 +53,7 @@ and run the following command.
 
     $ efibootmgr --bootnum XXXX --delete-bootnum
 
-## References
+References
+----------
 
 [0]  https://www.kernel.org/doc/Documentation/efi-stub.txt
