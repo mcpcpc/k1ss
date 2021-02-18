@@ -327,7 +327,7 @@ and USB drivers are built with [*] (=y) and not [m] (=m).
 A patch may be required for some kernels when built with GCC 10.1.0. Please read
 the link (and the patch itself for more information). @/news/20200509a
 
-TIP: The Wiki contains a basic kernel configuration page. @/wiki/kernel/config
+> TIP: The Wiki contains a basic kernel configuration page. @/wiki/kernel/config
 
 ### Install required packages
 
