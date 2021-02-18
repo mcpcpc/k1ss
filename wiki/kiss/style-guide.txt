@@ -26,153 +26,173 @@ NOTE: Exceptions are made where it makes sense.
 
 ## GENERAL
 
-    [0000]----------------------------------------------------------------------
+[0000]--------------------------------------------------------------------------
 
-    Package is not suitable for inclusion in the Community repository. The same
-    rules above may apply to other software at the discretion of the BDFL.
+Package is not suitable for inclusion in the Community repository. The same
+rules above may apply to other software at the discretion of the BDFL.
 
-    Examples: dbus, systemd, polkit, gettext, intltool, pulseaudio, pipewire,
-              pam, wayland, logind, ConsoleKit, libsn, electron and all
-              Desktop Environments.
+Examples: dbus, systemd, polkit, gettext, intltool, pulseaudio, pipewire, pam,
+          wayland, logind, ConsoleKit, libsn, electron and all Desktop 
+          Environments.
 
+### 0001
 
-    [0001]----------------------------------------------------------------------
+No new packages shall use GTK2 as it will be removed once Firefox drops it
+as a dependency.
 
-    No new packages shall use GTK2 as it will be removed once Firefox drops it
-    as a dependency.
+### 0002
 
+No new packages shall use Python 2 as it will be removed once Firefox drops
+it as a dependency.
 
-    [0002]----------------------------------------------------------------------
+### 0003
 
-    No new packages shall use Python 2 as it will be removed once Firefox drops
-    it as a dependency.
-
-
-    [0003]----------------------------------------------------------------------
-
-    Packages which are binaries should contain the suffix '-bin' to reflect
-    this fact. Similarly, packages which pull from git should contain the
-    suffix '-git'. The version of git packages should also be set to 'git'.
+Packages which are binaries should contain the suffix '-bin' to reflect this 
+fact. Similarly, packages which pull from git should contain the suffix '-git'.
+The version of git packages should also be set to 'git'.
 
 ## BUILD
 
-    [0200]----------------------------------------------------------------------
+### 0200
 
-    This guide should be used alongside shellcheck and not in place of it.
+This guide should be used alongside shellcheck and not in place of it.
 
+### 0201
 
-    [0201]----------------------------------------------------------------------
-
-    All shell code must pass the shellcheck linter. Any false-positives or
-    intended behavior must have a rationale attached with the exclusion.
+All shell code must pass the shellcheck linter. Any false-positives or intended
+behavior must have a rationale attached with the exclusion.
 
     # Disable warning as CFLAGS must work this way.
     # shellcheck disable=2086
     "${CC:-cc}" $CFLAGS ...
 
-    [0202]----------------------------------------------------------------------
+### 0202
 
-    Use 4 spaces for indentation.
+Use 4 spaces for indentation.
 
-    [0203]----------------------------------------------------------------------
+### 0203
 
-    Lines should not exceed 80 characters in length.
+Lines should not exceed 80 characters in length.
 
-    [0204]----------------------------------------------------------------------
+### 0204
 
-    All packages must use the POSIX shell shebang with '-e' to exit on error.
-    Additionally, '-ef' can be used if word-splitting is required.
+All packages must use the POSIX shell shebang with '-e' to exit on error.
+Additionally, '-ef' can be used if word-splitting is required.
 
-    There must also be a blank line directly below the shebang.
+There must also be a blank line directly below the shebang.
 
     #!/bin/sh -e
 
     # Code starts here.
 
-    [0205]----------------------------------------------------------------------
+### 0205
 
-    All comments must start with a capital letter and use proper spelling,
-    grammar and punctuation.
+All comments must start with a capital letter and use proper spelling, grammar
+and punctuation.
 
     # This is a comment.
 
-    [0206]----------------------------------------------------------------------
+### 0206
 
-    Leave comments to explain *why* the code is needed and not *what* it does.
+Leave comments to explain *why* the code is needed and not *what* it does.
 
-    Bad:
+Bad:
 
     # Create a directory.
     mkdir -p "$1/usr/bin"
 
-    Good:
+Good:
 
     # 'make install' doesn't create the directory.
     mkdir -p "$1/usr/bin"
 
-    [0207]----------------------------------------------------------------------
+### 0207
 
-    Avoid adding braces around variables if unneeded.
+Avoid adding braces around variables if unneeded.
 
-    Bad:  printf '%s\n' "${var}"
-    Good: printf '%s\n' "$var"
-    Good: printf '%s\n' "${var}.${var2}"
+Bad:
 
-    [0208]----------------------------------------------------------------------
+    printf '%s\n' "${var}"
 
-    Avoid quotes when unneeded.
+Good:
 
-    Bad:  [ "$var" = "test" ]
-    Good: [ "$var" = test ]
+    printf '%s\n' "$var"
 
-    Bad:  install -Dm755 "file" "$1/usr/bin/file"
-    Good: install -Dm755 file "$1/usr/bin/file"
+Good:
 
+    printf '%s\n' "${var}.${var2}"
 
-    [0209]----------------------------------------------------------------------
+### 0208
 
-    Quote entire strings instead of variables.
+Avoid quotes when unneeded.
 
-    Bad:  install -Dm644 cat "$1"/usr/bin/cat
-    Good: install -Dm644 cat "$1/usr/bin/cat"
+Bad:
 
-    [0210]----------------------------------------------------------------------
+    [ "$var" = "test" ]
 
-    Align arguments in blocks of command calls.
+Good:
 
-    Bad:
+    [ "$var" = test ]
+
+Bad:
+
+    install -Dm755 "file" "$1/usr/bin/file"
+Good:
+
+    install -Dm755 file "$1/usr/bin/file"
+
+### 0209
+
+Quote entire strings instead of variables.
+
+Bad:
+
+    install -Dm644 cat "$1"/usr/bin/cat
+Good:
+
+    install -Dm644 cat "$1/usr/bin/cat"
+
+### 0210
+
+Align arguments in blocks of command calls.
+
+Bad:
 
     install -D file.h "$1/usr/include/file.h"
     install -D libfile.so "$1/usr/lib/libfile.so"
 
-    Good:
+Good:
 
     install -D file.h     "$1/usr/include/file.h"
     install -D libfile.so "$1/usr/lib/libfile.so"
 
-    [0211]----------------------------------------------------------------------
+### 0211
 
-    Use 'install' instead of ...
+Use 'install' instead of ...
 
-    Bad:
+Bad:
 
     mkdir -p "$1/usr/bin"
     cp ls "$1/usr/bin/"
 
-    Good:
+Good:
 
     install -Dm755 ls "$1/usr/bin/ls"
 
-    [0212]----------------------------------------------------------------------
+### 0212
 
-    Prefer $CC to ...
+Prefer $CC to ...
 
-    Bad:  gcc -o file file.c
-    Good: "${CC:-cc}" -o file file.c
+Bad:
 
-    [0213]----------------------------------------------------------------------
+    gcc -o file file.c
+Good:
 
-    Always use '-p' with 'mkdir'.
+    "${CC:-cc}" -o file file.c
+
+### 0213
+
+Always use '-p' with 'mkdir'.
 
 ## GNU AUTOTOOLS
 
