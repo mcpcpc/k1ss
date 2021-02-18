@@ -77,12 +77,12 @@ standard usage depends on unimportant and rarely used kernel features.
 When these options are disabled (is the case by default unless 'allyesconfig' is
 used), the kernel builds just fine.
 
-> The following options are mandatory (when using busybox) (=n).
->
->   CONFIG_IKHEADERS         This option enables access to the in-kernel
->                            headers that are generated during the build
->                            process. These can be used to build eBPF tracing,
->                            or similar programs.
+    The following options are mandatory (when using busybox) (=n).
+    
+    CONFIG_IKHEADERS         This option enables access to the in-kernel
+                             headers that are generated during the build
+                             process. These can be used to build eBPF tracing,
+                             or similar programs.
 
 [4.0] Never lose your .config ever again
 ----------------------------------------
@@ -91,10 +91,10 @@ The kernel can be configured to store its configuration file to later make it
 accessible via /proc/config.gz. Storing the .config in the kernel ensures that
 you will never lose your config so long as you have its kernel.
 
-> The following options are recommended (=y).
->
->   CONFIG_IKCONFIG          Store the .config in the kernel.
->   CONFIG_IKCONFIG_PROC     Make the .config accessible as /proc/config.gz
+    The following options are recommended (=y).
+    
+    CONFIG_IKCONFIG          Store the .config in the kernel.
+    CONFIG_IKCONFIG_PROC     Make the .config accessible as /proc/config.gz
 
 [5.0] Removing the perl requirement
 -----------------------------------
