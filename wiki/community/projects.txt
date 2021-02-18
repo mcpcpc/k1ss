@@ -1,11 +1,11 @@
 COMMUNITY PROJECTS
-________________________________________________________________________________
+==================
 
 Software created by the Community.
 
 
 TINYRAMFS
-________________________________________________________________________________
+---------
 
 A tiny initramfs generator written in POSIX shell with support for LUKS, LVM,
 mdev, mdevd, udev, etc.
@@ -14,7 +14,7 @@ Source: $/illiliti/tinyramfs
 
 
 SYSMGR
-________________________________________________________________________________
+------
 
 A simplistic system-supervisor.
 
@@ -23,16 +23,16 @@ C:        $/cemkeylan/sm
 
 
 SHINIT
-________________________________________________________________________________
+------
 
 Basic init daemon in POSIX sh with only 5 lines of code. It supports acting upon
-signals.                          |
+signals.
 
 Source: $/cemkeylan/shinit
 
 
 TUITUBE
-________________________________________________________________________________
+-------
 
 A minimal TUI YouTube (invidious) frontend made in c++.
 
