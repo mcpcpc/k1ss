@@ -13,6 +13,20 @@ pages below and
 
     curl https://mcpcpc.com/k1ss/wiki/boot/efistub.txt | less
 
+To simply the command above, one could simply create a shell script that has the
+same exact function as above and place it in their shell rc (e.g. ~/.ashrc) file.
+
+    # placed at the of the one's ~/.ashrc file
+    wiki {
+        url='http://mcpcpc.com/kiss/wiki/'
+        curl "$url/$1.txt" | less
+    }
+
+To use the script and view the example article from above, one would simply use
+type the following in their shell.
+
+    $ wiki boot/efistub
+
 ## Contribute
 
 To add a new article or modify an existing one, create a new Pull Request in
