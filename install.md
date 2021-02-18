@@ -167,15 +167,20 @@ been called the "KISS Universe".
 
 NOTE: It may be desirable to save this step for post-installation.
 
-Repositories should now be setup and in functioning order. Run 'kiss search \*' (notice the escaping) to print all repository packages in the search order of the package manager.
+Repositories should now be setup and in functioning order. Run 'kiss search \*' 
+(notice the escaping) to print all repository packages in the search order of
+the package manager.
 
 ### Enable repository signing
 
-This step is optional and can also be done after the installation. Repository signing ensures that all updates have been signed by (Dylan Araps) and further prevents any unsigned updates from reaching your system.
+This step is optional and can also be done after the installation. Repository 
+signing ensures that all updates have been signed by (Dylan Araps) and further 
+prevents any unsigned updates from reaching your system.
 
 ### Build and install gnupg1
 
-Welcome to the KISS package manager! These two commands are how individual packages are built and installed on a KISS system.
+Welcome to the KISS package manager! These two commands are how individual
+packages are built and installed on a KISS system.
 
     $ kiss build   gnupg1
     $ kiss install gnupg1
