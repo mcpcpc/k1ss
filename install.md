@@ -213,13 +213,18 @@ This step is entirely optional and can also be done post-installation.
 
 ### Modify compiler options (optional)
 
-These options have been tested and work with every package in the repositories. If you'd like to play it safe, use -O2 or -Os instead of -O3.
+These options have been tested and work with every package in the repositories.
+If you'd like to play it safe, use -O2 or -Os instead of -O3.
 
-If your system has a low amount of memory, omit -pipe. This option speeds up compilation but may use more memory.
+If your system has a low amount of memory, omit -pipe. This option speeds up 
+compilation but may use more memory.
 
-If you intend to transfer packages between machines, omit -march=native. This option tells the compiler to use optimizations unique to your processor's architecture.c
+If you intend to transfer packages between machines, omit -march=native. This
+option tells the compiler to use optimizations unique to your processor's 
+architecture.c
 
-The `-jX` option should match the number of CPU threads available. You can omit this, however builds will then be limited to a single thread.
+The `-jX` option should match the number of CPU threads available. You can omit 
+this, however builds will then be limited to a single thread.
 
     # CFLAGS/CXXFLAGS 
     ## NOTE: The 'O' in '-O3' is the letter O and NOT 0 (ZERO). 
@@ -232,18 +237,24 @@ The `-jX` option should match the number of CPU threads available. You can omit 
 
 ### Update all base packages to the latest version
 
-This is how updates are performed on a KISS system. This command uses git to pull down changes from all enabled repositories and will then optionally handle the build/install process.
+This is how updates are performed on a KISS system. This command uses git to
+pull down changes from all enabled repositories and will then optionally handle
+the build/install process.
 
     $ kiss update
 
 ### Rebuild all packages
-We simply cd to the installed packages database and use a glob to grab the name of every installed package. This glob is then passed to the package manager as a list of packages to build.
+
+We simply cd to the installed packages database and use a glob to grab the name
+of every installed package. This glob is then passed to the package manager as a 
+list of packages to build.
 
     $ cd /var/db/kiss/installed && kiss build *
 
 ## Userspace tools
 
-Each kiss action (build, install, etc) has a shorthand alias. From now on, 'kiss b' and 'kiss i' will be used in place of 'kiss build' and 'kiss install'.
+Each kiss action (build, install, etc) has a shorthand alias. From now on, 'kiss
+b' and 'kiss i' will be used in place of 'kiss build' and 'kiss install'.
 
 The software below is required unless stated otherwise.
 
@@ -265,7 +276,9 @@ NOTE: Open an issue for additional filesystem support.
 
 ### Device management
 
-NOTE: If you choose to not install eudev, mdev will automatically be used in its place. Eudev is recommended as a lot of software requires it. See: @/wiki/dev/replacing-udev for more information.
+NOTE: If you choose to not install eudev, mdev will automatically be used in its 
+place. Eudev is recommended as a lot of software requires it. See: 
+@/wiki/dev/replacing-udev for more information.
 
     # Needed for blkid support in eudev (recommended but not required). 
     $ kiss b util-linux 
@@ -297,17 +310,22 @@ NOTE: If you choose to not install eudev, mdev will automatically be used in its
 
 ## The kernel
 
-This step involves configuring and building your own Linux kernel. If you have not done this before, below are a few guides to get you started.
+This step involves configuring and building your own Linux kernel. If you have
+not done this before, below are a few guides to get you started.
 
 *   https://wiki.gentoo.org/wiki/Kernel/Gentoo_Kernel_Configuration_Guide
 *   https://wiki.gentoo.org/wiki/Kernel/Configuration
 *   https://kernelnewbies.org/KernelBuild
 
-The Linux kernel is not managed by the package manager. The kernel is managed manually by the user. (Rationale: @/faq#7.3)
+The Linux kernel is not managed by the package manager. The kernel is managed 
+manually by the user. (Rationale: @/faq#7.3)
 
-KISS does not support booting using an initramfs (see @/faq#7.2). When configuring your kernel ensure that all required file-system, disk controller and USB drivers are built with [*] (=y) and not [m] (=m).
+KISS does not support booting using an initramfs (see @/faq#7.2). When
+configuring your kernel ensure that all required file-system, disk controller
+and USB drivers are built with [*] (=y) and not [m] (=m).
 
-A patch may be required for some kernels when built with GCC 10.1.0. Please read the link (and the patch itself for more information). @/news/20200509a
+A patch may be required for some kernels when built with GCC 10.1.0. Please read
+the link (and the patch itself for more information). @/news/20200509a
 
 TIP: The Wiki contains a basic kernel configuration page. @/wiki/kernel/config
 
