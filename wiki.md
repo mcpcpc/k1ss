@@ -9,7 +9,7 @@ general. Written by the Community.
 
 The wiki article index was designed for viewing in a terminal or your preferred
 markdown viewer. For example, one could use 'curl' to download any one of the
-pages below and pipe the resulting output into 'less'.
+pages below and pipe the resulting output into 'less':
 
     curl https://mcpcpc.com/k1ss/wiki/boot/efistub.txt | less
 
