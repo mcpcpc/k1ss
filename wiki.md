@@ -19,7 +19,7 @@ file.
 
     # added to one's ~/.ashrc file
     wiki() {
-        url='https://mcpcpc.com/kiss/wiki'
+        url='https://mcpcpc.com/k1ss/wiki'
         curl "$url/${1:-kiss/style-guide}.txt" | less
     }
 
