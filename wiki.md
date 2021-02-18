@@ -39,4 +39,5 @@ with the following style requirements:
 * character width does not exceed 80
 
 ## Article Index
+
 {% for image in site.static_files %}{% if image.path contains 'wiki/' %}[{{ image.path }}]({{ site.baseurl }}{{ image.path }}){% endif %}<br>{% endfor %}
