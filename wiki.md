@@ -10,7 +10,7 @@ Usage
 
 The wiki article index was designed for viewing in a terminal or your preferred
 markdown viewer. For example, one could use 'curl' to download any one of the
-pages below and pipe the resulting output into 'less':
+articles below and pipe the resulting output into a terminal pager program:
 
     curl https://mcpcpc.com/k1ss/wiki/boot/efistub.md | less
 
