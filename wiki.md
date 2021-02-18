@@ -13,8 +13,9 @@ pages below and
 
     curl https://mcpcpc.com/k1ss/wiki/boot/efistub.txt | less
 
-To simply the command above, one could simply create a shell script that has the
-same exact function as above and place it in their shell rc (e.g. ~/.ashrc) file.
+To simplify the command above, one could simply create a shell script that has 
+the same exact function as above and place it in their shell rc (e.g. ~/.ashrc)
+file.
 
     # added to one's ~/.ashrc file
     wiki() {
