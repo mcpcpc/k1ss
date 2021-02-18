@@ -6,35 +6,21 @@ Window system which abstracts the hardware and provides the foundation for most
 graphical user interfaces, like desktop environments or window managers, and 
 their applications.
 
-
-[0.0] Index
------------
-
-- Getting Started                                                          [1.0]
-- Graphics Drivers                                                         [2.0]
-- Window Managers                                                          [3.0]
-- Remote X Session Management                                              [4.0]
-    - VNC                                                                  [4.1]
-    - x11-forwarding                                                       [4.2]
-- References                                                               [5.0]
-
-
 [1.0] Getting Started
 ---------------------
 
 If you are following along from the KISS installation guide, you should already
 have the following packages installed:
 
-* xorg-server
-* xf86-input-libinput
-* liberation-fonts (optional)
+*   xorg-server
+*   xf86-input-libinput
+*   liberation-fonts (optional)
 
 In order to start the X window system server, you will also need to install
 and configure _ONE_ of the following packages:
 
-* xinit (@/xinit)
-* sx (@/sx)
-
+*   xinit (@/xinit)
+*   sx (@/sx)
 
 [2.0] Graphics Drivers
 ----------------------
@@ -42,15 +28,14 @@ and configure _ONE_ of the following packages:
 Depending on your graphics card hardware, one of the following graphics card 
 packages should also be installed:
 
-* xf86-video-amdgpu
-* xf86-video-ati
-* xf86-video-intel
-* xf86-video-nouveau
-* xf86-video-vesa
+*   xf86-video-amdgpu
+*   xf86-video-ati
+*   xf86-video-intel
+*   xf86-video-nouveau
+*   xf86-video-vesa
 
 Note: xf86-video-intel is not needed for Intel GPUs as the generic modesetting 
       driver built into Xorg works really well.
-
 
 [3.0] Window Managers
 ---------------------
@@ -65,9 +50,8 @@ contributed by individuals via the Community repository.
 
 The following is a snapshot of some of the available WMs at this time:
 
-+--------------------+---------------------------------------------------------+
 |   Window Manager   |   Description                                           |
-+--------------------+---------------------------------------------------------+
+|--------------------|---------------------------------------------------------|
 |                    |                                                         |
 |   2bwm             |   A fast floating WM, with the particularity of         |
 |                    |   having 2 borders, written over the XCB library and    |
@@ -86,33 +70,29 @@ The following is a snapshot of some of the available WMs at this time:
 |                    |                                                         |
 |   xwm              |   A tiny XCB floating window manager. [5]               |
 |                    |                                                         |
-+--------------------+---------------------------------------------------------+
 
 [4.0] Remote X Session Management
 ---------------------------------
 
 The following tools are currently available for remote X session management.
 
+[4.1] VNC
+---------
 
-    [4.1] VNC
-    ---------
+A Virtual Network Computing (VNC) is a graphical desktop-sharing system that 
+uses the Remote Frame Buffer protocol (RFB) to remotely control another 
+computer. The following VNC tools are currently offered through the
+Community repository:
 
-    A Virtual Network Computing (VNC) is a graphical desktop-sharing system that 
-    uses the Remote Frame Buffer protocol (RFB) to remotely control another 
-    computer. The following VNC tools are currently offered through the
-    Community repository:
-    
-    * x11vnc (#/wiki/software/x11vnc)
+*   x11vnc (#/wiki/software/x11vnc)
 
+[4.2] x11-forwarding
+--------------------
 
-    [4.2] x11-forwarding
-    --------------------
-
-    What if you need to access your applications remotely (with no additional 
-    applications)? The solution is to utilize X server's "baked in" X11 
-    forwarding solution. For for more information, check out the 
-    @/x11-forwarding article.  
-
+What if you need to access your applications remotely (with no additional 
+applications)? The solution is to utilize X server's "baked in" X11 
+forwarding solution. For for more information, check out the 
+@/x11-forwarding article.  
 
 [5.0] References
 ----------------
