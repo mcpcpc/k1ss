@@ -71,30 +71,23 @@ The following is a snapshot of some of the available WMs at this time:
 |   xwm              |   A tiny XCB floating window manager. [5]               |
 |                    |                                                         |
 
-[4.0] Remote X Session Management
----------------------------------
-
-The following tools are currently available for remote X session management.
-
-[4.1] VNC
+[4.0] VNC
 ---------
 
 A Virtual Network Computing (VNC) is a graphical desktop-sharing system that 
-uses the Remote Frame Buffer protocol (RFB) to remotely control another 
-computer. The following VNC tools are currently offered through the
-Community repository:
+uses the Remote Frame Buffer protocol (RFB) to remotely control another computer.
+The following VNC tools are currently offered through the community repository:
 
 *   x11vnc (#/wiki/software/x11vnc)
 
-[4.2] x11-forwarding
+[5.0] x11-forwarding
 --------------------
 
 What if you need to access your applications remotely (with no additional 
-applications)? The solution is to utilize X server's "baked in" X11 
-forwarding solution. For for more information, check out the 
-@/x11-forwarding article.  
+applications)? The solution is to utilize X server's "baked in" X11 forwarding 
+solution. For for more information, check out the @/x11-forwarding article.  
 
-[5.0] References
+[6.0] References
 ----------------
 
 [0] https://www.x.org/wiki/
