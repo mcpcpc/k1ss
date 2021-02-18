@@ -1,5 +1,5 @@
 XORG-SERVER [0]
-________________________________________________________________________________
+===============
 
 The xorg-server, part of the X.Org releases, is the main component of the X 
 Window system which abstracts the hardware and provides the foundation for most 
@@ -8,7 +8,7 @@ their applications.
 
 
 [0.0] Index
-________________________________________________________________________________
+-----------
 
 - Getting Started                                                          [1.0]
 - Graphics Drivers                                                         [2.0]
@@ -20,7 +20,7 @@ ________________________________________________________________________________
 
 
 [1.0] Getting Started
-________________________________________________________________________________
+---------------------
 
 If you are following along from the KISS installation guide, you should already
 have the following packages installed:
@@ -37,7 +37,7 @@ and configure _ONE_ of the following packages:
 
 
 [2.0] Graphics Drivers
-________________________________________________________________________________
+----------------------
 
 Depending on your graphics card hardware, one of the following graphics card 
 packages should also be installed:
@@ -53,7 +53,7 @@ Note: xf86-video-intel is not needed for Intel GPUs as the generic modesetting
 
 
 [3.0] Window Managers
-________________________________________________________________________________
+---------------------
 
 Note: Installing a window manager is entirely optional and based on user 
       preference.
@@ -89,13 +89,13 @@ The following is a snapshot of some of the available WMs at this time:
 +--------------------+---------------------------------------------------------+
 
 [4.0] Remote X Session Management
-________________________________________________________________________________
+---------------------------------
 
 The following tools are currently available for remote X session management.
 
 
     [4.1] VNC
-    ____________________________________________________________________________
+    ---------
 
     A Virtual Network Computing (VNC) is a graphical desktop-sharing system that 
     uses the Remote Frame Buffer protocol (RFB) to remotely control another 
@@ -106,7 +106,7 @@ The following tools are currently available for remote X session management.
 
 
     [4.2] x11-forwarding
-    ____________________________________________________________________________
+    --------------------
 
     What if you need to access your applications remotely (with no additional 
     applications)? The solution is to utilize X server's "baked in" X11 
@@ -115,7 +115,7 @@ The following tools are currently available for remote X session management.
 
 
 [5.0] References
-________________________________________________________________________________
+----------------
 
 [0] https://www.x.org/wiki/
 [1] https://github.com/venam/2bwm
