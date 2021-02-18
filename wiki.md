@@ -7,7 +7,7 @@ general. Written by the Community.
 
 ## Usage
 
-tbd
+The wiki article index was designed for virwing in a terminal or your preferred markdown viewer.
 
 ## Contribute
 
@@ -16,7 +16,7 @@ http://github.com/mcpcpc/k1ss
 
 Each new article will be reviewed for compliance with the following style requirements:
 
-* syntax: pandoc markdown (strict)
+* syntax is pandoc markdown (strict)
 * character width does not exceed 80
 
 ## Article Index
