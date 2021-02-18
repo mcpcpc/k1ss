@@ -23,7 +23,7 @@ place it in their shell rc file (e.g. ~/.ashrc). For example:
         curl "$url/${1:-kiss/style-guide}.md" | less
     }
 
-To use the example script and view the example article from above, one would
+To use this example script and view the example article from above, one would
 simply type the following in a shell:
 
     $ wiki boot/efistub

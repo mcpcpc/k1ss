@@ -1,4 +1,5 @@
-# PACKAGE STYLE GUIDE
+PACKAGE STYLE GUIDE
+===================
 
 This document is a style guide which will double as documentation for a possible
 package linter in the future. Every package in the Official Repositories and the
@@ -6,7 +7,8 @@ Community repository adheres to this style guide.
 
 NOTE: Exceptions are made where it makes sense.
 
-## MAINTAINERSHIP
+MAINTAINERSHIP
+--------------
 
 * Each package has a set maintainer stored via git commits. Use 'git log' or
   'kiss-maintainer pkg' to find the maintainer's contact information.
@@ -23,7 +25,8 @@ NOTE: Exceptions are made where it makes sense.
 * If no one steps forward to adopt an orphaned package, it will be dropped from
   the repositories.
 
-## GENERAL
+GENERAL
+-------
 
 ### 0000
 
@@ -50,7 +53,8 @@ Packages which are binaries should contain the suffix '-bin' to reflect this
 fact. Similarly, packages which pull from git should contain the suffix '-git'.
 The version of git packages should also be set to 'git'.
 
-## BUILD
+BUILD
+-----
 
 ### 0200
 
@@ -215,7 +219,8 @@ alternate source must be sought.
 An exception can be made for packages in which no such source exists. If
 autogen.sh or autoreconf are required, prefer autoreconf.
 
-## MESON
+MESON
+-----
 
 ### 0600
 
@@ -246,7 +251,8 @@ Use the following style:
    cmake --build   build
    cmake --install build
 
-## MAKE
+MAKE
+----
 
 ### 1000
 
