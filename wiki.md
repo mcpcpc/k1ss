@@ -15,7 +15,7 @@ pages below and
 
 To simplify the command above, one could simply create a shell script that has 
 the same exact function as above and place it in their shell rc (e.g. ~/.ashrc)
-file.
+file. For example:
 
     # added to one's ~/.ashrc file
     wiki() {
@@ -23,8 +23,8 @@ file.
         curl "$url/${1:-kiss/style-guide}.txt" | less
     }
 
-To use the script and view the example article from above, one would simply use
-type the following in their shell.
+To use the example script and view the example article from above, one would
+simply type the following in a shell:
 
     $ wiki boot/efistub
 
