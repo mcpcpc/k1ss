@@ -16,7 +16,7 @@ pages below and
 To simply the command above, one could simply create a shell script that has the
 same exact function as above and place it in their shell rc (e.g. ~/.ashrc) file.
 
-    # placed at the of the one's ~/.ashrc file
+    # added to one's ~/.ashrc file
     wiki {
         url='http://mcpcpc.com/kiss/wiki/'
         curl "$url/$1.txt" | less
