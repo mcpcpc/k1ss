@@ -7,7 +7,7 @@ Basic usage
 -----------
 
 | Action  | Command                                                            |
-|---------+--------------------------------------------------------------------|
+|---------|--------------------------------------------------------------------|
 | List    | $ ls /etc/sv/                                                      |
 |         |                                                                    |
 | Enable  | $ ln -s /etc/sv/SERVICE_NAME/ /var/service                         |
@@ -15,6 +15,7 @@ Basic usage
 |         |                                                                    |
 | Stop    | $ sv down SERVICE_NAME                                             |
 | Start   | $ sv up   SERVICE_NAME                                             |
+|         |                                                                    |
 
 See https://git.busybox.net/busybox/tree/runit/sv.c for full usage.
 
