@@ -1,9 +1,7 @@
 # EFISTUB [0]
 
-
 The Linux kernel has the ability to act as an EFI executable which simplifies
 the boot process by removing the need for a bootloader.
-
 
 ## Prerequisites
 
@@ -23,10 +21,8 @@ The UEFI variables must be mounted.
 
 See: @/efivarfs
 
-
 > TIP: Keep your kernel's name as 'vmlinuz' to avoid having to update the
 >      EFI entries with each kernel update.
-
 
 ## Create an UEFI boot entry
 
@@ -53,7 +49,6 @@ found using blkid.
 
 The above command, the --unicode option specifies the parameters passed to the
 kernel. If you require other parameters to boot your system, pass them here.
-
 
 ## Removing a UEFI boot entry
 
