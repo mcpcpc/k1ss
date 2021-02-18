@@ -5,7 +5,8 @@ layout: default
 Welcome to the KISS WIKI. Documentation and information about KISS and Linux in 
 general. Written by the Community.
 
-## Usage
+Usage
+-----
 
 The wiki article index was designed for viewing in a terminal or your preferred
 markdown viewer. For example, one could use 'curl' to download any one of the
@@ -27,7 +28,8 @@ simply type the following in a shell:
 
     $ wiki boot/efistub
 
-## Contribute
+Contribute
+----------
 
 To add a new article or modify an existing one, create a new Pull Request in
 the community repository: http://github.com/mcpcpc/k1ss
@@ -41,6 +43,7 @@ with the following style requirements:
     An exception may be made for strings where a CR-LF cannot be reasonably 
     placed or would impact readability (e.g. long URLs).
 
-## Article Index
+Article Index
+-------------
 
 {% for image in site.static_files %}{% if image.path contains 'wiki/' %}[{{ image.path }}]({{ site.baseurl }}{{ image.path }}){% endif %}<br>{% endfor %}
