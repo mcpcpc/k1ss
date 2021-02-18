@@ -13,9 +13,8 @@ pages below and pipe the resulting output into 'less'.
 
     curl https://mcpcpc.com/k1ss/wiki/boot/efistub.txt | less
 
-To simplify the command above, one could create a shell script that has 
-the same exact function and place it in their shell rc (e.g. ~/.ashrc)
-file. For example:
+To simplify the command above, one could create a shell script function and 
+place it in their shell rc file (e.g. ~/.ashrc). For example:
 
     # added to one's ~/.ashrc file
     wiki() {
