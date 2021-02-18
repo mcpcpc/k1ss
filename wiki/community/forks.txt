@@ -32,7 +32,6 @@ You can find more information about the ideals here https://muevoid.org/ideals
 
 Source: https://github.com/muevoid/mue-linux/
 
-
 ## Glasnost Linux
 
 Glasnost Linux is a Linux® distribution using the Clang/LLVM toolchain and musl
