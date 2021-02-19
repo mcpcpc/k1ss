@@ -1,33 +1,28 @@
 REPLACING UDEV
-________________________________________________________________________________
+--------------
 
 As of the 20/01/2020, it is now possible to replace eudev with the device
-manager of your choosing. This Wiki page will cover replacing eudev with
-busybox mdev, however the steps are more or less the same for all other device
-managers (smdev, vdev, ...).
-
+manager of your choosing. This Wiki page will cover replacing eudev with busybox mdev, however the steps are more or less the same for all other device managers (smdev, vdev, ...).
 
 CAVEATS
-________________________________________________________________________________
+-------
 
-- Xorg will be unable to automatically detect input devices.
-- Libinput will be unable to use its quirks system.
-
+*   Xorg will be unable to automatically detect input devices.
+*   Libinput will be unable to use its quirks system.
 
 BENEFITS
-________________________________________________________________________________
+--------
 
-- Use any device manager, swap between them or use none at all.
-- Alternatives are simpler and lighter.
-- Faster boot process.
-
+*   Use any device manager, swap between them or use none at all.
+*   Alternatives are simpler and lighter.
+*   Faster boot process.
 
 PREPARATION
-________________________________________________________________________________
+-----------
 
 1. Make note of your current XKB rules, model and layout.
 
-   Xorg compiled without eudev may require manual configuration to correctly set
+Xorg compiled without eudev may require manual configuration to correctly set
    the keyboard's layout and other settings. The following command can be used
    to detect the current configuration from a working machine.
 
@@ -49,7 +44,6 @@ ________________________________________________________________________________
            | Virtual core XTEST keyboard     id=5    [slave  keyboard (3)]
            | keyboard0                       id=7    [slave  keyboard (3)]
 
-
    My keyboard has the ID '7'. The following command prints its information
    including the needed device node location.
 
@@ -62,15 +56,13 @@ ________________________________________________________________________________
        Device Node (319):      "/dev/input/event4"
        Device Product ID (320):        1, 1
 
-
    The "Device Node (XXX):" line displays the location in /dev/ of my keyboard
    and is the value we will use when configuring Xorg. My keyboard is located
    at /dev/input/event4. This command should be repeated for any other input
    devices.
 
-
 CONFIGURING XORG
-________________________________________________________________________________
+----------------
 
 When Xorg is built without eudev, Xorg will be unable to automatically find and
 use input devices. This requires the use of a "static" configuration using
@@ -81,7 +73,6 @@ NOTE: For this example I am configuring a touchpad alongside the
       to a mouse's configuration.
 
 NOTE: The below files should live in /etc/X11/xorg.conf.d/.
-
 
 * 10-keyboard.conf
 
@@ -108,7 +99,6 @@ NOTE: The below files should live in /etc/X11/xorg.conf.d/.
       Option     "XkbRules"  "evdev"
   EndSection
 
-
 * 10-touchpad.conf
 
   The 10-touchpad.conf file is used to tell Xorg how it should setup the
@@ -132,9 +122,8 @@ NOTE: The below files should live in /etc/X11/xorg.conf.d/.
       Option     "Tapping" "true"
   EndSection
 
-
 PURGING EUDEV
-________________________________________________________________________________
+-------------
 
 * Disable the udevd service
 
@@ -143,20 +132,17 @@ ________________________________________________________________________________
 
   $ unlink /var/service/udevd
 
-
 * Remove the eudev package
 
   The removal is forced as the packages which depend on eudev will be rebuilt.
 
   $ KISS_FORCE=1 kiss r eudev
 
-
 * Generate a list of all packages which need to be rebuilt
 
   $ kiss-revdepends eudev
   libinput/depends:eudev
   xorg-server/depends:eudev
-
 
 * Rebuild all required packages
 
@@ -170,7 +156,6 @@ ________________________________________________________________________________
 
   $ kiss b libinput xorg-server
 
-
 * Verify that the eudev dependence is gone
 
   The following command should output nothing. If it does not, the outputted
@@ -178,9 +163,8 @@ ________________________________________________________________________________
 
   $ kiss-revdepends eudev
 
-
 CHANGING DEVICE MANAGERS
-________________________________________________________________________________
+------------------------
 
 * busybox mdev
 
@@ -188,15 +172,13 @@ ________________________________________________________________________________
 
   ln -s /etc/sv/mdev/ /var/service
 
-
 * Other device managers
 
   Open an issue in $/kisslinux/init as the init scripts will need support for
   other device managers.
 
-
 REBOOT
-________________________________________________________________________________
+------
 
 If all went well, you should now be using mdev as your device manager while
 retaining a fully working graphical environment. If input doesn't work under
