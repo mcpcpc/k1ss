@@ -39,7 +39,7 @@ The second argument contains the package's version.
 Everything in the mentioned path is added to the package tarball and later
 installed to the system.
 
-build:
+Build:
 
     #!/bin/sh -e
     
@@ -64,7 +64,7 @@ for compile time dependencies and left blank for runtime dependencies.
 
 The depends file can be omitted entirely if the package has no dependencies.
 
-depends:
+Depends:
 
     # Comments are supported.
     
@@ -90,19 +90,19 @@ prefix 'git+' should be added with an optional suffix #hash or @branch).
 Adding a suffix of '?no-extract' to the source URL will prevent the package
 manager from automatically extracting the source (if a tarball or zip).
 
-sources:
+Sources:
     
     https://example.com/dhcpcd-8.0.2.tar.xz
     files/dhcpcd.run
 
-sources (usage with second field):
+Sources (usage with second field):
     
     https://example.com/gcc-9.1.0.tar.xz  gcc
     https://example.com/gmp-6.1.2.tar.xz  gcc/gmp
     https://example.com/mpfr-4.0.2.tar.xz gcc/mpfr
     https://example.com/mpc-1.1.0.tar.gz  gcc/mpc
 
-sources (usage with Git):
+Sources (usage with Git):
 
     git+https://github.com/dylanaraps/eiwd
     
@@ -112,7 +112,7 @@ sources (usage with Git):
     # Grabbing a specific commit.
     git+https://github.com/dylanaraps/eiwd#commit
     
-sources (usage with automatic source extraction disabled):
+Sources (usage with automatic source extraction disabled):
 
     https://example.com/zlib-1.2.0.tar.xz?no-extract
 
@@ -128,11 +128,11 @@ field should contain the version number of the repository files themselves.
 If the package is using a git source to pull down the latest commit, the
 version should be simply set to 'git'.
 
-version:
+Version:
 
     1.2.3 1
 
-version (Git):
+Version (Git):
 
     git 1
 
@@ -143,7 +143,7 @@ The pre-remove file should contain anything that needs run prior to the
 removal of the package. The file is language agnostic and the only requirement
 is that it be executable.
 
-pre-remove:
+Pre-remove:
 
     #!/bin/sh -e
     
@@ -157,7 +157,7 @@ The post-install file should contain anything that needs to be run after a
 package installation to properly setup the software. The file is language
 agnostic and the only requirement is that it be executable.
 
-post-install:
+Post-install:
 
     #!/bin/sh -e
     
