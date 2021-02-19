@@ -1,30 +1,20 @@
-GIT [0]
-________________________________________________________________________________
+GIT
+===
 
 Git is a free and open source distributed version control system designed to
-handle everything from small to very large projects with speed and efficiency.
+handle everything from small to very large projects with speed and
+efficiency [0].
 
-
-[0.0] Index
-________________________________________________________________________________
-
-- Git Commands                                                             [1.0]
-- Example 1: Staying Up-to-Date                                            [2.0]
-- Example 2: Squashing Your Latest Commits Into One                        [3.0]
-- Example 3: Writing a new KISS Wiki article                               [4.0]
-- References                                                               [5.0]
-
-
-[1.0] Git Commands
-________________________________________________________________________________
+[1.0] git commands
+------------------
 
 New KISS users may have various levels of exposure to git and other forms of
 version control systems. The following is intended to be a "quick" reference
 sheet of git commands.
 
-+-------------------+----------------------------------------------------------+
+
 |   Action          |   Command                                                |
-+-------------------+----------------------------------------------------------+
+|-------------------|----------------------------------------------------------|
 |                   |                                                          |
 |   Set Default     |   $ git config --global user.name "FIRSTNAME LASTNAME"   |
 |   Username        |   # stored in ~/.gitconfig                               |
@@ -73,11 +63,10 @@ sheet of git commands.
 |   Rebase          |   $ git rebase                                           |
 |                   |   # reapply commits on top of another base tip           |
 |                   |                                                          |
-+-------------------+----------------------------------------------------------+
 
 
-[2.0] Example 1: Staying Up-to-Date [1]
-________________________________________________________________________________
+[2.0] Example 1: staying up-to-date [1]
+---------------------------------------
 
 In a standard setup, you generally have an origin and an upstream remote - the
 latter being the gatekeeper of the project or the source of truth to which you
@@ -86,28 +75,16 @@ wish to contribute.
 First, verify that you have already setup a remote for the upstream repository,
 and hopefully an origin too:
 
-+------------------------------------------------------------------------------+
-|                                                                              |
-|   $ git remote -v                                                            |
-|                                                                              |
-+------------------------------------------------------------------------------+
+    $ git remote -v
 
 If you don't have an upstream you can easily add it with the remote command:
 
-+------------------------------------------------------------------------------+
-|                                                                              |
-|   $ git remote add upstream UPSTREAM_URL                                     |
-|                                                                              |
-+------------------------------------------------------------------------------+
+    $ git remote add upstream UPSTREAM_URL
 
 Now you can collect the latest changes of the upstream repository with fetch.
 Repeat this every time you want to get updates:
 
-+------------------------------------------------------------------------------+
-|                                                                              |
-|   $ git fetch upstream                                                       |
-|                                                                              |
-+------------------------------------------------------------------------------+
+    $ git fetch upstream
 
 Generally, you want to keep your local master branch as a close mirror of the
 upstream master and execute any work in feature branches, as they might later
@@ -116,29 +93,20 @@ become pull requests.
 At this point, it does not matter if you use merge or rebase, as the result
 will typically be the same. Let's use merge:
 
-+------------------------------------------------------------------------------+
-|                                                                              |
-|   $ git checkout master                                                      |
-|   $ git merge upstream/master                                                |
-|                                                                              |
-+------------------------------------------------------------------------------+
+    $ git checkout master
+    $ git merge upstream/master
 
-
-[3.0] Example 2: Squashing Your Latest Commits Into One [2]
-________________________________________________________________________________
+[3.0] Example 2: squashing your latest commits into one [2]
+-----------------------------------------------------------
 
 With git it’s possible to squash previous commits into one. This is a great way
 to group certain changes together before sharing them with others. Let’s say 
 this is your current git log:
 
-+------------------------------------------------------------------------------+
-|                                                                              |
-|   * df71a27 - (HEAD feature_x) Updated CSS for new elements (4 minutes ago)  |
-|   * ba9dd9a - Added new elements to page design (15 minutes ago)             |
-|   * f392171 - Added new feature X (1 day ago)                                |
-|   * d7322aa - (origin/feature_x) Proof of concept for feature X (3 days ago) |
-|                                                                              |
-+------------------------------------------------------------------------------+
+    * df71a27 - (HEAD feature_x) Updated CSS for new elements (4 minutes ago)
+    * ba9dd9a - Added new elements to page design (15 minutes ago)
+    * f392171 - Added new feature X (1 day ago)
+    * d7322aa - (origin/feature_x) Proof of concept for feature X (3 days ago)
 
 You have a branch “feature_x” here. You’ve already pushed d7322aa with the proof
 of concept of the new feature X. After that you’ve been working to add new 
@@ -147,21 +115,13 @@ your last three commits in one to make your history look pretty.
 
 The command to accomplish that is:
 
-+------------------------------------------------------------------------------+
-|                                                                              |
-|   $ git rebase -i HEAD~3                                                     |
-|                                                                              |
-+------------------------------------------------------------------------------+
+    $ git rebase -i HEAD~3
 
 This will open up your editor with the following:
 
-+------------------------------------------------------------------------------+
-|                                                                              |
-|   pick f392171 Added new feature X                                           |
-|   pick ba9dd9a Added new elements to page design                             |
-|   pick df71a27 Updated CSS for new elements                                  |
-|                                                                              |
-+------------------------------------------------------------------------------+
+    pick f392171 Added new feature X
+    pick ba9dd9a Added new elements to page design
+    pick df71a27 Updated CSS for new elements
 
 Now you can tell git what to do with each commit. Let’s keep the commit f392171,
 the one were we added our feature. We’ll squash the following two commits into 
@@ -170,22 +130,17 @@ including the added element and CSS.
 
 Change your file to this:
 
-+------------------------------------------------------------------------------+
-|                                                                              |
-|   pick f392171 Added new feature X                                           |
-|   squash ba9dd9a Added new elements to page design                           |
-|   squash df71a27 Updated CSS for new elements                                |
-|                                                                              |
-+------------------------------------------------------------------------------+
+    pick f392171 Added new feature X
+    squash ba9dd9a Added new elements to page design
+    squash df71a27 Updated CSS for new elements
 
 When done, save and quit your editor. Git will now squash the commits into one.
 
 Note: Do not squash commits that you’ve already shared with others. You are
       changing history and it will cause trouble for others.
 
-
-[4.0] Example 3: Writing a new KISS Wiki article.
-________________________________________________________________________________
+[4.0] Example 3: writing a new Kiss wiki article
+------------------------------------------------
 
 Note: The method described below requires a GitHub user account. If you do not
       have a GitHub user account or do not wish to create one, you can still 
@@ -203,55 +158,31 @@ https://github.com/USERNAME/wiki).
 Clone the forked repository to your PC with the following command. Remember to 
 replace USERNAME with your actual GitHub username.
 
-+------------------------------------------------------------------------------+
-|                                                                              |
-|   $ git clone https://github.com/USERNAME/wiki.git                           |
-|                                                                              |
-+------------------------------------------------------------------------------+
+    $ git clone https://github.com/USERNAME/wiki.git
 
 Once cloned to your PC, navigate to the wiki directory:
 
-+------------------------------------------------------------------------------+
-|                                                                              |
-|   $ cd wiki                                                                  |
-|                                                                              |
-+------------------------------------------------------------------------------+
+    $ cd wiki
 
 Add your new article in this directory per the #/wiki/help/adding-a-page 
 guidelines. Once you are ready to publish your newly created article, you need 
 to add/update your forked repository. From the main wiki directory, you can 
 check the status of all changes or newly created files:
 
-+------------------------------------------------------------------------------+
-|                                                                              |
-|   $ git status                                                               |
-|                                                                              |
-+------------------------------------------------------------------------------+
+    $ git status
  
 Using the output of command above, update/add the new files your forked 
 repository that are ready to be published:
 
-+------------------------------------------------------------------------------+
-|                                                                              |
-|   $ git add FILE_NAME1 FILE_NAME                                             |
-|                                                                              |
-+------------------------------------------------------------------------------+
+    $ git add FILE_NAME1 FILE_NAME
 
 Alternatively, you can add ALL newly updated/created files in a single command:
 
-+------------------------------------------------------------------------------+
-|                                                                              |
-|   $ git add *                                                                |
-|                                                                              |
-+------------------------------------------------------------------------------+
+    $ git add *
 
 Next, you will commit your changes. 
 
-+------------------------------------------------------------------------------+
-|                                                                              |
-|   $ git commit -m "YOUR_COMMIT_MSG"                                          |
-|                                                                              |
-+------------------------------------------------------------------------------+
+    $ git commit -m "YOUR_COMMIT_MSG"
 
 Replace YOUR_COMMIT_MSG with a short description of change(s) or the new article 
 (i.e. "git: new article" or "git: add new git example"). 
@@ -259,11 +190,7 @@ Replace YOUR_COMMIT_MSG with a short description of change(s) or the new article
 At this point you are ready to push your changes to the GitHub server with the
 following command.
 
-+------------------------------------------------------------------------------+
-|                                                                              |
-|   $ git push                                                                 |
-|                                                                              |
-+------------------------------------------------------------------------------+
+    $ git push
 
 Upon doing so, you will be prompted to enter your GitHub user credentials. Once
 entered, the latest changes will be uploaded to your forked Wiki repository 
@@ -278,9 +205,8 @@ enter the reason for initiating a PR (i.e. "git: new article") and press the
 Note: Pay attention to which branch is being merged into the master branch of
       the repository :kisslinux/wiki".
 
-
 [5.0] References
-________________________________________________________________________________
+----------------
 
 [0] https://git-scm.com
 [1] https://www.atlassian.com/git/tutorials/git-forks-and-upstreams
