@@ -175,13 +175,13 @@ This must be done in the build script of the package.
 The build script has direct access to the patches in its current working
 directory ('patch -p1 < example.patch' works directly).
 
-sources (usage with patches):
+Sources (usage with patches):
 
     https://example.com/rxvt-unicode-9.22.tar.bz2
     patches/gentables.patch
     patches/rxvt-unicode-kerning.patch
 
-build (usage with patches):
+Build (usage with patches):
 
     #!/bin/sh -e
     
@@ -205,12 +205,12 @@ In the sources file, files are referred to by using a relative path
 The build script has direct access to the files in its current working
 directory ('cat example_file' works directly).
 
-sources (usage with local files):
+Sources (usage with local files):
 
     https://example.com/kiss-1.0.0.tar.gz
     files/kiss_path.sh
     
-build (usage with local files):
+Build (usage with local files):
 
     #!/bin/sh -e
     
