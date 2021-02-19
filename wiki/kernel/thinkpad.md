@@ -12,7 +12,8 @@ Pad specific ACPI options _can_ be enabled.
     $ make defconfig 
     $ cp iwlwifi-6000g2a-6.ucode /usr/lib/firmware
 
-    # .config
+.config:
+
     CONFIG_IWLWIFI=y
     CONFIG_IWLDVM=y
     CONFIG_EXTRA_FIRMWARE="iwlwifi-6000g2a-6.ucode"

@@ -9,13 +9,15 @@ Configuration
 
 First verify that you have alsa-utils installed:
 
-    $ kiss b alsa-utils && kiss i alsa-utils
+    $ kiss b alsa-utils
+    $ kiss i alsa-utils
 
 By default, ALSA routes audio to card "0" and device "0" (see /etc/asound.conf
 file), which may not be preferred. Luckily, we can change this behavior via 
 local user configuration:
 
-    # ~/.asoundrc, simple example
+~/.asoundrc, simple example:
+
     defaults.pcm!card 1
     defaults.pcm.!device 7
 

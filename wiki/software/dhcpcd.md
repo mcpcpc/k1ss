@@ -57,9 +57,9 @@ A system's hostname can be set by simply creating a /etc/hostname file:
 
 Remember to replace HOSTNAME with the string of your choosing.
 
-Note: Valid characters for hostnames include ASCII letters from A to Z, digits
-      from 0 to 9, and the hyphen character (-). A hostname may not start with
-      a hyphen.
+> NOTE: Valid characters for hostnames include ASCII letters from A to Z,
+> digits from 0 to 9, and the hyphen character (-). A hostname may not start
+>with a hyphen.
 
 Managed via runsv
 -----------------

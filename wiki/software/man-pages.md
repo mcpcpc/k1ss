@@ -12,8 +12,10 @@ The man utility
 
 The 'mandoc' [1] package is the default provider of the 'man' utility.
 
-    # Install mandoc
-    $ kiss b mandoc && kiss i mandoc
+Install mandoc:
+
+    $ kiss b mandoc
+    $ kiss i mandoc
 
 By default, man typically uses a terminal pager program such as more or less to
 display its output. This can be configured via the $PAGER environment variable.
