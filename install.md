@@ -20,11 +20,13 @@ Start by declaring a variable.
 
     $ url=https://github.com/kiss-community/repo/releases/download/2020.9-2  
 
-### [2.1] Download the latest release
+[2.1] Download the latest release
+---------------------------------
 
     $ wget "$url/kiss-chroot-2020.9-2.tar.xz"
 
-### [2.2] Verify the checksums (recommended)
+[2.2] Verify the checksums (recommended)
+----------------------------------------
 
 This step verifies that the release matches the checksums generated uponits 
 creation and also ensures that the download completed successfully.
@@ -32,7 +34,8 @@ creation and also ensures that the download completed successfully.
     $ wget "$url/kiss-chroot-2020.9-2.tar.xz.sha256" 
     $ sha256sum -c < kiss-chroot-2020.9-2.tar.xz.sha256 
 
-### [2.3] Verify the signature (recommended)
+[2.3] Verify the signature (recommended)
+----------------------------------------
 
 This step verifies that the release was signed by its creator, Dylan Araps. If
 the live OS of your choice does not include GPG, this step can also be done on
@@ -50,7 +53,8 @@ Verify the signature:
 
     $ gpg --verify "kiss-chroot-2020.9-2.tar.xz.asc" 
 
-### [2.4] Unpack the tarball
+[2.4] Unpack the tarball
+------------------------
 
 This step effectively installs KISS to /mnt. The tarball contains a full system 
 minus the bootloader, kernel and optional utilities.
@@ -58,7 +62,8 @@ minus the bootloader, kernel and optional utilities.
     $ cd /mnt
     $ tar xvf /path/to/kiss-chroot-2020.9-2.tar.xz
 
-### [2.5] Enter the chroot
+[2.5] Enter the chroot
+----------------------
 
 This is a simple script to chroot into /mnt and set up the environment for the
 rest of the installation. The script handles mounting pseudo filesystems (/proc, 
@@ -317,12 +322,14 @@ The device manager:
     $ kiss b eudev 
     $ kiss i eudev
 
-### [6.3] WiFi (optional)
+[6.3] WiFi (optional)
+---------------------
 
     $ kiss b wpa_supplicant
     $ kiss i wpa_supplicant 
 
-### [6.4] Dynamic IP addressing (optional)
+[6.4] Dynamic IP addressing (optional)
+--------------------------------------
 
     $ kiss b dhcpcd
     $ kiss i dhcpcd
