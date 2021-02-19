@@ -9,9 +9,9 @@ Available Fonts
 
 Currently packaged Linux console fonts.
 
-- terminus-font (Community).
-- spleen-font (Community).
-- unifont (Community).
+*   terminus-font (Community).
+*   spleen-font (Community).
+*   unifont (Community).
 
 Changing the Console Font
 -------------------------

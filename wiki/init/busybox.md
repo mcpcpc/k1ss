@@ -31,22 +31,27 @@ Using /etc/rc.d
 This method of configuration works with every init system which uses the KISS 
 init framework. See $/kisslinux/init
 
-    # Run command during boot.
-    ## Load the iwlwifi kernel module.
+Run command during boot:
+
+    # Load the iwlwifi kernel module.
     echo "modprobe iwlwifi" > /etc/rc.d/wifi.boot
-    
-    # Run command during shutdown.
-    ## Save system time to hwclock.
+
+Run command during shutdown:
+
+    # Save system time to hwclock.
     echo "hwclock -w" > /etc/rc.d/hwclock.pre.shutdown
-    ## TIP: .post.shutdown can also be used.
+
+> TIP: .post.shutdown can also be used.
 
 Using /etc/inittab
 ------------------
 
-    # Run command during boot.
-    ## Load the iwlwifi kernel module.
+Run command during boot:
+
+    # Load the iwlwifi kernel module.
     ::once:/bin/modprobe iwlwifi
-    # Run command during shutdown.
-    ## Save system time to hwclock.
+    
+Run command during shutdown:
+
+    # Save system time to hwclock.
     ::shutdown:/bin/hwclock -w
- 
