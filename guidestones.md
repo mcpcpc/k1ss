@@ -13,7 +13,7 @@ Bear in mind, I develop and release KISS for free. I owe you nothing. Any help
 I provide is at my own discretion. KISS is my gift to you from the love of what
 I do. I hope you find it as useful as I have.
 
-- Dylan Araps
+-Dylan Araps
 
 Users
 -----
