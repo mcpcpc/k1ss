@@ -46,7 +46,8 @@ found using blkid.
 The above command, the --unicode option specifies the parameters passed to the
 kernel. If you require other parameters to boot your system, pass them here.
 
-## Removing a UEFI boot entry
+Removing a UEFI boot entry
+--------------------------
 
 To remove an entry, find your entry's boot number using 'efibootmgr --verbose'
 and run the following command.
