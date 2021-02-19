@@ -84,7 +84,8 @@ The chroot/installation tarball does not come with any repositories by default,
 nor does the package manager expect or /assume/ that any exist in a given 
 location. This is entirely up to the user.
 
-### [3.1] Setting KISS_PATH
+[3.1] Setting KISS_PATH
+-----------------------
 
 The variable can be set system-wide, per-user, per-session, per-command, and 
 even programmatically. This guide will cover setting it for the current user 
@@ -134,7 +135,8 @@ This user's KISS_PATH could look like this:
 > TIP: Run '. ~/.profile' for changes to immediately take effect.
 > TIP: Run 'echo "$KISS_PATH"' to check if properly set.
 
-### [3.2] Official repositories
+[3.2] Official repositories
+---------------------------
 
 The official repositories contain everything from the base system to a working
 web browser (Firefox) and media player (mpv). This includes Xorg, rust, nodejs
@@ -148,7 +150,8 @@ This will be cloned to a directory called 'repo'. This directory contains
 multiple KISS repositories (core, extra, testing and xorg). Core and Extra must
 be enabled as this guide requires their use. Xorg is optional.
 
-### [3.3] Community
+[3.3] Community
+---------------
 
 The community repository contains packages submitted and maintained by users of
 the distribution. It is twice the size of the official repositories and contains
@@ -161,7 +164,8 @@ Clone the repository to the directory of your choosing.
 This will be cloned to a directory called 'community'. This directory contains a 
 single KISS repository bearing the same name.
 
-### [3.4] Universe
+[3.4] Universe
+--------------
 
 There are many more repositories in existence, each providing a unique set of
 software. These are all independently created and managed by users. This has
@@ -183,7 +187,8 @@ This step is optional and can also be done after the installation. Repository
 signing ensures that all updates have been signed by (Dylan Araps) and further 
 prevents any unsigned updates from reaching your system.
 
-### [4.1] Build and install gnupg1
+[4.1] Build and install gnupg1
+------------------------------
 
 Welcome to the KISS package manager! These two commands are how individual
 packages are built and installed on a KISS system.
@@ -191,7 +196,8 @@ packages are built and installed on a KISS system.
     $ kiss build   gnupg1
     $ kiss install gnupg1
 
-### [4.2] Import my (Dylan Araps') key
+[4.2] Import my (Dylan Araps') key
+----------------------------------
 
 If the GNU keyserver fails on your network, try an alternative mirror.
 
@@ -203,7 +209,8 @@ Trust my public key:
 
     $ echo trusted-key 0x46d62dd9f1de636e >>/root/.gnupg/gpg.conf 
 
-### [4.3] Enable signature verification
+[4.3] Enable signature verification
+-----------------------------------
 
 Repository signature verification uses a feature built into git itself 
 (merge.verifySignatures)!  This can be disabled at any time using the inverse of
@@ -220,7 +227,8 @@ chooses to sign their commits.
 
 This step is entirely optional and can also be done post-installation.
 
-### [5.1] Modify compiler options (optional)
+[5.1] Modify compiler options (optional)
+----------------------------------------
 
 These options have been tested and work with every package in the repositories.
 If you'd like to play it safe, use -O2 or -Os instead of -O3.
@@ -246,7 +254,8 @@ MAKEFLAGS:
     # NOTE: 4 should be changed to match the number of threads.
     $ export MAKEFLAGS="-j4"
 
-### [5.2] Update all base packages to the latest version
+[5.2] Update all base packages to the latest version
+----------------------------------------------------
 
 This is how updates are performed on a KISS system. This command uses git to
 pull down changes from all enabled repositories and will then optionally handle
@@ -254,7 +263,8 @@ the build/install process.
 
     $ kiss update
 
-### [5.3] Rebuild all packages
+[5.3] Rebuild all packages
+--------------------------
 
 We simply cd to the installed packages database and use a glob to grab the name
 of every installed package. This glob is then passed to the package manager as a 
@@ -270,7 +280,8 @@ b' and 'kiss i' will be used in place of 'kiss build' and 'kiss install'.
 
 The software below is required unless stated otherwise.
 
-### [6.1] Filesystem utilities
+[6.1] Filesystem utilities
+--------------------------
 
 NOTE: Open an issue for additional filesystem support.
 
@@ -289,7 +300,8 @@ XFS:
     $ kiss b xfsprogs
     $ kiss i xfsprogs
 
-### [6.2] Device management
+[6.2] Device management
+-----------------------
 
 NOTE: If you choose to not install eudev, mdev will automatically be used in its 
 place. Eudev is recommended as a lot of software requires it. See: 
@@ -351,7 +363,8 @@ the link (and the patch itself for more information). @/news/20200509a
 
 > TIP: The Wiki contains a basic kernel configuration page. @/wiki/kernel/config
 
-### [8.1]Install required packages
+[8.1] Install required packages
+-------------------------------
 
     # libelf (required in most if not all cases). 
     $ kiss b libelf
@@ -369,7 +382,8 @@ the link (and the patch itself for more information). @/news/20200509a
 >         - @/wiki/kernel/config#5.0
 >         - /usr/share/doc/kiss/wiki/kernel/patches/kernel-no-perl.patch
 
-### [8.2] Download the kernel sources
+[8.2] Download the kernel sources
+---------------------------------
 
 Kernel releases:
 
@@ -388,7 +402,8 @@ Extract the kernel sources:
     $ tar xvf KERNEL_SOURCE 
     $ cd linux-*
 
-### [8.3] Download firmware blobs (if required)
+[8.3] Download firmware blobs (if required)
+-------------------------------------------
 
 To keep the KISS repositories entirely FOSS, the proprietary kernel firmware is 
 omitted. This also makes sense as the kernel itself is manually managedv by the 
@@ -407,7 +422,8 @@ Copy the required drivers to '/usr/lib/firmware':
     $ mkdir -p /usr/lib/firmware
     $ cp -R ./path/to/driver /usr/lib/firmware
 
-### [8.4] Configure the kernel
+[8.4] Configure the kernel
+--------------------------
 
 You can determine which drivers you need by searching the web for your hardware
 and the Linux kernel.
@@ -430,7 +446,8 @@ Store the generated config for reuse later:
 
 > TIP: The kernel can backup its own .config file. @/wiki/kernel/config#2.0
 
-### [8.5] Build the kernel
+[8.5] Build the kernel
+----------------------
 
 This may take a while to complete. The compilation time depends on your hardware
 and kernel configuration. The 'nproc' command outputs the total number of
@@ -438,7 +455,8 @@ threads which we pass to make for a multi-threaded build.
 
     $ make -j "$(nproc)" 
 
-### [8.6] Install the kernel
+[8.6] Install the kernel
+------------------------
 
 Install the built modules (to /usr/lib):
 
@@ -460,11 +478,13 @@ The default bootloader is grub (though nothing prevents the use of another
 bootloader). This default was chosen as most people are familiar with it, both
 BIOS and UEFI are supported and vast amounts of documentation for it exists.
 
-### [9.1] Recommended
+[9.1] Recommended
+-----------------
 
 Have an /etc/fstab file ready.
 
-### [9.2] Build and install grub
+[9.2] Build and install grub
+----------------------------
 
     $ kiss b grub
     $ kiss i grub 
@@ -474,7 +494,8 @@ Required for UEFI:
     $ kiss b efibootmgr
     $ kiss i efibootmgr
 
-### [9.3] Setup grub
+[9.3] Setup grub
+----------------
 
 BIOS:
 
@@ -523,7 +544,8 @@ Installing a base font is recommended as nothing will work without fonts:
     $ kiss b liberation-fonts
     $ kiss i liberation-fonts
 
-### [13.1] Add your user to the relevant groups
+[13.1] Add your user to the relevant groups
+-------------------------------------------
 
 This groups based permissions model may not be suitable if KISS will be used as
 a multi-seat system. Further configuration can be done at your own discretion.
