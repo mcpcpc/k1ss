@@ -1,15 +1,15 @@
-VIM [0]
-________________________________________________________________________________
+VIM
+===
 
 Vim is an improved version of the good old UNIX editor, vi. Many new features
 have been added: multi-level undo, syntax highlighting, command line history,
 on-line help, spell checking, filename completion, block operations, script
 language, etc. There is also a Graphical User Interface (GUI) available. Still,
 vi compatibility is maintained, those who have vi "in the fingers" will feel at
-home.
+home [0].
 
 Configuration
-________________________________________________________________________________
+-------------
 
 Vim configuration is stored in a local user's ~/.vimrc file. The contents of
 this file are based on the user's preferences.
@@ -20,25 +20,19 @@ vim setup and modified to satisfy the KISS #/kiss/style-guide.
 Note: There are no "fancy" text decorations or highlighting. Just a core set of
       features selected to assist in code and article writing.
 
-+------------------------------------------------------------------------------+
-|   Sven Gucke's Modified VIMRC                                                |
-+------------------------------------------------------------------------------+
-|                                                                              |
-|   set ai nocp digraph ek hid ru sc vb wmnu noeb noet nosol                   |
-|   syntax on                                                                  |
-|   set bs=2 fo=cqrt ls=2 shm=at tw=80 sw=4 ts=4 sts=4 ww=<,>,h,l              |
-|   set comments=b:#,:%,n:>                                                    |
-|   set list listchars=tab:»·,trail:·                                          |
-|   autocmd FileType markdown,text setlocal spell                              |
-|                                                                              |
-+------------------------------------------------------------------------------+
+    # Sven Gucke's Modified VIMRC
+    set ai nocp digraph ek hid ru sc vb wmnu noeb noet nosol
+    syntax on
+    set bs=2 fo=cqrt ls=2 shm=at tw=80 sw=4 ts=4 sts=4 ww=<,>,h,l
+    set comments=b:#,:%,n:>
+    set list listchars=tab:»·,trail:·
+    autocmd FileType markdown,text setlocal spell
 
 The following is an explanation of each parameter. You can learn more about each
 by using the ":help OPTION" command in vim.
 
-+------------------------+-----------------------------------------------------+
 |   Command              |   Description                                       |
-+------------------------+-----------------------------------------------------+
+|------------------------|-----------------------------------------------------|
 |                        |                                                     |
 |   nocompatible         |   This changes the values of many options,          |
 |   set nocp             |   enabling features which are not vi compatible     |
@@ -185,27 +179,20 @@ by using the ":help OPTION" command in vim.
 |                        |   EOLs, TABs, and trailing space has become an      |
 |                        |   absolute MUST with every editor.                  |
 |                        |                                                     |
-+------------------------+-----------------------------------------------------+
 
 In summary, there are MANY configurations that can be applied to vim in just a
 few lines of text!  As a best practice, test vim out without any configuration
 applied, then slowly add in needed features. A good *starter* configuration file
 might look something like this:
 
-+------------------------------------------------------------------------------+
-|   Starter VIMRC                                                              |
-+------------------------------------------------------------------------------+
-|                                                                              |
-|   set ai nocp hid ru sc                                                      |
-|   filetype plugin indent on                                                  |
-|   syntax on                                                                  |
-|   set bs=2 ls=2 shm=at tw=72 sw=4 ts=4 sts=4 ww=<,>,h,l                      |
-|                                                                              |
-+------------------------------------------------------------------------------+
-
+    # Starter VIMRC
+    set ai nocp hid ru sc
+    filetype plugin indent on
+    syntax on
+    set bs=2 ls=2 shm=at tw=72 sw=4 ts=4 sts=4 ww=<,>,h,l
 
 References
-________________________________________________________________________________
+----------
 
 [0] https://github.com/vim/vim
 [1] http://www.guckes.net/vim/setup.html
