@@ -370,11 +370,10 @@ It may be useful to set a runtime directory. A wayland session requires this be
 set, and an X session will default to /tmp if you do not set one. Add this
 example to somewhere like .profile:
 
-    +--------------------------------------------------------------------------+
-    |                                                                          |
-    |   export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/tmp/$(id -u)-runtime}"     |
-    |                                                                          |
-    |   [ -d "$XDG_RUNTIME_DIR" ] || {                                         | 
+    export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/tmp/$(id -u)-runtime}"
+    
+    
+    [ -d "$XDG_RUNTIME_DIR" ] || {                                         | 
     |       mkdir -p   "$XDG_RUNTIME_DIR"                                      |
     |       chmod 0700 "$XDG_RUNTIME_DIR"                                      |
     |   }                                                                      |
