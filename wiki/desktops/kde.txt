@@ -1,5 +1,5 @@
 KDE
-________________________________________________________________________________
+===
 
 KDE [0] is desktop environment which consists of the Plasma Desktop, the KDE 
 Frameworks, and a collection of free and open source, cross-platform programs.
@@ -17,43 +17,8 @@ project, including the community repository. Specifically, KDE violates the
 software inclusion guidestone. The required violations are dbus and wayland. 
 However, logind, polkit, and PAM are optional to build and use KDE.
 
-
-Index
-________________________________________________________________________________
-
-- Getting Started                                                          [0.0]
-    - Authentication                                                       [0.1]
-    - Session Management                                                   [0.2]
-    - Default Window Manager                                               [0.3]
-
-- From Scratch                                                             [1.0]
-    - Prerequisites                                                        [1.1]
-    - Installing                                                           [1.2]
-    - Launching                                                            [1.3]
-
-- The KISS-kde tarball                                                     [2.0]
-
-- Starting KDE                                                             [3.0]
-    - Console                                                              [3.1]
-    - Login Manager                                                        [3.2]
-
-- Post-Install                                                             [4.0]
-    - Window Managers                                                      [4.1]
-    - Greeters                                                             [4.2]
-    - Extras                                                               [4.3]
-
-- Troubleshooting                                                          [5.0]
-    - My fonts don't work!                                                 [5.1]
-    - I can't login from a screen lock!                                    [5.2]
-    - I can't change the system time!                                      [5.3]
-    - XYZ package fails to build!                                          [5.4]
-
-- How You Can Help                                                         [6.0]
-- References                                                               [7.0]
-
-
 [0.0] Getting Started
-________________________________________________________________________________
+---------------------
 
 To begin using the K Desktop Environment there are two choices. The first option
 is to use a prebuilt tarball similar to the KISS release tarballs and install it
@@ -70,21 +35,16 @@ are and how best to handle their consequences.
 The first thing to do is clone the repositories and add them to your $KISS_PATH.
 Assuming that you keep these repositories in $HOME,
 
-+------------------------------------------------------------------------------+
-|                                                                              |
-|   $ git clone https://github.com/kisslinux/community                         |
-|   $ git clone https://github.com/dilyn-corner/KISS-kde                       |
-|                                                                              |
-|   $ export KISS_PATH="$HOME/KISS-kde/extra:$KISS_PATH"                       |
-|   $ export KISS_PATH="$HOME/KISS-kde/plasma:$KISS_PATH"                      |
-|   $ export KISS_PATH="$HOME/KISS-kde/frameworks:$KISS_PATH"                  |
-|   $ export KISS_PATH="$KISS_PATH:$HOME/community/community"                  |
-|                                                                              |
-|   # you can optionally include the kde path for sddm, dolphin, etc.          |
-|   $ export KISS_PATH="$KISS_PATH:$HOME/KISS-kde/kde"                         |    
-|                                                                              |
-+------------------------------------------------------------------------------+
-
+    $ git clone https://github.com/kisslinux/community
+    $ git clone https://github.com/dilyn-corner/KISS-kde
+    
+    $ export KISS_PATH="$HOME/KISS-kde/extra:$KISS_PATH"
+    $ export KISS_PATH="$HOME/KISS-kde/plasma:$KISS_PATH"
+    $ export KISS_PATH="$HOME/KISS-kde/frameworks:$KISS_PATH"
+    $ export KISS_PATH="$KISS_PATH:$HOME/community/community"
+    
+    # you can optionally include the kde path for sddm, dolphin, etc.
+    $ export KISS_PATH="$KISS_PATH:$HOME/KISS-kde/kde"
 
     [0.1] Authentication
     ____________________________________________________________________________
@@ -219,9 +179,8 @@ Assuming that you keep these repositories in $HOME,
     |                                                                          |
     +--------------------------------------------------------------------------+
 
-
 [1.0] From Scratch
-________________________________________________________________________________
+------------------
 
 Building KDE is a very straightforward process. In fact, if users already have a
 working xorg setup, then it is as simple as building a single package - the
@@ -233,7 +192,6 @@ and will additionally include a system settings manager, a default theme
 (breeze), and some default icons (breeze-icons). There are some extra packages
 which can be installed for more features, such as bluedevil, drkonqi, and
 powerdevil. See [4.0] for more information.
-
 
     [1.1] Prerequisites
     ____________________________________________________________________________
