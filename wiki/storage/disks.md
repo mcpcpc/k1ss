@@ -13,132 +13,127 @@ requirements, etc.), but the process varies based on the tools used for the job.
 Therefore, the first step to a successful installation is understanding the
 terminology and the tools which are required throughout the process.
 
+[0.1] Terminology
+-----------------
 
-    [0.1] Terminology
-    ____________________________________________________________________________
+|                  |                                                           |
+|   Block Device   |   Represents an abstract interface to the disk.           |
+|                  |   User programs can use these block devices to            |
+|                  |   interact with the disk without worrying about           |
+|                  |   whether the drives are SATA, SCSI, or something         |
+|                  |   else. (e.g. /dev/sd*, /dev/nvme0n*, etc)                |
+|                  |                                                           |
+|   Partition      |   Represent smaller, more manageable block devices.       |
+|                  |   These can be thought of as the places where user        |
+|                  |   data lives.                                             |
+|                  |                                                           |
+|   Filesystem     |   A filesystem allows for data to actually be written     |
+|                  |   to a given partition. Filesystems vary in features,     |
+|                  |   requirements, and read/write access. In short, a        |
+|                  |   filesystem is the structure for a given partition.      |
+|                  |                                                           |
+|   DOS            |   The DOS disklabel setup uses 32-bit identifiers         |
+|                  |   for the start sector and length of the partitions,      |
+|                  |   and supports three partition types: primary,            |
+|                  |   extended, and logical. Primary partitions have          |
+|                  |   their information stored in the master boot             |
+|                  |   record itself - a very small (usually 512 bytes)        |
+|                  |   location at the very beginning of a disk. Due to        |
+|                  |   this small space, only four primary partitions          |
+|                  |   are supported (for instance, /dev/sda1 to               |
+|                  |   /dev/sda4). This is the old format for disklabels.      |
+|                  |                                                           |
+|   GPT            |   GPT (GUID Partition Table) setup uses 64-bit            |
+|                  |   identifiers for the partitions. The location in         |
+|                  |   which it stores the partition information is much       |
+|                  |   bigger than the 512 bytes of a DOS disklabel,           |
+|                  |   which means there is practically no limit on the        |
+|                  |   amount of partitions for a GPT disk. Also the           |
+|                  |   size of a partition is bounded by a much greater        |
+|                  |   limit (almost 8 ZB - yes, zettabytes). A GPT disk       |
+|                  |   is required for UEFI systems.                           |
+|                  |                                                           |
+|   ROOTFS         |   ROOTFS (Root Filesystem) is the primary partition       |
+|                  |   where the entire system is directly or indirectly       |
+|                  |   mounted to. This is commonly referred to as '/'.        |
+|                  |                                                           |
+|   BOOT           |   The boot partition is where important files             |
+|                  |   required at boot time, such as the kernel, are          |
+|                  |   stored. This partition is required only on UEFI         |
+|                  |   systems. It is usually mounted at /boot.                |
+|                  |                                                           |
+|   HOME           |   This partition is where most user data is stored.       |
+|                  |   It is usually mounted at /home.                         |
+|                  |                                                           |
+|   SWAP           |   Swap space can take the form of a disk partition        |
+|                  |   or a file. Users may create a swap space during         |
+|                  |   installation or at any later time as desired.           |
+|                  |   Swap space can be used for two purposes: to             |
+|                  |   extend the virtual memory beyond the installed          |
+|                  |   physical memory (RAM), and also for hibernation         |
+|                  |   or for suspend-to-disk support.                         |
+|                  |                                                           |
+
+Some useful facts and things to keep in mind: 
+
+Due to using 32-bit identifiers, DOS partitioning tables cannot handle disks 
+that are >2 TBs in size. 
     
-    +------------------+-------------------------------------------------------+
-    |                  |                                                       |
-    |   Block Device   |   Represents an abstract interface to the disk.       |
-    |                  |   User programs can use these block devices to        |
-    |                  |   interact with the disk without worrying about       |
-    |                  |   whether the drives are SATA, SCSI, or something     |
-    |                  |   else. (e.g. /dev/sd*, /dev/nvme0n*, etc)            |
-    |                  |                                                       |
-    |   Partition      |   Represent smaller, more manageable block devices.   |
-    |                  |   These can be thought of as the places where user    |
-    |                  |   data lives.                                         |
-    |                  |                                                       |
-    |   Filesystem     |   A filesystem allows for data to actually be written |
-    |                  |   to a given partition. Filesystems vary in features, |
-    |                  |   requirements, and read/write access. In short, a    |
-    |                  |   filesystem is the structure for a given partition.  |
-    |                  |                                                       |
-    |   DOS            |   The DOS disklabel setup uses 32-bit identifiers     |
-    |                  |   for the start sector and length of the partitions,  |
-    |                  |   and supports three partition types: primary,        |
-    |                  |   extended, and logical. Primary partitions have      |
-    |                  |   their information stored in the master boot         |
-    |                  |   record itself - a very small (usually 512 bytes)    |
-    |                  |   location at the very beginning of a disk. Due to    |
-    |                  |   this small space, only four primary partitions      |
-    |                  |   are supported (for instance, /dev/sda1 to           |
-    |                  |   /dev/sda4). This is the old format for disklabels.  |
-    |                  |                                                       |
-    |   GPT            |   GPT (GUID Partition Table) setup uses 64-bit        |
-    |                  |   identifiers for the partitions. The location in     |
-    |                  |   which it stores the partition information is much   |
-    |                  |   bigger than the 512 bytes of a DOS disklabel,       |
-    |                  |   which means there is practically no limit on the    |
-    |                  |   amount of partitions for a GPT disk. Also the       |
-    |                  |   size of a partition is bounded by a much greater    |
-    |                  |   limit (almost 8 ZB - yes, zettabytes). A GPT disk   |
-    |                  |   is required for UEFI systems.                       |
-    |                  |                                                       |
-    |   ROOTFS         |   ROOTFS (Root Filesystem) is the primary partition   |
-    |                  |   where the entire system is directly or indirectly   |
-    |                  |   mounted to. This is commonly referred to as '/'.    |
-    |                  |                                                       |
-    |   BOOT           |   The boot partition is where important files         |
-    |                  |   required at boot time, such as the kernel, are      |
-    |                  |   stored. This partition is required only on UEFI     |
-    |                  |   systems. It is usually mounted at /boot.            |
-    |                  |                                                       |
-    |   HOME           |   This partition is where most user data is stored.   |
-    |                  |   It is usually mounted at /home.                     |
-    |                  |                                                       |
-    |   SWAP           |   Swap space can take the form of a disk partition    |
-    |                  |   or a file. Users may create a swap space during     |
-    |                  |   installation or at any later time as desired.       |
-    |                  |   Swap space can be used for two purposes: to         |
-    |                  |   extend the virtual memory beyond the installed      |
-    |                  |   physical memory (RAM), and also for hibernation     |
-    |                  |   or for suspend-to-disk support.                     |
-    |                  |                                                       |
-    +------------------+-------------------------------------------------------+
+Unless an extended partition is created, DOS disk labels supports a maximum  of
+four partitions.
 
-    Some useful facts and things to keep in mind: 
+Using GPT on a BIOS-based computer works, and is referred to as a hybrid setup.
+This type of setup requries a 1MB BIOS boot partition (unformatted) so that
+extra data can be stored by the bootloader (like GRUB2). This setup is useful
+in cases where more than four primary or secondary partitions are required for
+a system. Unfortunately this has several limitations. For instance, you cannot
+dual-boot with a Microsoft Windows operating system, as Windows will boot in
+UEFI mode if it detects a GPT partition label. Also note that some buggy (old)
+motherboard firmware configured to boot in BIOS/CSM/legacy mode might also have
+problems with booting from GPT labeled disks. As such, this style is
+undesireable, and in general it is a good idea to use GPT in cases where UEFI
+can be used.
 
-    Due to using 32-bit identifiers, DOS partitioning tables cannot handle disks
-    that are >2 TBs in size. 
-    
-    Unless an extended partition is created, DOS disk labels supports a maximum 
-    of four partitions.
-    
-    Using GPT on a BIOS-based computer works, and is referred to as a hybrid
-    setup. This type of setup requries a 1MB BIOS boot partition (unformatted)
-    so that extra data can be stored by the bootloader (like GRUB2). This setup
-    is useful in cases where more than four primary or secondary partitions are
-    required for a system.
-    Unfortunately this has several limitations. For instance, you cannot
-    dual-boot with a Microsoft Windows operating system, as Windows will boot in
-    UEFI mode if it detects a GPT partition label. Also note that some buggy
-    (old) motherboard firmware configured to boot in BIOS/CSM/legacy mode might
-    also have problems with booting from GPT labeled disks. As such, this style
-    is undesireable, and in general it is a good idea to use GPT in cases where
-    UEFI can be used.
-    
-    UEFI/GPT and BIOS/MBR are not synonymous. UEFI/BIOS refer to particular
-    types of systems that utilize the Unified Extensible Firmware Interface or 
-    the Basic Input/Output System. This is determined strictly by the 
-    motherboard used in a given system. GPT/DOS, however, refer to particular
-    disk labels: GUID Partition Tables versus the DOS label. These types
-    directly limit the structures available on any given disk drive - both the
-    number of partitions available, as well as the size of any given partition.
-    A good rule of thumb, however, is that UEFI systems use GPT disk labels, 
-    BIOS systems use DOS disk labels, and hybrid systems use BIOS + GPT.
-    
-    The BOOT partition is a source of much confusion for users. For instance,
-    it is erroneously claimed that it must be mounted to /efi, or that kernel
-    images should be named vmlinuz.efi.
-    In point of fact, it is only necessary on UEFI systems, though it may be 
-    useful on BIOS systems. The BOOT partition need not be mounted to /efi.
-    Indeed, the only requirements are that it be formatted to FAT32 (in the case
-    of UEFI systems), and be at least 100MB in size. The recommended minimum
-    size for UEFI systems is 256MB.
-    That the kernel be named vmlinuz.efi serves only to make the fact that it 
-    is a UEFI system explicit.
-    If users intend on using a multiboot system, a single BOOT partition can be
-    shared by all operating systems.
+UEFI/GPT and BIOS/MBR are not synonymous. UEFI/BIOS refer to particular types
+of systems that utilize the Unified Extensible Firmware Interface or the Basic
+Input/Output System. This is determined strictly by the motherboard used in a
+given system. GPT/DOS, however, refer to particular disk labels: GUID Partition
+Tables versus the DOS label. These types directly limit the structures
+available on any given disk drive - both the number of partitions available, as
+well as the size of any given partition. A good rule of thumb, however, is that
+UEFI systems use GPT disk labels, BIOS systems use DOS disk labels, and hybrid
+systems use BIOS + GPT.
 
-    An important point of consideration is whether or not a separate HOME 
-    partition should be used. This is useful in cases where users wish to keep
-    their data in a location separate from their operating system, for instance
-    in cases of critical failures requiring the OS to be reinstalled, or if 
-    users wish to encrypt their personal data separately from their core OS.
-    This separation between / and /home allow users to easily migrate their data
-    across many different operating systems; they need only remount the HOME
-    partition to /home on the new system. In general, this is recommended.
+The BOOT partition is a source of much confusion for users. For instance, it is
+erroneously claimed that it must be mounted to /efi, or that kernel images
+should be named vmlinuz.efi. In point of fact, it is only necessary on UEFI
+systems, though it may be useful on BIOS systems. The BOOT partition need not
+be mounted to /efi. Indeed, the only requirements are that it be formatted to
+FAT32 (in the case of UEFI systems), and be at least 100MB in size. The
+recommended minimum size for UEFI systems is 256MB.
+That the kernel be named vmlinuz.efi serves only to make the fact that it is a
+UEFI system explicit. If users intend on using a multiboot system, a single
+BOOT partition can be shared by all operating systems.
 
-    In addition to a separate HOME, several other additional partition options
-    exist. For instance, a separate var (/var) and data partitions can be used.
-    Separate data partitions are useful in instances where users would like to 
-    easily share data across different operating systems, as allowing write 
-    access to a user's home directory is a security risk. A separate /var is 
-    useful in niche cases where /usr is read-only. For more detailed information
-    on filesystem structures, refer to the Filesystem Hierarcy Standard [0].
-    Additionally, the Linux From Scratch project has some useful rationales [1].
+An important point of consideration is whether or not a separate HOME partition
+should be used. This is useful in cases where users wish to keep their data in a
+location separate from their operating system, for instance in cases of critical
+failures requiring the OS to be reinstalled, or if users wish to encrypt their
+personal data separately from their core OS. This separation between / and /home
+allow users to easily migrate their data across many different operating
+systems; they need only remount the HOME partition to /home on the new system.
+In general, this is recommended.
 
+In addition to a separate HOME, several other additional partition options
+exist.
+
+For instance, a separate var (/var) and data partitions can be used. Separate
+data partitions are useful in instances where users would like to easily share
+data across different operating systems, as allowing write access to a user's
+home directory is a security risk. A separate /var is useful in niche cases
+where /usr is read-only. For more detailed information on filesystem structures,
+refer to the Filesystem Hierarcy Standard [0]. Additionally, the Linux From
+Scratch project has some useful rationales [1].
 
 [0.2] Tools
 -----------
@@ -215,44 +210,44 @@ for swap size is to have the same amount of swap as you have RAM.
 These examples only serve to show a minimum partition layout required for each
 type of disk style (UEFI + GPT, BIOS + DOS, hybrid).
 
-    [1.2] Swap Partition vs File
-    ____________________________________________________________________________
+[1.2] Swap Partition vs File
+----------------------------
 
-    When considering swap space, there are benefits and tradeoffs to certain 
-    choices. The traditional recommendation has been to create a swap partition
-    as close to the first partition as possible, that is at least half the
-    amount of RAM available - this number is a sliding scale and varies by use
-    case. For instance, if few RAM intensive programs are going to be used, and 
-    little compiling will be done on the host system, less swap space is needed
-    (if any at all). 
+When considering swap space, there are benefits and tradeoffs to certain
+choices. The traditional recommendation has been to create a swap partition as
+close to the first partition as possible, that is at least half the amount of
+RAM available - this number is a sliding scale and varies by use case. For
+instance, if few RAM intensive programs are going to be used, andlittle
+compiling will be done on the host system, less swap space is needed (if any at
+all). 
 
-    Historically, swap was placed at the beginning of disks as this allowed for 
-    the fastest possible seek times on traditional spinning disk drives (hard
-    drives). This was preferred because disk access times are orders of 
-    magnitude slower than RAM access times, and long swap operations result in
-    a desktop feeling 'slow' or 'laggy'. However, with the rise in popularity
-    of solid state drives (and, more recently, NVMe based storage), along with 
-    the precipitous decrease in storage space cost, the requirement of a 
-    separate swap partition has laxed. If users have access to low latency, 
-    large storage drives, a swap file may be a preferable alternative. 
+Historically, swap was placed at the beginning of disks as this allowed for the
+fastest possible seek times on traditional spinning disk drives (hard drives).
+This was preferred because disk access times are orders of magnitude slower than
+RAM access times, and long swap operations result in a desktop feeling 'slow' or
+'laggy'. However, with the rise in popularity of solid state drives (and, more
+recently, NVMe based storage), along with the precipitous decrease in storage
+space cost, the requirement of a separate swap partition has laxed. If users
+have access to low latency, large storage drives, a swap file may be a
+preferable alternative. 
 
-    Swap files allow for ondemand, resizeable swap spaces. Swap may not be 
-    necessary for day-to-day operation but only in cases where large builds are
-    happening. With access to these newer technologies, users can simply create
-    a file and define it to be a dedicated swap location which is used 
-    identically to the traditional swap partition. This has left the need for a
-    swap partition largely to cases where solid state storage is not an option.
-    
-    For more modern systems, swap files are in general preferable to partitions.
-    Care should be taken, however. Changes may occur outside of the user's
-    control that necessitate intervention. For instance, if a swapfile
-    disappears but is still referenced in /etc/fstab, disk mounting will fail
-    at boot and the system will drop users into an emergency shell.
-    Additionally, file fragmentation can cause swap files to become unreliable.
-    Finally, kernel updates could potentially cause issues [7].
+Swap files allow for ondemand, resizeable swap spaces. Swap may not be necessary
+for day-to-day operation but only in cases where large builds are happening.
+With access to these newer technologies, users can simply create a file and
+define it to be a dedicated swap location which is used identically to the
+traditional swap partition. This has left the need for a swap partition largely
+to cases where solid state storage is not an option.
 
-    In addition to swap, @/zswap and @/zram are useful options to consider for 
-    maximizing swap usage and memory management.
+For more modern systems, swap files are in general preferable to partitions.
+Care should be taken, however. Changes may occur outside of the user's control
+that necessitate intervention. For instance, if a swapfile disappears but is
+still referenced in /etc/fstab, disk mounting will fail at boot and the system
+will drop users into an emergency shell. Additionally, file fragmentation can
+cause swap files to become unreliable. Finally, kernel updates could potentially
+cause issues [7].
+
+In addition to swap, @/zswap and @/zram are useful options to consider for 
+maximizing swap usage and memory management.
     
 [2.0] Partitioning Example
 --------------------------
@@ -367,7 +362,8 @@ official repository or in community.
     
 Other filesystems exist with varying degrees of popularity, including JFS,
 ReiserFS, and ZFS. The community repository is an excellent place to share work
-in including these filesystems in KISS! Others are available in user-created repositories. ZFS is one such example [8]. Due to licensing restrictions, ZFS
+in including these filesystems in KISS! Others are available in user-created
+repositories. ZFS is one such example [8]. Due to licensing restrictions, ZFS
 requires more work to use than other filesystems.
 
 EXT4 is a solid, general purpose filesystem. For UEFI systems, FAT32 is a 
