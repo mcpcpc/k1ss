@@ -133,37 +133,33 @@ See [4.2] on configuration options for sddm.
 NOTE: to take advantage of the authentication backend, users should reinstall
 kauth and kscreenlocker.
 
-    [0.3] Default Window Manager
-    ____________________________________________________________________________
+[0.3] Default Window Manager
+----------------------------
 
 Currently there are two primary window managers that can be chosen: kwin and 
-kwinft. kwinft [3] is a composited window manager for X11 and Wayland 
-systems. Most of the differences between kwinft and kwin are in the 
-underlying code; kwinft is designed to have better coding practices and be 
-well-organized. However, any features that appear in kwinft can be expected 
-to eventually show up in kwin. So if you prefer a more bleeding edge, 
-potentially better window manager for KDE, kwinft is an option.
+kwinft. kwinft [3] is a composited window manager for X11 and Wayland systems.
+Most of the differences between kwinft and kwin are in the underlying code;
+kwinft is designed to have better coding practices and be well-organized.
+However, any features that appear in kwinft can be expected to eventually show
+up in kwin. So if you prefer a more bleeding edge, potentially better window
+manager for KDE, kwinft is an option.
 
 By default, kwin will be installed. If you wish to change this, fork 
-plasma-{workspace,desktop} and alter the depends files. All you are required 
-to do is uncomment the kwinft lines in the dependencies lists and comment 
-out kwin. For more information on forking packages, see [4]. In order to 
-change which is used on an existing installation,
+plasma-{workspace,desktop} and alter the depends files. All you are required to
+do is uncomment the kwinft lines in the dependencies lists and comment out kwin.
+For more information on forking packages, see [4]. In order to change which is
+used on an existing installation,
 
-    +--------------------------------------------------------------------------+
-    |                                                                          |
-    |   $ pkill X                                                              |
-    |                                                                          |
-    |   $ KISS_FORCE=1 kiss r kwin kwayland-server                             |
-    |                                                                          |
-    |   $ kiss b kwinft && kiss i kwinft                                       |
-    |                                                                          |
-    |   $ kiss b plasma-workspace && kiss i plasma-workspace                   |
-    |   $ kiss b plasma-desktop   && kiss i plasma-desktop                     |
-    |                                                                          |
-    |   $ startx                                                               |
-    |                                                                          |
-    +--------------------------------------------------------------------------+
+    $ pkill X
+
+    $ KISS_FORCE=1 kiss r kwin kwayland-server
+
+    $ kiss b kwinft && kiss i kwinft
+
+    $ kiss b plasma-workspace && kiss i plasma-workspace
+    $ kiss b plasma-desktop   && kiss i plasma-desktop
+
+    $ startx
 
 [1.0] From Scratch
 ------------------
@@ -179,259 +175,200 @@ and will additionally include a system settings manager, a default theme
 which can be installed for more features, such as bluedevil, drkonqi, and
 powerdevil. See [4.0] for more information.
 
-    [1.1] Prerequisites
-    ____________________________________________________________________________
+[1.1] Prerequisites
+-------------------
 
-Ensure that you have the proper required packages installed: libudev-zero, 
-dbus, and xorg-server. libudev-zero has been tested to work with KDE. 
-Optionally, eudev also works. The choice is up to you! Currently, 
-dbus-alternatives (like a stub library) are untested. The dependencies of
-the KDE packages assume many Xorg libraries are already installed. Not 
-having xorg-server might result in missing dependencies.
+Ensure that you have the proper required packages installed: libudev-zero, dbus,
+and xorg-server. libudev-zero has been tested to work with KDE. Optionally,
+eudev also works. The choice is up to you! Currently, dbus-alternatives (like a
+stub library) are untested. The dependencies of the KDE packages assume many
+Xorg libraries are already installed. Not having xorg-server might result in
+missing dependencies.
 
 These are the only requirements for building plasma-desktop.
 
-NOTE: in order to build certain extras, coreutils is required. Specifically: 
-elogind, libblockdev, and udisks2 require three separate programs. Patches 
-are welcome to resolve this! coreutils provides files which conflict with 
-other KISS packages, such as busybox. To ensure we are using the correct 
-programs when we attempt to build these extras, we use the alternatives 
-system! For more information on this system, see [5]. This is not required
-if you do not care about elogind.
+NOTE: in order to build certain extras, coreutils is required. Specifically:
+elogind, libblockdev, and udisks2 require three separate programs. Patches are welcome to resolve this! coreutils provides files which conflict with other
+KISS packages, such as busybox. To ensure we are using the correct programs
+when we attempt to build these extras, we use the alternatives system! For more 
+information on this system, see [5]. This is not required if you do not care
+about elogind.
 
-+-------------+------------------------------------------------------------+
-| Package     | Requirement                                                |
-|-------------+------------------------------------------------------------|
-|             |                                                            |
-| elogind     | /usr/bin/realpath --relative-to                            | 
-| udisks2     | /usr/bin/ln -r                                             | 
-| libblockdev | /usr/bin/mktemp --tmpdir                                   |
-|             |                                                            |
-+-------------+------------------------------------------------------------+
+| Package     | Requirement                                                    |
+|-------------|----------------------------------------------------------------|
+|             |                                                                |
+| elogind     | /usr/bin/realpath --relative-to                                | 
+| udisks2     | /usr/bin/ln -r                                                 | 
+| libblockdev | /usr/bin/mktemp --tmpdir                                       |
+|             |                                                                |
 
-NOTE: additionally, if desired, you must enable cgroup support in your
-kernel for elogind. see [6] for more details.
+NOTE: additionally, if desired, you must enable cgroup support in your kernel
+for elogind. see [6] for more details.
 
 Ensure the relevant prerequisites are installed:
 
-    +--------------------------------------------------------------------------+
-    |                                                                          |
-    |   $ kiss b libudev-zero dbus                                             |
-    |   $ kiss i libudev-zero dbus                                             |
-    |   $ kiss b xorg-server libinput xf86-input-libinput                      |
-    |   $ kiss i xorg-server libinput xf86-input-libinput                      |
-    |                                                                          |
-    |   # If you opt to install e.g. elogind                                   |
-    |   $ kiss b coreutils && kiss i coreutils                                 |
-    |   $ kiss a coreutils /usr/bin/realpath                                   |
-    |   $ kiss a coreutils /usr/bin/mktemp                                     |
-    |   $ kiss a coreutils /usr/bin/ln                                         |
-    |                                                                          |
-    +--------------------------------------------------------------------------+
-
-    NOTE: If you had packages like xorg-server installed, you might want to 
-    rebuild them to pickup on the new device manager they can take advantage of. 
-    If you do not currently have xorg-server installed, you will want to get it. 
-    A pure wayland KDE is both untested and unlikely to work.
-
-    NOTE: with the release of plasma 5.20.0, KDE is more aggressively supporting
-    a wayland environment. xorg support may be dropped in the future!
-
-    Make sure you do not currently have qt5 installed. The build files have been
-    tweaked for this repository to make use of dbus and libudev-zero. As a 
-    result, carrying over the community version of these packages will lead to 
-    unknown problems.
-
-    Because of the time required to build qt5* packages, some prebuilt tarballs
-    are available on the Github repository [5]. They are built in a standard 
-    KISS tarball, with C(XX)FLAGS=-march=x86-64 -mtune=generic -Os -pipe.
-
-    NOTE: In general, it is a security risk to install prebuilt packages. these
-    archives are provided as a courtesy by $/dilyn-corner. Always verify the
-    authenticity of packages, and the identities of packagers!
+    $ kiss b libudev-zero dbus
+    $ kiss i libudev-zero dbus
+    $ kiss b xorg-server libinput xf86-input-libinput
+    $ kiss i xorg-server libinput xf86-input-libinput
     
-    The current release is 5.15.1, available with the 2020.10-1 release. 
+    # If you opt to install e.g. elogind
+    $ kiss b coreutils && kiss i coreutils
+    $ kiss a coreutils /usr/bin/realpath
+    $ kiss a coreutils /usr/bin/mktemp
+    $ kiss a coreutils /usr/bin/ln
 
-    +--------------------------------------------------------------------------+
-    |                                                                          |
-    |   $ ver=2020.10-1                                                        |
-    |   $ qtver=5.15.1-1                                                       | 
-    |   $ url=https://github.com/dilyn-corner/KISS-kde/releases/download/$ver  |
-    |                                                                          |
-    |   $ wget $url/qt5.$qtver.tar.gz \                                        |
-    |          -O qt5@$qtver.tar.gz                                            |
-    |   $ wget $url/qt5-declarative.$qtver.tar.gz \                            |
-    |         -O qt5-declarative@$qtver.tar.gz                                 |
-    |                                                                          |
-    |   # Not a build-time requirement, but useful for e.g. falkon             |
-    |   $ wget $url/qt5-webengine.$qtver.tar.gz \                              |
-    |          -O qt5-webengine@$qtver.tar.gz                                  |
-    |                                                                          |
-    +--------------------------------------------------------------------------+
+NOTE: If you had packages like xorg-server installed, you might want to rebuild
+them to pickup on the new device manager they can take advantage of. If you do
+not currently have xorg-server installed, you will want to get it. A pure
+wayland KDE is both untested and unlikely to work.
 
-    It is recommended to verify the checksums for these tarballs to ensure
-    package integrity!
+NOTE: with the release of plasma 5.20.0, KDE is more aggressively supporting a
+wayland environment. xorg support may be dropped in the future!
 
-    +--------------------------------------------------------------------------+
-    |                                                                          |
-    |   $ wget $url/qt5.$qtver.tar.gz.sha256                                   |
-    |                                                                          |
-    |   $ sha256sum -c < qt5@$qtver.tar.gz                                     |
-    |   $ sha256sum -c < qt5-declarative@$qtver.tar.gz                         |
-    |   $ sha256sum -c < qt5-webengine@$qtver.tar.gz                           |
-    |                                                                          |
-    +--------------------------------------------------------------------------+
+Make sure you do not currently have qt5 installed. The build files have been
+tweaked for this repository to make use of dbus and libudev-zero. As a result,
+carrying over the community version of these packages will lead to unknown
+problems.
 
-    +--------------------------------------------------------------------------+
-    |                                                                          |
-    |   $ kiss i qt5@$qtver.tar.gz                                             |
-    |   $ kiss i qt5-declarative@$qtver.tar.gz                                 |
-    |   $ kiss i qt5-webengine@$qtver.tar.gz                                   |
-    |                                                                          |
-    +--------------------------------------------------------------------------+
+Because of the time required to build qt5* packages, some prebuilt tarballs are
+available on the Github repository [5]. They are built in a standard KISS
+tarball, with C(XX)FLAGS=-march=x86-64 -mtune=generic -Os -pipe.
 
+NOTE: In general, it is a security risk to install prebuilt packages. these
+archives are provided as a courtesy by $/dilyn-corner. Always verify the
+authenticity of packages, and the identities of packagers!
+    
+The current release is 5.15.1, available with the 2020.10-1 release. 
 
-    [1.2] Installing
-    ____________________________________________________________________________
+    $ ver=2020.10-1
+    $ qtver=5.15.1-1
+    $ url=https://github.com/dilyn-corner/KISS-kde/releases/download/$ver
 
-    Now that all of the build requirements are taken care of, we can install 
-    the desktop environment. Just over a hundred packages are required.
+    $ wget $url/qt5.$qtver.tar.gz \
+           -O qt5@$qtver.tar.gz
+    $ wget $url/qt5-declarative.$qtver.tar.gz \
+           -O qt5-declarative@$qtver.tar.gz
+           
+    # Not a build-time requirement, but useful for e.g. falkon
+    $ wget $url/qt5-webengine.$qtver.tar.gz \
+           -O qt5-webengine@$qtver.tar.gz
 
-    +--------------------------------------------------------------------------+
-    |                                                                          |
-    |   $ kiss b plasma-desktop && kiss i plasma-desktop                       | 
-    |                                                                          |
-    +--------------------------------------------------------------------------+
+It is recommended to verify the checksums for these tarballs to ensure package
+integrity!
 
-    Optionally, enable and start the dbus service:
+    $ wget $url/qt5.$qtver.tar.gz.sha256
+    
+    $ sha256sum -c < qt5@$qtver.tar.gz
+    $ sha256sum -c < qt5-declarative@$qtver.tar.gz
+    $ sha256sum -c < qt5-webengine@$qtver.tar.gz
 
-    +--------------------------------------------------------------------------+
-    |                                                                          |
-    |   $ ln -s /etc/sv/dbus /var/service                                      |
-    |   $ sv up dbus                                                           |
-    |                                                                          |
-    +--------------------------------------------------------------------------+
+    $ kiss i qt5@$qtver.tar.gz
+    $ kiss i qt5-declarative@$qtver.tar.gz
+    $ kiss i qt5-webengine@$qtver.tar.gz
 
-    No services are required to be running in order to start a plasma session.
+[1.2] Installing
+----------------
 
+Now that all of the build requirements are taken care of, we can install the
+desktop environment. Just over a hundred packages are required.
 
-    [1.3] Launching
-    ____________________________________________________________________________
+    $ kiss b plasma-desktop && kiss i plasma-desktop
 
-    Once plasma-desktop has been installed, launching KDE is as simple as
-    adding the following to whatever script you use to start X:
+Optionally, enable and start the dbus service:
 
-    +--------------------------------------------------------------------------+
-    |                                                                          |
-    |   $ exec dbus-launch --exit-with-session startplasma-x11                 | 
-    |                                                                          |
-    +--------------------------------------------------------------------------+
+    $ ln -s /etc/sv/dbus /var/service
+    $ sv up dbus
 
-    The default fonts KDE usually ships with are hack and noto-sans. The former
-    is available in community, and the latter is included in KISS-kde/extra.
-    Ensure that you have a font installed prior to launching Plasma!
+No services are required to be running in order to start a plasma session.
 
+[1.3] Launching
+---------------
+
+Once plasma-desktop has been installed, launching KDE is as simple as adding the
+following to whatever script you use to start X:
+
+    $ exec dbus-launch --exit-with-session startplasma-x11
+
+The default fonts KDE usually ships with are hack and noto-sans. The former is
+available in community, and the latter is included in KISS-kde/extra. Ensure
+that you have a font installed prior to launching Plasma!
 
 [2.0] The KISS-kde tarball
-________________________________________________________________________________
+--------------------------
 
-Similarly to KISS itself, a tarball containing a fully-functional KISS with
-KDE setup is available from the GitHub repository [7]. This archive can be
-chrooted into or directly unpacked to '/'. It is built from a kiss-chroot 
-archive with identical generic C(XX)FLAGS, and is ~330MB in size.
+Similarly to KISS itself, a tarball containing a fully-functional KISS with KDE
+setup is available from the GitHub repository [7]. This archive can bechrooted
+into or directly unpacked to '/'. It is built from a kiss-chroot archive with
+identical generic C(XX)FLAGS, and is ~330MB in size.
 
 NOTE: In general, it is a security risk to install prebuilt packages. This
 archive is provided as a courtesy by $/dilyn-corner. Always verify the
 authenticity of packages, and the identities of packagers!
 
 The KISS-kde archive is a fully installed version of plasma-desktop, but does
-not make choices for the user. As a result, it should be installed
-identically to how KISS is normally installed, using the KISS install guide.
-See [8] for KISS setup instructions.
+not make choices for the user. As a result, it should be installed identically
+to how KISS is normally installed, using the KISS install guide. See [8] for
+KISS setup instructions.
 
 There will be monthly releases of the KISS-kde tarball to keep up with upstream. 
 The format of releases will be in YYYY-MM format.
 
 To download e.g. the first October 2020 release,
 
-+------------------------------------------------------------------------------+
-|                                                                              |
-|   $ ver=2020.10-1                                                            |
-|   $ url=https://github.com/dilyn-corner/KISS-kde/releases/download/$ver      |
-|   $ wget $url/kiss-kde-$ver.tar.xz                                           |
-|                                                                              |
-+------------------------------------------------------------------------------+
+    $ ver=2020.10-1
+    $ url=https://github.com/dilyn-corner/KISS-kde/releases/download/$ver
+    $ wget $url/kiss-kde-$ver.tar.xz
     
-It is strongly recommended to verify the checksums to avoid problems like
-using a partially downloaded archive.
+It is strongly recommended to verify the checksums to avoid problems like using
+a partially downloaded archive.
 
-+------------------------------------------------------------------------------+
-|                                                                              |
-|   $ wget $url/kiss-kde-$ver.tar.xz.sha256                                    |
-|   $ sha256sum -c < kiss-kde-$ver.tar.xz.sha256                               |
-|                                                                              |
-+------------------------------------------------------------------------------+
+    $ wget $url/kiss-kde-$ver.tar.xz.sha256
+    $ sha256sum -c < kiss-kde-$ver.tar.xz.sha256
 
-After setting up your disks, mount your desired root partition to '/mnt' and
-to install the latest release,
+After setting up your disks, mount your desired root partition to '/mnt' and to
+install the latest release,
 
-+------------------------------------------------------------------------------+
-|                                                                              |
-|   $ tar xf kiss-kde-$ver.tar.xz -C /mnt                                      |
-|                                                                              |
-+------------------------------------------------------------------------------+
-
+    $ tar xf kiss-kde-$ver.tar.xz -C /mnt
+    
 and enter the chroot environment,
 
-+------------------------------------------------------------------------------+
-|                                                                              |
-|   $ /mnt/bin/kiss-chroot /mnt                                                |
-|                                                                              |
-+------------------------------------------------------------------------------+
+    $ /mnt/bin/kiss-chroot /mnt
 
-From here, simply follow the rest of the install guide [8].
-For help with kernels, see @/kernel. For help with bootloaders, see @/boot. 
+From here, simply follow the rest of the install guide [8]. For help with
+kernels, see @/kernel. For help with bootloaders, see @/boot. 
 
 It is recommended that you change the root password; the default is "toor".
 
 After setting up everything, it should be as simple as: 
 
-+------------------------------------------------------------------------------+
-|                                                                              |
-|   $ exit                                                                     |
-|   $ reboot                                                                   |
-|   $ startx                                                                   |
-|                                                                              |
-+------------------------------------------------------------------------------+
-
+    $ exit
+    $ reboot
+    $ startx
+    
 You should now be greeted with a fresh Plasma Desktop!
 
-
 [3.0] Starting KDE
-________________________________________________________________________________
+------------------
 
 You have two choices on how to launch KDE. Either you can start it directly from
 the console, or you can make use of a login manager. 
 
+[3.1] Console
+-------------
 
-    [3.1] Console
-    ____________________________________________________________________________
+Launching a KDE session directly from the console is very straightforward. If
+you would like to use wayland instead of X, replace x11 by wayland in the below
+command.
 
-    Launching a KDE session directly from the console is very straightforward.
-    If you would like to use wayland instead of X, replace x11 by wayland in the
-    below command.
-    Simply add a line to your xinitrc file:
+Simply add a line to your xinitrc file:
 
-    +--------------------------------------------------------------------------+
-    |                                                                          |
-    |   $ launch="exec dbus-launch --exit-with-session startplasma-x11"        |
-    |   $ echo "$launch" >> "$HOME/.xinitrc"                                   |
-    |                                                                          |
-    +--------------------------------------------------------------------------+
+    $ launch="exec dbus-launch --exit-with-session startplasma-x11"
+    $ echo "$launch" >> "$HOME/.xinitrc"
 
-    It may be useful to set a runtime directory. A wayland session requires this
-    be set, and an X session will default to /tmp if you do not set one. Add
-    this example to somewhere like .profile:
+It may be useful to set a runtime directory. A wayland session requires this be
+set, and an X session will default to /tmp if you do not set one. Add this
+example to somewhere like .profile:
 
     +--------------------------------------------------------------------------+
     |                                                                          |
