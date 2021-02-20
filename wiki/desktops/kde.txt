@@ -136,19 +136,19 @@ kauth and kscreenlocker.
     [0.3] Default Window Manager
     ____________________________________________________________________________
 
-    Currently there are two primary window managers that can be chosen: kwin and 
-    kwinft. kwinft [3] is a composited window manager for X11 and Wayland 
-    systems. Most of the differences between kwinft and kwin are in the 
-    underlying code; kwinft is designed to have better coding practices and be 
-    well-organized. However, any features that appear in kwinft can be expected 
-    to eventually show up in kwin. So if you prefer a more bleeding edge, 
-    potentially better window manager for KDE, kwinft is an option.
+Currently there are two primary window managers that can be chosen: kwin and 
+kwinft. kwinft [3] is a composited window manager for X11 and Wayland 
+systems. Most of the differences between kwinft and kwin are in the 
+underlying code; kwinft is designed to have better coding practices and be 
+well-organized. However, any features that appear in kwinft can be expected 
+to eventually show up in kwin. So if you prefer a more bleeding edge, 
+potentially better window manager for KDE, kwinft is an option.
 
-    By default, kwin will be installed. If you wish to change this, fork 
-    plasma-{workspace,desktop} and alter the depends files. All you are required 
-    to do is uncomment the kwinft lines in the dependencies lists and comment 
-    out kwin. For more information on forking packages, see [4]. In order to 
-    change which is used on an existing installation,
+By default, kwin will be installed. If you wish to change this, fork 
+plasma-{workspace,desktop} and alter the depends files. All you are required 
+to do is uncomment the kwinft lines in the dependencies lists and comment 
+out kwin. For more information on forking packages, see [4]. In order to 
+change which is used on an existing installation,
 
     +--------------------------------------------------------------------------+
     |                                                                          |
@@ -182,37 +182,37 @@ powerdevil. See [4.0] for more information.
     [1.1] Prerequisites
     ____________________________________________________________________________
 
-    Ensure that you have the proper required packages installed: libudev-zero, 
-    dbus, and xorg-server. libudev-zero has been tested to work with KDE. 
-    Optionally, eudev also works. The choice is up to you! Currently, 
-    dbus-alternatives (like a stub library) are untested. The dependencies of
-    the KDE packages assume many Xorg libraries are already installed. Not 
-    having xorg-server might result in missing dependencies.
+Ensure that you have the proper required packages installed: libudev-zero, 
+dbus, and xorg-server. libudev-zero has been tested to work with KDE. 
+Optionally, eudev also works. The choice is up to you! Currently, 
+dbus-alternatives (like a stub library) are untested. The dependencies of
+the KDE packages assume many Xorg libraries are already installed. Not 
+having xorg-server might result in missing dependencies.
 
-    These are the only requirements for building plasma-desktop.
-    
-    NOTE: in order to build certain extras, coreutils is required. Specifically: 
-    elogind, libblockdev, and udisks2 require three separate programs. Patches 
-    are welcome to resolve this! coreutils provides files which conflict with 
-    other KISS packages, such as busybox. To ensure we are using the correct 
-    programs when we attempt to build these extras, we use the alternatives 
-    system! For more information on this system, see [5]. This is not required
-    if you do not care about elogind.
+These are the only requirements for building plasma-desktop.
 
-    +-------------+------------------------------------------------------------+
-    | Package     | Requirement                                                |
-    |-------------+------------------------------------------------------------|
-    |             |                                                            |
-    | elogind     | /usr/bin/realpath --relative-to                            | 
-    | udisks2     | /usr/bin/ln -r                                             | 
-    | libblockdev | /usr/bin/mktemp --tmpdir                                   |
-    |             |                                                            |
-    +-------------+------------------------------------------------------------+
+NOTE: in order to build certain extras, coreutils is required. Specifically: 
+elogind, libblockdev, and udisks2 require three separate programs. Patches 
+are welcome to resolve this! coreutils provides files which conflict with 
+other KISS packages, such as busybox. To ensure we are using the correct 
+programs when we attempt to build these extras, we use the alternatives 
+system! For more information on this system, see [5]. This is not required
+if you do not care about elogind.
 
-    NOTE: additionally, if desired, you must enable cgroup support in your
-    kernel for elogind. see [6] for more details.
++-------------+------------------------------------------------------------+
+| Package     | Requirement                                                |
+|-------------+------------------------------------------------------------|
+|             |                                                            |
+| elogind     | /usr/bin/realpath --relative-to                            | 
+| udisks2     | /usr/bin/ln -r                                             | 
+| libblockdev | /usr/bin/mktemp --tmpdir                                   |
+|             |                                                            |
++-------------+------------------------------------------------------------+
 
-    Ensure the relevant prerequisites are installed:
+NOTE: additionally, if desired, you must enable cgroup support in your
+kernel for elogind. see [6] for more details.
+
+Ensure the relevant prerequisites are installed:
 
     +--------------------------------------------------------------------------+
     |                                                                          |
