@@ -1,35 +1,9 @@
 STORAGE
-________________________________________________________________________________
+=======
 
 This article will provide general guidance on the process of preparing a disk 
 device (SSD or HDD) for a new installation of KISS Linux.  Advanced storage
 formats (e.g. RAID, LVM) are considered out of scope.
-
-
-Index
-________________________________________________________________________________
-
-- Overview                                                                 [0.0]
-    - Terminology                                                          [0.1]
-    - Tools                                                                [0.2]
-
-- Partitioning Schemata                                                    [1.0]
-    - Minimum Partition Layouts                                            [1.1]
-    - Swap Partition vs File                                               [1.2]
-
-- Partitioning Example                                                     [2.0]
-
-- Formatting                                                               [3.0]
-    - Filesystems                                                          [3.1]
-    - Swap Partition                                                       [3.2]
-    - Swap File                                                            [3.3]
-
-- fstab                                                                    [4.0]
-- References                                                               [5.0]
-
-
-[0.0] Overview
-________________________________________________________________________________
 
 Next to kernel configuration, preparing a disk device for installing a Linux
 distribution is one of the more intimidating topics for a new UNIX user to
@@ -166,31 +140,31 @@ terminology and the tools which are required throughout the process.
     Additionally, the Linux From Scratch project has some useful rationales [1].
 
 
-    [0.2] Tools
-    ____________________________________________________________________________
+[0.2] Tools
+-----------
 
-    Depending on which live environment the user chooses for installing a KISS
-    Linux system, the tools available vary. On most UNIX systems, the following
-    can usually be expected:
+Depending on which live environment the user chooses for installing a KISS Linux
+system, the tools available vary. On most UNIX systems, the following can
+usually be expected:
 
-    - fdisk: a dialogue driven partition manipulator [2]
-    - gdisk: GPT fdisk (note that fdisk also supports GPT) [3]
-    - cfdisk: a partition editor with a curses-based UI, part of util-linux [4]
-    - parted: a GNU partition editor [5]
+*   fdisk: a dialogue driven partition manipulator [2]
+*   gdisk: GPT fdisk (note that fdisk also supports GPT) [3]
+*   cfdisk: a partition editor with a curses-based UI, part of util-linux [4]
+*   parted: a GNU partition editor [5]
 
-    It is also possible to use the live CD version of parted, GParted [6], to 
-    partition disks, and it offers many other useful features for disk 
-    management and data recovery.
+It is also possible to use the live CD version of parted, GParted [6], to 
+partition disks, and it offers many other useful features for disk management
+and data recovery.
 
-    In general, most programs can handle the majority of use-cases. The tool of 
-    choice is almost entirely user preference. However, some utilities have 
-    powerful and advanced features that can aid in fixing damaged disks. fdisk
-    is one such program, and is useful in cases where more fine-grained control
-    is required. For general system setup, however, any tool will do.
+In general, most programs can handle the majority of use-cases. The tool of
+choice is almost entirely user preference. However, some utilities have
+powerful and advanced features that can aid in fixing damaged disks. fdisk is
+one such program, and is useful in cases where more fine-grained control is
+required. For general system setup, however, any tool will do.
     
     
 [1.0] Partitioning Schemata
-________________________________________________________________________________
+---------------------------
 
 Great care should be taken when picking a partition structure, as changing it 
 afterwards is (generally) a difficult endeavor. Ensure that the chosen structure
@@ -199,52 +173,47 @@ is needed, whether to use a separate home partition, whether separate partitions
 are needed for general data storage (like music or photos), and whether
 dual-booting is desired.
 
-
-    [1.1] Minimum Partition Layouts
-    ____________________________________________________________________________
+[1.1] Minimum Partition Layouts
+-------------------------------
     
-    The number of partitions required is highly variable and dependent on the
-    use case. The following table provides examples of common partition 
-    schemata, formats, and recommended minimum sizes:
-    
-    +----------------------------+---------------------------------------------+
-    |    Schemata Description    |   Partition (Type,      Format, Size)       |
-    +----------------------------+---------------------------------------------+
-    |                            |                                             |
-    |   GPT + UEFI (with /home)  |   /dev/sda1 (BOOT,      FAT32,  256MB)      |
-    |                            |   /dev/sda2 (ROOTFS,    EXT4,   30GB )      |
-    |                            |   /dev/sda3 (HOME,      EXT4,   *    )      |
-    |                            |                                             |
-    |   Legacy DOS (with swap)   |   /dev/sda1 (SWAP,      swap,   RAM  )      |
-    |                            |   /dev/sda2 (ROOTFS,    EXT4,   *    )      |
-    |                            |                                             |
-    |   Hybrid BIOS/GPT          |   /dev/sda1 (BIOS BOOT, XXXX,   1MB  )      |
-    |                            |   /dev/sda2 (SWAP,      swap,   RAM  )      |
-    |                            |   /dev/sda3 (ROOTFS,    EXT4,   xxxGB)      |
-    |                            |   /dev/sda4 (HOME,      XFS,    yyyGB)      |
-    |                            |   /dev/sda5 (DATA,      BTRFS,  zzzGB)      |
-    |                            |                                             |
-    +----------------------------+---------------------------------------------+
-    
-    The boot partition is generally only used for storing kernels or an
-    initramfs. As these files are usually very small (<20MB), 256MB is more
-    than enough to accomodate most use-cases. 512MB is plenty. A separate BOOT
-    is only required on UEFI systems.
+The number of partitions required is highly variable and dependent on the use
+case. The following table provides examples of common partition schemata,
+formats, and recommended minimum sizes:
 
-    In cases where no other additional partition is desired, the ROOTFS or HOME
-    partition should span the remainder of the disk.
-
-    For source-based distributions like KISS, maximizing the amount RAM that can 
-    be used is paramount for successful builds, especially for large packages 
-    such as rust, firefox, or qt5-webengine. If the amount of RAM available is 
-    less than 8GB, the usage of a swap partition or swap file is strongly 
-    recommended to avoid build failures due to out-of-memory (OOM) issues. A 
-    decent rule of thumb for swap size is to have the same amount of swap as
-    you have RAM.
-
-    These examples only serve to show a minimum partition layout required for 
-    each type of disk style (UEFI + GPT, BIOS + DOS, hybrid).
+|    Schemata Description    |   Partition (Type,      Format, Size)           |
+|----------------------------|-------------------------------------------------|
+|                            |                                                 |
+|   GPT + UEFI (with /home)  |   /dev/sda1 (BOOT,      FAT32,  256MB)          |
+|                            |   /dev/sda2 (ROOTFS,    EXT4,   30GB )          |
+|                            |   /dev/sda3 (HOME,      EXT4,   *    )          |
+|                            |                                                 |
+|   Legacy DOS (with swap)   |   /dev/sda1 (SWAP,      swap,   RAM  )          |
+|                            |   /dev/sda2 (ROOTFS,    EXT4,   *    )          |
+|                            |                                                 |
+|   Hybrid BIOS/GPT          |   /dev/sda1 (BIOS BOOT, XXXX,   1MB  )          |
+|                            |   /dev/sda2 (SWAP,      swap,   RAM  )          |
+|                            |   /dev/sda3 (ROOTFS,    EXT4,   xxxGB)          |
+|                            |   /dev/sda4 (HOME,      XFS,    yyyGB)          |
+|                            |   /dev/sda5 (DATA,      BTRFS,  zzzGB)          |
+|                            |                                                 |
     
+The boot partition is generally only used for storing kernels or an initramfs.
+As these files are usually very small (<20MB), 256MB is more than enough to
+accomodate most use-cases. 512MB is plenty. A separate BOOT is only required on
+UEFI systems.
+
+In cases where no other additional partition is desired, the ROOTFS or HOME
+partition should span the remainder of the disk.
+
+For source-based distributions like KISS, maximizing the amount RAM that can be
+used is paramount for successful builds, especially for large packages such as
+rust, firefox, or qt5-webengine. If the amount of RAM available is less than
+8GB, the usage of a swap partition or swap file is strongly recommended to
+avoid build failures due to out-of-memory (OOM) issues. A decent rule of thumb 
+for swap size is to have the same amount of swap as you have RAM.
+
+These examples only serve to show a minimum partition layout required for each
+type of disk style (UEFI + GPT, BIOS + DOS, hybrid).
 
     [1.2] Swap Partition vs File
     ____________________________________________________________________________
@@ -285,9 +254,8 @@ dual-booting is desired.
     In addition to swap, @/zswap and @/zram are useful options to consider for 
     maximizing swap usage and memory management.
     
-
 [2.0] Partitioning Example
-________________________________________________________________________________
+--------------------------
 
 The following is a step-by-step partitioning example. 
 
@@ -299,14 +267,10 @@ Again, these commands are dangerous and WILL CAUSE DATA LOSS.
 
 In order to identify the correct disk, there are several commands that can help
 
-+------------------------------------------------------------------------------+
-|                                                                              |
-|    $ fdisk -l                                                                |
-|    $ sfdisk -l                                                               |
-|    $ parted -l                                                               |
-|    $ lsblk                                                                   |
-|                                                                              |
-+------------------------------------------------------------------------------+
+    $ fdisk -l
+    $ sfdisk -l
+    $ parted -l
+    $ lsblk
 
 While partitioning disks, you will be asked multiple questions. These include
 the starting sector of the partition, the last sector of the partition, and the
@@ -334,198 +298,157 @@ for the actual partitioning process.
 
 To create a GPT + EFI disk with a separate /home,
 
-+------------------------------------------------------------------------------+
-|                                                                              |
-|    $ gdisk /dev/nvme0n1                                                      |
-|                                                                              |
-|    # Enter '?' for a list of available commands                              |
-|                                                                              |
-|    # Delete partition data by creating a new GPT:                            |
-|    $ o                                                                       |
-|    This option deletes all partitions and creates a new GPT.                 |
-|    Proceed? (Y/N): y                                                         |
-|                                                                              |
-|    # Create Partition 1 (/boot):                                             |
-|    $ n                                                                       |
-|    Partition Number:  (RETURN key for 1)                                     |
-|    First sector: (RETURN key for first available)                            |
-|    Last sector: +128M                                                        |
-|    Hex Code (L to show codes): ef00                                          |
-|                                                                              |
-|    # Create Partition 2 (ROOTFS):                                            |
-|    $ n                                                                       |
-|    Partition Number:  (RETURN key for 2)                                     |
-|    First sector: (RETURN key for first available)                            |
-|    Last sector: +30G                                                         |
-|    Hex Code: 0304                                                            |
-|                                                                              |
-|    # Create Partition 3 (HOME):                                              |
-|    $ n                                                                       |
-|    Partition Number:  (RETURN key for 3)                                     |
-|    First sector: (RETURN key for first available)                            |
-|    Last sector:  (RETURN key for rest of disk)                               |
-|    Hex Code: 0302                                                            |
-|                                                                              |
-|    # Write Partition Table To Disk:                                          |
-|    $ w                                                                       |
-|    Do you want to proceed? (Y/N): Y                                          |
-|                                                                              |
-+------------------------------------------------------------------------------+
+    $ gdisk /dev/nvme0n1
+    
+    # Enter '?' for a list of available commands
+    
+    # Delete partition data by creating a new GPT:
+    $ o
+    This option deletes all partitions and creates a new GPT.
+    Proceed? (Y/N): y
+    
+    # Create Partition 1 (/boot):
+    $ n
+    Partition Number:  (RETURN key for 1)
+    First sector: (RETURN key for first available)
+    Last sector: +128M
+    Hex Code (L to show codes): ef00
+    
+    # Create Partition 2 (ROOTFS):
+    $ n
+    Partition Number:  (RETURN key for 2)
+    First sector: (RETURN key for first available)
+    Last sector: +30G
+    Hex Code: 0304
+    
+    # Create Partition 3 (HOME):
+    $ n
+    Partition Number:  (RETURN key for 3)
+    First sector: (RETURN key for first available)
+    Last sector:  (RETURN key for rest of disk)
+    Hex Code: 0302
+    
+    # Write Partition Table To Disk:
+    $ w
+    Do you want to proceed? (Y/N): Y
 
 cfdisk may be preferable to users who prefer a more visual representation of
 partition manipulation and a constantly updating table of information on the
 current partition layout and structure.
 
-
 [3.0] Formatting
-________________________________________________________________________________
+----------------
 
 Now that the disks have been partitioned, it is time to create the relevant
 filesystems for each partition.
 
+[3.1] Filesystems
+-----------------
 
-    [3.1] Filesystems
-    ____________________________________________________________________________
+There are many different filesystems to choose from on any given Linux system.
+Which filesystem is used depends almost entirely on the use-case of the system.
+For simple data storage read only by UNIX systems, EXT4 is a perfectly normal
+choice. For data that needs to be accessible to Windows, FAT or NTFS is
+required. The Apple Filesystem (APFS) is used by Macs. In the simple case where
+only Linux systems require access to a given partition, many choices exist.
+Below is a list of filesystems which are available in KISS either in the
+official repository or in community.
 
-    There are many different filesystems to choose from on any given Linux 
-    system. Which filesystem is used depends almost entirely on the use-case of 
-    the system. For simple data storage read only by UNIX systems, EXT4 is a 
-    perfectly normal choice. For data that needs to be accessible to Windows,
-    FAT or NTFS is required. The Apple Filesystem (APFS) is used by Macs.
-    In the simple case where only Linux systems require access to a given
-    partition, many choices exist. Below is a list of filesystems which are 
-    available in KISS either in the official repository or in community.
-
-    +--------------+------------------------+----------------------------------+
-    |  Filesystem  |  Package               |  Command                         |
-    +--------------+------------------------+----------------------------------+
-    |              |                        |                                  |
-    |  swap        | core/busybox           |  mkswap                          |
-    |  EXT2/3/4    | extra/e2fsprogs        |  mkfs.ext2/3/4                   |
-    |  DOS/FATxx   | extra/dosfstools       |  mkfs.dos/fat/vfat               |
-    |  XFS         | extra/xfsprogs         |  mkfs.xfs                        |
-    |  BTRFS       | community/btrfs-progs  |  mkfs.btrfs                      |
-    |  NTFS        | community/ntfs-3g      |  mkfs.ntfs                       |
-    |              |                        |                                  |
-    +--------------+------------------------+----------------------------------+
+|  Filesystem  |  Package               |  Command                             |
+|--------------|------------------------|--------------------------------------|
+|              |                        |                                      |
+|  swap        | core/busybox           |  mkswap                              |
+|  EXT2/3/4    | extra/e2fsprogs        |  mkfs.ext2/3/4                       |
+|  DOS/FATxx   | extra/dosfstools       |  mkfs.dos/fat/vfat                   |
+|  XFS         | extra/xfsprogs         |  mkfs.xfs                            |
+|  BTRFS       | community/btrfs-progs  |  mkfs.btrfs                          |
+|  NTFS        | community/ntfs-3g      |  mkfs.ntfs                           |
+|              |                        |                                      |
     
-    Other filesystems exist with varying degrees of popularity, including JFS,
-    ReiserFS, and ZFS. The community repository is an excellent place to share
-    work in including these filesystems in KISS! Others are available in 
-    user-created repositories. ZFS is one such example [8]. Due to licensing 
-    restrictions, ZFS requires more work to use than other filesystems.
+Other filesystems exist with varying degrees of popularity, including JFS,
+ReiserFS, and ZFS. The community repository is an excellent place to share work
+in including these filesystems in KISS! Others are available in user-created repositories. ZFS is one such example [8]. Due to licensing restrictions, ZFS
+requires more work to use than other filesystems.
 
-    EXT4 is a solid, general purpose filesystem. For UEFI systems, FAT32 is a 
-    required filesystem for the BOOT partition. BTRFS is an experimental 
-    filesystem which sees heavy development by organizations like Facebook,
-    and offers a different way of managing storage than more traditional (EXT,
-    DOS, NTFS) filesystems. All of these have built-in kernel support.
+EXT4 is a solid, general purpose filesystem. For UEFI systems, FAT32 is a 
+required filesystem for the BOOT partition. BTRFS is an experimental filesystem
+which sees heavy development by organizations like Facebook, and offers a
+different way of managing storage than more traditional (EXT, DOS, NTFS)
+filesystems. All of these have built-in kernel support.
 
-    For a more complete list of other filesystem options and what limitations 
-    and features exist for them, refer to the Arch Wiki [9].
+For a more complete list of other filesystem options and what limitations and
+features exist for them, refer to the Arch Wiki [9].
 
-    Continuing from the partition example in [2.0], we will make a FAT32
-    parition on BOOT (/dev/nvme0n1p1), and an EXT4 partition on ROOTFS and HOME
-    (/dev/nvme0n1p2 and /dev/nvme0n1p3, respectively):
+Continuing from the partition example in [2.0], we will make a FAT32 parition on 
+BOOT (/dev/nvme0n1p1), and an EXT4 partition on ROOTFS and HOME (/dev/nvme0n1p2
+and /dev/nvme0n1p3, respectively):
  
-    +--------------------------------------------------------------------------+
-    |                                                                          |
-    |   $ mkfs.ext4     /dev/nvme0n1p2                                         |
-    |   $ mkfs.ext4     /dev/nvme0n1p3                                         |
-    |   $ mkfs.fat -F32 /dev/nvme0n1p1                                         |
-    |                                                                          |
-    |   $ mount /dev/nvme0n1p2 /mnt                                            |
-    |   $ mount /dev/nvme0n1p3 /mnt/home                                       |
-    |   $ mount /dev/nvme0n1p1 /mnt/boot                                       |
-    |                                                                          |
-    +--------------------------------------------------------------------------+
-
-
-    [3.2] Swap Partition
-    ____________________________________________________________________________
+    $ mkfs.ext4     /dev/nvme0n1p2
+    $ mkfs.ext4     /dev/nvme0n1p3
+    $ mkfs.fat -F32 /dev/nvme0n1p1
     
-    To set up a partition as a Linux swap space, the mkswap command is used. 
-    Replace X with the drive where the swap partition is located, and Y by the
-    partition on that drive that will be formatted as swap.
+    $ mount /dev/nvme0n1p2 /mnt
+    $ mount /dev/nvme0n1p3 /mnt/home
+    $ mount /dev/nvme0n1p1 /mnt/boot
+
+[3.2] Swap Partition
+--------------------
     
-    +--------------------------------------------------------------------------+
-    |                                                                          |
-    |   $ mkswap /dev/sdXY                                                     |
-    |   $ swapon /dev/sdXY                                                     |
-    |                                                                          |
-    +--------------------------------------------------------------------------+
+To set up a partition as a Linux swap space, the mkswap command is used. Replace
+X with the drive where the swap partition is located, and Y by the partition on
+that drive that will be formatted as swap.
 
+    $ mkswap /dev/sdXY
+    $ swapon /dev/sdXY
 
-    [3.3] Swap File
-    ____________________________________________________________________________
+[3.3] Swap File
+---------------
 
-    As an alternative to creating an entire partition, a swap file offers 
-    similar functionality, and the added benefits of being able to vary its size 
-    on-the-fly, as well as being more easily removed. This may be especially 
-    desirable if disk space is at a premium.
+As an alternative to creating an entire partition, a swap file offers similar
+functionality, and the added benefits of being able to vary its size on-the-fly,
+as well as being more easily removed. This may be especially desirable if disk
+space is at a premium.
 
-    The most straightforward way to create a swap file is to use dd:
+The most straightforward way to create a swap file is to use dd:
 
-    +--------------------------------------------------------------------------+
-    |                                                                          |
-    |   $ dd if=/dev/zero of=$LOCATION bs=$BYTES count=$BLOCKS                 |
-    |                                                                          |
-    +--------------------------------------------------------------------------+
+    $ dd if=/dev/zero of=$LOCATION bs=$BYTES count=$BLOCKS
 
-    $LOCATION is where the swapfile should be made. Assume $LOCATION=/swapfile.
+$LOCATION is where the swapfile should be made. Assume $LOCATION=/swapfile.
 
-    $BYTES is the size of each block to be written to the file. Disks have 
-    varying supported block sizes; choosing the correct size for the partition
-    where the swapfile will be is important for optimizing read/write 
-    throughput. dd defaults to 512 bytes, but this is suboptimal for drives 
-    with larger supported block sizes. To determine the block size for your 
-    device, you can use stat:
+$BYTES is the size of each block to be written to the file. Disks have varying
+supported block sizes; choosing the correct size for the partition where the
+swapfile will be is important for optimizing read/write throughput. dd defaults
+to 512 bytes, but this is suboptimal for drives with larger supported block
+sizes. To determine the block size for your device, you can use stat:
     
-    +--------------------------------------------------------------------------+
-    |                                                                          |
-    |   $ stat -fc %s .                                                        |
-    |                                                                          |
-    +--------------------------------------------------------------------------+
+    $ stat -fc %s .
 
-    For instance, if the result is 4096, $BYTES=4k should be chosen. 
+For instance, if the result is 4096, $BYTES=4k should be chosen. 
     
-    $BLOCKS is the number of blocks of size $BYTES you wish to write to
-    $LOCATION. $BLOCKS determines the final size of the swapfile.
+$BLOCKS is the number of blocks of size $BYTES you wish to write to $LOCATION.
+$BLOCKS determines the final size of the swapfile.
 
-    $BYTES and $BLOCKS can be suffixed by b (512 bytes), kB (1,000 bytes), k
-    (1,024 bytes), MB (a thousand kB), M (a thousand k), GB (a million kB), or
-    G (a million k).
+$BYTES and $BLOCKS can be suffixed by b (512 bytes), kB (1,000 bytes), k (1,024
+bytes), MB (a thousand kB), M (a thousand k), GB (a million kB), or G (a million
+k).
 
-    To create a 16G swapfile at /swapfile with a 4k block size, 
+To create a 16G swapfile at /swapfile with a 4k block size, 
 
-    +--------------------------------------------------------------------------+
-    |                                                                          |
-    |   $ dd if=/dev/zero of=/swapfile bs=4k count=4M                          |
-    |                                                                          |
-    +--------------------------------------------------------------------------+
+    $ dd if=/dev/zero of=/swapfile bs=4k count=4M
 
-    Set the permissions, create the swap filesystem, and activate it as swap,
+Set the permissions, create the swap filesystem, and activate it as swap,
 
-    +--------------------------------------------------------------------------+
-    |                                                                          |
-    |   $ chmod 600 /swapfile                                                  |
-    |   $ mkswap    /swapfile                                                  |
-    |   $ swapon    /swapfile                                                  |
-    |                                                                          |
-    +--------------------------------------------------------------------------+
+    $ chmod 600 /swapfile
+    $ mkswap    /swapfile
+    $ swapon    /swapfile
 
-    To remove a swap file, it's as simple as disabling and deleting it, 
+To remove a swap file, it's as simple as disabling and deleting it, 
+
+    $ swapoff /swapfile
+    $ rm -f   /swapfile
     
-    +--------------------------------------------------------------------------+
-    |                                                                          |
-    |  $ swapoff /swapfile                                                     |
-    |  $ rm -f   /swapfile                                                     |
-    |                                                                          |
-    +--------------------------------------------------------------------------+
-    
-
 [4.0] fstab
-________________________________________________________________________________
+-----------
 
 The fstab file contains a list of partitions with their filesystem type, their 
 mount location, and the options they should be mounted with. The mount program
@@ -541,20 +464,15 @@ prcess for you.
 Here is an example fstab, which will mount ROOTFS to /, BOOT to /boot, HOME to 
 /home, enable the swap file, and mount some important virtual filesystems:
 
-+------------------------------------------------------------------------------+
-|                                                                              |
-|   # device      mount-point   type   options         dump  fsck order        | 
-|                                                                              |
-|   /dev/sda2     /             ext4   defaults        0     1                 |  
-|   /dev/sda1     /boot         vfat   defaults        0     2                 |  
-|   /dev/sda3     /home         ext4   defaults        0     2                 |  
-|   /swapfile     none          swap   defaults        0     0                 |  
-|   tmpfs         /tmp          tmpfs  rw,nodev,nosuid 0     0                 |  
-|   proc          /proc         proc   defaults        0     0                 |  
-|   sysfs         /sys          sysfs  defaults        0     0                 |  
-|   devpts        /dev/pts      devpts gid=4,mode=620  0     0                 |  
-|                                                                              |
-+------------------------------------------------------------------------------+
+    # device      mount-point   type   options         dump  fsck order
+    /dev/sda2     /             ext4   defaults        0     1
+    /dev/sda1     /boot         vfat   defaults        0     2
+    /dev/sda3     /home         ext4   defaults        0     2
+    /swapfile     none          swap   defaults        0     0
+    tmpfs         /tmp          tmpfs  rw,nodev,nosuid 0     0
+    proc          /proc         proc   defaults        0     0
+    sysfs         /sys          sysfs  defaults        0     0
+    devpts        /dev/pts      devpts gid=4,mode=620  0     0
 
 tmpfs, proc, sysfs, and devpts should be mounted during the init process.
 Therefore, proc, sysfs, and devpts can be left out of the fstab. A reason to
@@ -582,9 +500,8 @@ into an emergency shell! Even a small typo will result in this. If it occurs,
 simply check the fstab for errors, mount the partitions that failed to be
 mounted, and exit the emergency shell.
 
-
 [5.0] References
-________________________________________________________________________________
+----------------
 
 [0]  https://refspecs.linuxfoundation.org/fhs.shtml
 [1]  http://linuxfromscratch.org/lfs/view/stable/chapter02/creatingpartition.html
