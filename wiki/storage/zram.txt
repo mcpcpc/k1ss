@@ -1,5 +1,5 @@
-ZRAM [0]
-________________________________________________________________________________
+ZRAM
+====
 
 zram is a kernel feature which allows for the creation of compressible ramdisks,
 or RAM-based block devices. These virtual devices can be used to extend the
@@ -7,17 +7,14 @@ amount of RAM available on a system by utilizing in-RAM compression, in a
 similar sense to how swap is used in low-memory conditions. Unlike zswap, zram
 does not require a swapfile or swap partition to exist on a drive. As a result, 
 zram can be incredibly useful on systems where memory availability is low and
-disk-space is at a premium.
-
+disk-space is at a premium [0].
 
 Prerequisites
-________________________________________________________________________________
+-------------
 
 zram is managed by the kernel and requires very little user intervention to 
 enable and configure. First, ensure zram is enabled in the kernel:
 
-+------------------------------------------------------------------------------+
-|                                                                              |
 |   General setup --->                                                         |
 |       <*> Support for paging of anonymous memory (swap)                      |
 |                                                                              |
@@ -31,9 +28,6 @@ enable and configure. First, ensure zram is enabled in the kernel:
 |   # To use the lz4 algorithm with zram,                                      |
 |   Cryptographic API --->                                                     |
 |       <*> LZ4 compression algorithm                                          |
-|                                                                              |
-|                                                                              |
-+------------------------------------------------------------------------------+
 
 lz4 is available in community. The default compression algorithm is lzo and
 CONFIG_CRYPTO_LZO=y/m is forced when CONFIG_ZRAM=y/m.
@@ -42,9 +36,8 @@ Building compressed RAM block devices as a module is recommended because it
 enables runtime block device creation. If it is built-in to the kernel, pass
 zram.num_devices=X in the kernel commandline (bootloader or built-in).
 
-
 Setup
-________________________________________________________________________________
+-----
 
 Compressed block devices can be setup on-the-fly or at boot-time. A quick 
 method using an /etc/rc.d/zram.{boot,pre.shutdown} script is shown below. 
@@ -57,10 +50,9 @@ unlike with zswap.
 
 $SIZE below can be given in bytes or suffixed by M,G.
 
-+------------------------------------------------------------------------------+
-|   /etc/rc.d/zram.boot                                                        |
-+------------------------------------------------------------------------------+
-|   #!/bin/sh -e                                                               |
+/etc/rc.d/zram.boot:
+
+    #!/bin/sh -e                                                               |
 |                                                                              |
 |   # Create four zram devices for swap, one for tmpfs                         |
 |                                                                              |
@@ -87,13 +79,10 @@ $SIZE below can be given in bytes or suffixed by M,G.
 |                                                                              |
 |   # /tmp requires sticky bit permissions for nonroot user access             |
 |   chmod 1777 /tmp                                                            |
-|                                                                              |
-+------------------------------------------------------------------------------+
 
-+------------------------------------------------------------------------------+
-|   /etc/rc.d/zram.pre.shutdown                                                |
-+------------------------------------------------------------------------------+
-|   #!/bin/sh -e                                                               |
+/etc/rc.d/zram.pre.shutdown:
+
+    #!/bin/sh -e                                                               |
 |                                                                              |
 |   # Disable the swap devices                                                 |
 |   # Reset the swap devices                                                   |
@@ -105,8 +94,6 @@ $SIZE below can be given in bytes or suffixed by M,G.
 |   # Unmount /tmp, reset zram device                                          |
 |   umount /dev/zram4                                                          |
 |   echo 1 > /sys/block/zram4/reset                                            |
-|                                                                              |
-+------------------------------------------------------------------------------+
 
 Note: because zram has a 2:1 compression ratio, a total disk size of no more 
 than twice the amount of available RAM should be selected - otherwise, space 
@@ -116,9 +103,8 @@ In addition to manipulating values in /sys/block/zramX/*, users can use the
 zramctl program provided by util-linux to manage their zram devices. See [1] for
 more information.
 
-
 References
-________________________________________________________________________________
+----------
 
 [0] https://kernel.org/doc/Documentation/blockdev/zram.txt
 [1] https://man7.org/linux/man-pages/man8/zramctl.8.html
