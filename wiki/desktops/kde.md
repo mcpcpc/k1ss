@@ -372,225 +372,181 @@ example to somewhere like .profile:
 
     export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/tmp/$(id -u)-runtime}"
     
+    [ -d "$XDG_RUNTIME_DIR" ] || {
+        mkdir -p   "$XDG_RUNTIME_DIR"
+        chmod 0700 "$XDG_RUNTIME_DIR"
+    }
+
+[3.2] Login Manager
+-------------------
+
+The KISS-kde repository also includes sddm [9], the Simple Desktop Display
+Manager, as an option for a greeter. It requires a login manager. elogind is the
+default; other options are currently being tested.
+
+First, build and install elogind:
+
+    $ kiss b elogind && kiss i elogind
+    # So that polkit will build the correct libs to support elogind,
+    $ kiss b polkit && kiss i polkit
+
+Then, install sddm:
+
+    # sddm is in the KISS-kde/kde repo
+    $ kiss b sddm && kiss i sddm
     
-    [ -d "$XDG_RUNTIME_DIR" ] || {                                         | 
-    |       mkdir -p   "$XDG_RUNTIME_DIR"                                      |
-    |       chmod 0700 "$XDG_RUNTIME_DIR"                                      |
-    |   }                                                                      |
-    |                                                                          |
-    +--------------------------------------------------------------------------+
+NOTE: by default, it may not be possible for root to login via sddm. Best
+practices would dictate that you login as an unprivileged user.
 
+Enable the requisite services for sddm to function properly. For KISS' default
+service manager,
 
-    [3.2] Login Manager
-    ____________________________________________________________________________
+    $ ln -s /etc/sv/polkitd /var/service
+    $ ln -s /etc/sv/elogind /var/service
+    $ ln -s /etc/sv/sddm    /var/service
 
-    The KISS-kde repository also includes sddm [9], the Simple Desktop Display
-    Manager, as an option for a greeter. It requires a login manager. elogind is 
-    the default; other options are currently being tested. First, build and 
-    install elogind
+    $ sv up polkitd
+    $ sv up elogind
+    $ sv up sddm
 
-    +--------------------------------------------------------------------------+
-    |                                                                          |
-    |   $ kiss b elogind && kiss i elogind                                     |
-    |   # So that polkit will build the correct libs to support elogind,       |
-    |   $ kiss b polkit && kiss i polkit                                       |
-    |                                                                          |
-    +--------------------------------------------------------------------------+
-
-    Then, install sddm
-    
-    +--------------------------------------------------------------------------+
-    |                                                                          |
-    |   # sddm is in the KISS-kde/kde repo                                     |
-    |   $ kiss b sddm && kiss i sddm                                           |
-    |                                                                          |
-    +--------------------------------------------------------------------------+
-
-    NOTE: by default, it may not be possible for root to login via sddm. Best
-    practices would dictate that you login as an unprivileged user.
-    
-    Enable the requisite services for sddm to function properly. For KISS'
-    default service manager,
-    
-    +--------------------------------------------------------------------------+
-    |                                                                          |
-    |   $ ln -s /etc/sv/polkitd /var/service                                   |
-    |   $ ln -s /etc/sv/elogind /var/service                                   |
-    |   $ ln -s /etc/sv/sddm    /var/service                                   |
-    |                                                                          |
-    |   $ sv up polkitd                                                        |
-    |   $ sv up elogind                                                        |
-    |   $ sv up sddm                                                           |
-    |                                                                          |
-    +--------------------------------------------------------------------------+
-
-    If everything went well, sddm should immediately launch after you start the
-    sddm service.
-
+If everything went well, sddm should immediately launch after you start the sddm
+service
 
 [4.0] Post-Install
-________________________________________________________________________________
+------------------
 
 Everything you do from here on is to customize your new Plasma Desktop to your
 own needs! No further setup or configuration is required. However, there are a
 few things available to you that you can change, if you so choose.
 
+[4.1] Window Managers
+---------------------
 
-    [4.1] Window Managers
-    ____________________________________________________________________________
+It is possible to use your favorite window manager with KDE, and it is 
+shockingly simple. All that is required is to install whatever window manager
+you would prefer (dwm, i3, sowm, etc.), and add the following to your
+environment:
 
-    It is possible to use your favorite window manager with KDE, and it is
-    shockingly simple. All that is required is to install whatever window
-    manager you would prefer (dwm, i3, sowm, etc.), and add the following to
-    your environment:
+    # replace 'sowm' with whichever wm you prefer
+    $ export KDEWM=sowm
 
-    +--------------------------------------------------------------------------+
-    |                                                                          |
-    |   # replace 'sowm' with whichever wm you prefer                          |
-    |   $ export KDEWM=sowm                                                    |
-    |                                                                          |
-    +--------------------------------------------------------------------------+
+A 'good place' is up to the user; for per-user choice, add it to .profile or
+your xinitrc file. To use the choice system-wide, add it to /etc/profile or
+/etc/X11/xinit/xinitrc.
 
-    A 'good place' is up to the user; for per-user choice, add it to .profile or
-    your xinitrc file. To use the choice system-wide, add it to /etc/profile or
-    /etc/X11/xinit/xinitrc.
+[4.2] Greeters
+--------------
 
+sddm is a feature-rich but straightforward greeter; see [3.2] for  installation
+and setup instructions. sddm can be configured heavily. Configuration is read
+from /etc/sddm.conf. If it does not exist, you can generate it: 
 
-    [4.2] Greeters
-    ____________________________________________________________________________
+    $ sddm --example-config >> /etc/sddm.conf
 
-    sddm is a feature-rich but straightforward greeter; see [3.2] for 
-    installation and setup instructions. sddm can be configured heavily. 
-    Configuration is read from /etc/sddm.conf. If it does not exist, you can 
-    generate it: 
+You can manually edit this file to allow for autologins, changing themes,
+changing the user icons, or even changing the range of UIDs that can login
+through sddm. 
 
-    +--------------------------------------------------------------------------+
-    |                                                                          |
-    |   $ sddm --example-config >> /etc/sddm.conf                              |
-    |                                                                          |
-    +--------------------------------------------------------------------------+
+Alternatively, configuration can be done graphically during a plasma session.
+Simply install sddm-kcm and a sddm configuration section in systemsettings
+should become available.
 
-    You can manually edit this file to allow for autologins, changing themes,
-    changing the user icons, or even changing the range of UIDs that can login
-    through sddm. 
+    $ kiss b sddm-kcm && kiss i sddm-kcm
 
-    Alternatively, configuration can be done graphically during a plasma
-    session. Simply install sddm-kcm and a sddm configuration section in 
-    systemsettings should become available.
+NOTE: other greeters are untested. If you find success with alternatives, make a
+PR to add them!
 
-    +--------------------------------------------------------------------------+
-    |                                                                          |
-    |   $ kiss b sddm-kcm && kiss i sddm-kcm                                   |
-    |                                                                          |
-    +--------------------------------------------------------------------------+
+[4.3] Extras
+------------
 
-    NOTE: other greeters are untested. If you find success with alternatives, 
-    make a PR to add them!
+Several things are included in KISS-kde/kde. Examples include sddm, kvantum [10]
+and latte-dock [11].
 
+Separate from these are the KDE Applications, such as krita or dolphin. Some
+useful (and working) applications include dolphin and konsole. 
 
-    [4.3] Extras
-    ____________________________________________________________________________
+Finally, there are several useful extra programs which will enhance the standard
+KDE experience.
 
-    Several things are included in KISS-kde/kde. Examples include sddm, 
-    kvantum [10] and latte-dock [11].
-
-    Separate from these are the KDE Applications, such as krita or dolphin.
-    Some useful (and working) applications include dolphin and konsole. 
-
-    Finally, there are several useful extra programs which will enhance the
-    standard KDE experience.
-
-    +-------------+------------------------------------------------------------+
-    | Package     | Description                                                |
-    |-------------+------------------------------------------------------------|
-    |             |                                                            |
-    | sddm        | The Simple Desktop Display Manager                         |
-    | kvantum     | An svg-based theme engine for qt5                          |
-    | latte-dock  | A feature-rich dock based on the Plasma Framework          | 
-    |             |                                                            |
-    | dolphin     | The default KDE file manager                               |
-    | konsole     | The default KDE terminal emulator                          |
-    |             |                                                            |
-    | baloo       | A framework for file indexing and metadata management      |
-    | drkonqi     | A useful crash handler                                     |
-    | udisks2     | A disk manager                                             |
-    | kgamma5     | Change the monitor's gamma                                 |
-    | khotkeys    | Expanded hotkey modification                               |
-    | bludevil    | Bluetooth integration                                      |
-    | powerdevil  | Power usage settings                                       |
-    | kinfocenter | Displays useful system information                         |
-    |             |                                                            |
-    +-------------+------------------------------------------------------------+
-
+| Package     | Description                                                    |
+|-------------|----------------------------------------------------------------|
+|             |                                                                |
+| sddm        | The Simple Desktop Display Manager                             |
+| kvantum     | An svg-based theme engine for qt5                              |
+| latte-dock  | A feature-rich dock based on the Plasma Framework              | 
+|             |                                                                |
+| dolphin     | The default KDE file manager                                   |
+| konsole     | The default KDE terminal emulator                              |
+|             |                                                                |
+| baloo       | A framework for file indexing and metadata management          |
+| drkonqi     | A useful crash handler                                         |
+| udisks2     | A disk manager                                                 |
+| kgamma5     | Change the monitor's gamma                                     |
+| khotkeys    | Expanded hotkey modification                                   |
+| bludevil    | Bluetooth integration                                          |
+| powerdevil  | Power usage settings                                           |
+| kinfocenter | Displays useful system information                             |
+|             |                                                                |
 
 [5.0] Troubleshooting
-________________________________________________________________________________
+---------------------
 
 Here is a collection of some common issues you might encounter in buiding or
 running KDE. If you encounter any other problems, please submit an issue at
 $dilyn-corner/KISS-kde.
 
+[5.1] My fonts don't work!
+--------------------------
 
-    [5.1] My fonts don't work!
-    ____________________________________________________________________________
+If the fonts you have installed don't appear in any Qt applications, such as
+konsole, but DO appear in other applications, such as st, Qt is not properly
+identifying your font location. This can be confirmed by running a Qt app from a
+terminal and seeing warnings about how Qt does not ship fonts, and it could not
+find them in /usr/lib/fonts. Additionally, qtdiag may inform you that the
+default system font is noto-sans, regardless of whether or not noto-sans is
+installed.
 
-    If the fonts you have installed don't appear in any Qt applications, such as
-    konsole, but DO appear in other applications, such as st, Qt is not properly
-    identifying your font location. This can be confirmed by running a Qt app
-    from a terminal and seeing warnings about how Qt does not ship fonts, and it 
-    could not find them in /usr/lib/fonts. Additionally, qtdiag may inform you 
-    that the default system font is noto-sans, regardless of whether or not 
-    noto-sans is installed.
+This issue should be resolved by merely rebuilding qt5.
 
-    This issue should be resolved by merely rebuilding qt5.
+[5.2] I can't login from a screen lock!
+---------------------------------------
 
+This is a known issue with kscreenlocker and KISS. The problem would seemingly
+lie with PAM not properly authenticating the user. This remains unresolved. 
 
-    [5.2] I can't login from a screen lock!
-    ____________________________________________________________________________
+If the user trying to login is root, you may have luck killing the
+kscreenlocker_greet process. 
 
-    This is a known issue with kscreenlocker and KISS. The problem would
-    seemingly lie with PAM not properly authenticating the user. This remains
-    unresolved. 
+The short term fix is to disable screen locking during inactivity, not require a
+password while unlocking, or to simply never lock the screen.
 
-    If the user trying to login is root, you may have luck killing the
-    kscreenlocker_greet process. 
-    
-    The short term fix is to disable screen locking during inactivity, not 
-    require a password while unlocking, or to simply never lock the screen.
-    
-    This issue does not exist on systems which do not have linux-pam installed.
+This issue does not exist on systems which do not have linux-pam installed.
 
+[5.3] I can't change the system time!
+-------------------------------------
 
-    [5.3] I can't change the system time!
-    ____________________________________________________________________________
+Administrative actions currently cannot be executed as any user in places such
+as systemsettings. 
 
-    Administrative actions currently cannot be executed as any user in places 
-    such as systemsettings. 
+A solution to resolve this issue is currently unknown.
 
-    A solution to resolve this issue is currently unknown.
+[5.4] XYZ package fails to build!
+---------------------------------
 
+Please open an issue on the GitHub page! The dependencies have been minimized as
+much as possible to ensure the fewest things required are pulled in to have a
+working system. As a result, some things may fail tobuild independently. Some
+dependency requirements are simple fixes. Some examples include:
 
-    [5.4] XYZ package fails to build!
-    ____________________________________________________________________________
-
-    Please open an issue on the GitHub page! The dependencies have been
-    minimized as much as possible to ensure the fewest things required are 
-    pulled in to have a working system. As a result, some things may fail to 
-    build independently. Some dependency requirements are simple fixes. Some
-    examples include:
-
-    +---------------+------------------------------------------------------------+
-    | required pkg  | Error                                                      |
-    |---------------+------------------------------------------------------------|
-    |               |                                                            |
-    | pkgconf       | ...pkg foo not found...                                    |
-    | linux-headers | linux/bar.h not found                                      |
-    |               |                                                            |
-    +---------------+------------------------------------------------------------+
-
+| required pkg  | Error                                                         |
+|---------------+---------------------------------------------------------------|
+|               |                                                               |
+| pkgconf       | ...pkg foo not found...                                       |
+| linux-headers | linux/bar.h not found                                         |
+|               |                                                               |
 
 [6.0] How You Can Help
-________________________________________________________________________________
+----------------------
 
 The KISS-kde project is always looking for more contributors. Whether it is
 fixing build errors, submitting patches, or adding applications, every
@@ -599,9 +555,8 @@ contribution is welcome!
 For a current list of project milestones, check out the first section of the
 README at $/dilyn-corner/KISS-kde.
 
-
 [7.0] References
-________________________________________________________________________________
+----------------
 
 [0] https://kde.org
 [1] https://qt.io
