@@ -46,106 +46,92 @@ Assuming that you keep these repositories in $HOME,
     # you can optionally include the kde path for sddm, dolphin, etc.
     $ export KISS_PATH="$KISS_PATH:$HOME/KISS-kde/kde"
 
-    [0.1] Authentication
-    ____________________________________________________________________________
+[0.1] Authentication
+--------------------
 
-    KDE utilizes polkit and PAM for authentication. They provide a robust
-    backend and sets of features which allow for more fine-grained control of 
-    which users can perform what actions. However, there are no strict
-    requirements to use them. For instance, kauth (the framework responsible for
-    providing access to the polkit backend) only optionally requires polkit.
-    Additionally, kscreenlocker (the program responsible for locking the screen)
-    only requires PAM in instances where the login manager has failed to
-    properly track user sessions and will not allow the user to login. 
+KDE utilizes polkit and PAM for authentication. They provide a robust backend
+and sets of features which allow for more fine-grained control of\which users
+can perform what actions. However, there are no strict requirements to use them.
+For instance, kauth (the framework responsible for providing access to the
+polkit backend) only optionally requires polkit. Additionally, kscreenlocker
+(the program responsible for locking the screen) only requires PAM in instances
+where the login manager has failed to properly track user sessions and will not
+allow the user to login. 
+
+In the case of single-seat or single-user machines, complicated authentication
+frameworks might be seen as a needless additional form of security. If users
+decide they do not wish to make use of these features, they are not required to
+do anything.
+
+In cases where users would prefer to have fine-grained controls over access, the
+only prerequisite is to install a user permissions backend and polkit prior to
+building the rest of KDE. The permission systems allowed are linux-pam or
+shadow. If users intend on installing a login manager (such aselogind), PAM
+should be chosen. Otherwise, shadow is an excellent option(and is available in
+community).
+
+If a user wishes to go this route, simply build and install linux-pam or shadow,
+and then install polkit:
+
+    $ kiss b linux-pam   && kiss i linux-pam
+    $ kiss b polkit      && kiss i polkit
+    $ kiss b polkit-qt-1 && kiss i polkit-qt-1
+
+If users change their mind after setting up KDE, reverting is as simple as
+rebuilding the relevant packages. For instance, if a user decided to build
+polkit and linux-pam and wishes to drop the stack entirely, 
+
+    # Uninstall linux-pam and polkit
+    $ KISS_FORCE=1 kiss r linux-pam polkit polkit-qt-1
     
-    In the case of single-seat or single-user machines, complicated
-    authentication frameworks might be seen as a needless additional form of
-    security. If users decide they do not wish to make use of these features, 
-    they are not required to do anything.
+    # Rebuild kauth, kscreenlocker
+    $ kiss b kauth kscreenlocker
+    $ kiss i kauth kscreenlocker
 
-    In cases where users would prefer to have fine-grained controls over access,
-    the only prerequisite is to install a user permissions backend and polkit 
-    prior to building the rest of KDE. The permission systems allowed are
-    linux-pam or shadow. If users intend on installing a login manager (such as 
-    elogind), PAM should be chosen. Otherwise, shadow is an excellent option 
-    (and is available in community).
+Known issues with lacking proper authentication backends includes the inability
+to use systemsettings to alter things like the time. 
 
-    If a user wishes to go this route, simply build and install linux-pam or
-    shadow, and then install polkit:
+NOTE: currently there seems to be an issue with authentication in general;
+kscreenlocker does not allow users to log back in, and users cannot change the 
+date or time. Without linux-pam installed, the former issue is resolved.
 
-    +--------------------------------------------------------------------------+
-    |                                                                          |
-    |   $ kiss b linux-pam   && kiss i linux-pam                               |
-    |   $ kiss b polkit      && kiss i polkit                                  |
-    |   $ kiss b polkit-qt-1 && kiss i polkit-qt-1                             |
-    |                                                                          |
-    +--------------------------------------------------------------------------+
+[0.2] Session Management
+------------------------
 
-    If users change their mind after setting up KDE, reverting is as simple as
-    rebuilding the relevant packages. For instance, if a user decided to build 
-    polkit and linux-pam and wishes to drop the stack entirely, 
+Currently, users can either start plasma sessions via TTY or from a greeter.
+Login managers provide a way by which certain other programs can track sessions,
+and provide a measure of security for the system. For instance, networkmanager
+optionally requires logind for ensuring internet features return after the
+system wakes up from sleep, and sddm allows restrictions on which UIDs can login
+to a system.
 
-    +--------------------------------------------------------------------------+
-    |                                                                          |
-    |   # Uninstall linux-pam and polkit                                       |
-    |   $ KISS_FORCE=1 kiss r linux-pam polkit polkit-qt-1                     |
-    |                                                                          |
-    |   # Rebuild kauth, kscreenlocker                                         |
-    |   $ kiss b kauth kscreenlocker                                           |
-    |   $ kiss i kauth kscreenlocker                                           |
-    |                                                                          |
-    +--------------------------------------------------------------------------+
+For users who have limited interest in managing their sessions via logind, no
+action is required.
 
-    Known issues with lacking proper authentication backends includes the
-    inability to use systemsettings to alter things like the time. 
+For users who wish to have session-tracking features or would like to utilize
+programs like sddm, elogind is required (other options are currently being
+explored). elogind requires PAM. As a result, users choosing to use elogind
+should do the following:
 
-    NOTE: currently there seems to be an issue with authentication in general;
-    kscreenlocker does not allow users to log back in, and users cannot change 
-    the date or time. Without linux-pam installed, the former issue is resolved.
+    # Uninstall shadow if it is installed
+    $ KISS_FORCE=1 kiss r shadow
 
+    # Install linux-pam
+    $ kiss b linux-pam && kiss i linux-pam
 
-    [0.2] Session Management
-    ____________________________________________________________________________
+    # Rebuild polkit
+    $ kiss b polkit polkit-qt-1 && kiss i polkit polkit-qt-1
 
-    Currently, users can either start plasma sessions via TTY or from a greeter.
-    Login managers provide a way by which certain other programs can track
-    sessions, and provide a measure of security for the system. For instance, 
-    networkmanager optionally requires logind for ensuring internet features 
-    return after the system wakes up from sleep, and sddm allows restrictions 
-    on which UIDs can login to a system.
+    # Install elogind
+    $ kiss b elogind && kiss i elogind
 
-    For users who have limited interest in managing their sessions via logind,
-    no action is required.
+    # Because of the way we build polkit, rebuild it
+    $ kiss b polkit && kiss i polkit
 
-    For users who wish to have session-tracking features or would like to 
-    utilize programs like sddm, elogind is required (other options are 
-    currently being explored). elogind requires PAM. As a result, users choosing 
-    to use elogind should do the following:
+See [4.2] on configuration options for sddm.
 
-    +--------------------------------------------------------------------------+
-    |                                                                          |
-    |   # Uninstall shadow if it is installed                                  |
-    |   $ KISS_FORCE=1 kiss r shadow                                           |
-    |                                                                          |
-    |   # Install linux-pam                                                    |
-    |   $ kiss b linux-pam && kiss i linux-pam                                 |
-    |                                                                          |
-    |   # Rebuild polkit                                                       |
-    |   $ kiss b polkit polkit-qt-1 && kiss i polkit polkit-qt-1               |
-    |                                                                          |
-    |   # Install elogind                                                      |
-    |   $ kiss b elogind && kiss i elogind                                     |
-    |                                                                          |
-    |   # Because of the way we build polkit, rebuild it                       |
-    |   $ kiss b polkit && kiss i polkit                                       |
-    |                                                                          |
-    +--------------------------------------------------------------------------+
-
-    See [4.2] on configuration options for sddm.
-
-    NOTE: to take advantage of the authentication backend, users should
-    reinstall kauth and kscreenlocker.
-    
+NOTE: to take advantage of the authentication backend, users should reinstall
+kauth and kscreenlocker.
 
     [0.3] Default Window Manager
     ____________________________________________________________________________
