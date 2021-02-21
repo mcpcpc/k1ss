@@ -389,7 +389,7 @@ TIP: The Wiki contains a basic kernel configuration page. <{{ absolute_url }}/wi
     $ kiss i perl
 
 TIP: A patch can be applied to remove this requirement.
-*   <{{ absolute_url }}/wiki/kernel/config#5.0>
+*   <{{ "/" | absolute_url }}wiki/kernel/config#5.0>
 *   /usr/share/doc/kiss/wiki/kernel/patches/kernel-no-perl.patch
 
 [8.2] Download the kernel sources
@@ -591,4 +591,4 @@ If you encountered any issues, don't hesitate to open an issue on one of our
 GitHub repositories, post on <https://reddit.com/r/kisslinux> or join the
 IRC server.
 
-See: <{{ absolute_url }}/contact>
+See: <{{ "/" | absolute_url }}contact>
