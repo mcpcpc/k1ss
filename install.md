@@ -313,7 +313,7 @@ XFS:
 
 NOTE: If you choose to not install eudev, mdev will automatically be used in its 
 place. Eudev is recommended as a lot of software requires it. See: 
-<https://k1ss.net/wiki/dev/replacing-udev.md> for more information.
+<{{ "/" | absolute_url }}wiki/dev/replacing-udev> for more information.
 
 Needed for blkid support in eudev (recommended but not required):
 
@@ -371,7 +371,7 @@ and USB drivers are built with [*] (=y) and not [m] (=m).
 A patch may be required for some kernels when built with GCC 10.1.0. Please read
 the link (and the patch itself for more information). @/news/20200509a
 
-TIP: The Wiki contains a basic kernel configuration page. <https://k1ss.net/wiki/kernel/config.md>
+TIP: The Wiki contains a basic kernel configuration page. <{{ absolute_url }}/wiki/kernel/config>
 
 [8.1] Install required packages
 -------------------------------
@@ -389,7 +389,7 @@ TIP: The Wiki contains a basic kernel configuration page. <https://k1ss.net/wiki
     $ kiss i perl
 
 TIP: A patch can be applied to remove this requirement.
-*   <https://k1ss.net/wiki/kernel/config.md#5.0>
+*   <{{ absolute_url }}/wiki/kernel/config#5.0>
 *   /usr/share/doc/kiss/wiki/kernel/patches/kernel-no-perl.patch
 
 [8.2] Download the kernel sources
@@ -454,7 +454,7 @@ Store the generated config for reuse later:
 
     $ cp .config /path/to/somewhere
 
-TIP: The kernel can backup its own .config file. <https://k1ss.net/wiki/kernel/config.md#2.0>
+TIP: The kernel can backup its own .config file. <{{ absolute_url }}/wiki/kernel/config#2.0>
 
 [8.5] Build the kernel
 ----------------------
@@ -591,4 +591,4 @@ If you encountered any issues, don't hesitate to open an issue on one of our
 GitHub repositories, post on <https://reddit.com/r/kisslinux> or join the
 IRC server.
 
-See: <https://k1ss.net/contact>
+See: <{{ absolute_url }}/contact>
