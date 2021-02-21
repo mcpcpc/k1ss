@@ -176,8 +176,8 @@ There are many more repositories in existence, each providing a unique set of
 software. These are all independently created and managed by users. This has
 been called the "KISS Universe".
 
-*   https://k1ss.armaanb.net/wiki/community/repositories
-*   https://github.com/topics/kiss-repo
+*   <https://k1ss.armaanb.net/wiki/community/repositories>
+*   <https://github.com/topics/kiss-repo>
 
 NOTE: It may be desirable to save this step for post-installation.
 
@@ -417,7 +417,7 @@ omitted. This also makes sense as the kernel itself is manually managedv by the
 user. This step is only required if your hardware utilizes makes useb of this 
 firmware.
 
-https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
+<https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git>
 
 Download and extract the firmware:
 
@@ -585,7 +585,7 @@ TIP:
     $ kiss help wiki/software/man-pages
 
 If you encountered any issues, don't hesitate to open an issue on one of our 
-GitHub repositories, post on https://reddit.com/r/kisslinux or join the IRC
-server.
+GitHub repositories, post on <https://reddit.com/r/kisslinux> or join the
+IRC server.
 
 See: @/contact
