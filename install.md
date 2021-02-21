@@ -354,9 +354,9 @@ NOTE: This step must be done every time the hostname is changed.
 This step involves configuring and building your own Linux kernel. If you have
 not done this before, below are a few guides to get you started.
 
-*   https://wiki.gentoo.org/wiki/Kernel/Gentoo_Kernel_Configuration_Guide
-*   https://wiki.gentoo.org/wiki/Kernel/Configuration
-*   https://kernelnewbies.org/KernelBuild
+*   <https://wiki.gentoo.org/wiki/Kernel/Gentoo_Kernel_Configuration_Guide>
+*   <https://wiki.gentoo.org/wiki/Kernel/Configuration>
+*   <https://kernelnewbies.org/KernelBuild>
 
 The Linux kernel is not managed by the package manager. The kernel is managed 
 manually by the user. (Rationale: @/faq#7.3)
@@ -394,8 +394,8 @@ the link (and the patch itself for more information). @/news/20200509a
 
 Kernel releases:
 
-*   https://kernel.org (vanilla)
-*   https://www.fsfla.org (libre)
+*   <https://kernel.org> (vanilla)
+*   <https://www.fsfla.org> (libre)
 
 A larger list of kernels can be found here:
 https://wiki.archlinux.org/index.php/Kernel
