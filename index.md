@@ -2,6 +2,9 @@
 layout: default
 ---
 
+KISS Linux
+==========
+
 An independent Linux(R) distribution with a focus on simplicity and the concept
 of less is more.
 
