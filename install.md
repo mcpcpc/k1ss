@@ -1,3 +1,6 @@
+INSTALLING KISS LINUX
+=====================
+
 Welcome to the installation guide for KISS Linux.
 
 The installation utilizes a tarball which is unpacked to '/'. This same tarball
