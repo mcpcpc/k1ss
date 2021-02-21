@@ -14,5 +14,5 @@ to the security implications in doing so. [1]
 ## References
 -------------
 
-[0] https://www.kernel.org/doc/Documentation/filesystems/efivarfs.txt
-[1] https://github.com/systemd/systemd/issues/2402
+[0]: https://www.kernel.org/doc/Documentation/filesystems/efivarfs.txt
+[1]: https://github.com/systemd/systemd/issues/2402

@@ -284,7 +284,7 @@ NOTE: Remember to also specify whatever codec your soundcard needs.
 [7.0] References
 ----------------
 
-[0] https://wiki.gentoo.org/wiki/AMDGPU
-[1] https://wiki.gentoo.org/wiki/AMD_microcode
-[2] https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files
-[3] https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/issues/16
+[0]: https://wiki.gentoo.org/wiki/AMDGPU
+[1]: https://wiki.gentoo.org/wiki/AMD_microcode
+[2]: https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files
+[3]: https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/issues/16

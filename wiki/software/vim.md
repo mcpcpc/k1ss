@@ -194,5 +194,5 @@ might look something like this:
 References
 ----------
 
-[0] https://github.com/vim/vim
-[1] http://www.guckes.net/vim/setup.html
+[0]: https://github.com/vim/vim
+[1]: http://www.guckes.net/vim/setup.html

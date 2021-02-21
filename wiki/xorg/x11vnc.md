@@ -46,6 +46,6 @@ Note: Remember to replace USER with the name of the regular user.
 References
 ----------
 
-[0] https://github.com/LibVNC/x11vnc
-[1] https://linux.die.net/man/1/x11vnc
+[0]: https://github.com/LibVNC/x11vnc
+[1]: https://linux.die.net/man/1/x11vnc
 

@@ -108,4 +108,4 @@ script. This fully removes the perl requirement.
 
 @/patches/kernel-no-perl.patch  (Written by $/E5ten)
 
-> TIP: All links like this one are also available via 'kiss help'!
+TIP: All links like this one are also available via 'kiss help'!

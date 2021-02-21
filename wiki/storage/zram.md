@@ -106,5 +106,5 @@ more information.
 References
 ----------
 
-[0] https://kernel.org/doc/Documentation/blockdev/zram.txt
-[1] https://man7.org/linux/man-pages/man8/zramctl.8.html
+[0]: https://kernel.org/doc/Documentation/blockdev/zram.txt
+[1]: https://man7.org/linux/man-pages/man8/zramctl.8.html

@@ -97,6 +97,6 @@ Tips and tricks
 References
 ----------
 
-[0] https://github.com/dylanaraps/eiwd
-[1] https://wiki.gentoo.org/wiki/Iwd
-[2] https://manpages.debian.org/testing/iwd/iwd.config.5.en.html
+[0]: https://github.com/dylanaraps/eiwd
+[1]: https://wiki.gentoo.org/wiki/Iwd
+[2]: https://manpages.debian.org/testing/iwd/iwd.config.5.en.html

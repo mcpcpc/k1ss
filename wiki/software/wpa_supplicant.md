@@ -96,4 +96,4 @@ Tips and Tricks
 References
 ----------
 
-[0] https://wiki.archlinux.org/index.php/wpa_supplicant
+[0]: https://wiki.archlinux.org/index.php/wpa_supplicant

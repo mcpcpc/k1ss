@@ -45,5 +45,5 @@ If you would like to remain logged in when the X session ends, remove exec.
 References
 ----------
 
-[0] https://github.com/Earnestly/sx
+[0]: https://github.com/Earnestly/sx
 

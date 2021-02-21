@@ -89,5 +89,5 @@ By running this command in your ssh session
 References
 ----------
 
-[0] https://www.openssh.com/openbsd.html
-[1] https://wiki.gentoo.org/wiki/SSH
+[0]: https://www.openssh.com/openbsd.html
+[1]: https://wiki.gentoo.org/wiki/SSH

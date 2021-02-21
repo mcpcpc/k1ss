@@ -55,6 +55,6 @@ Tips and tricks
 References
 ----------
 
-[0] https://www.alsa-project.org/wiki/Main_Page
-[1] https://wiki.gentoo.org/wiki/ALSA
-[2] https://wiki.archlinux.org/index.php/Advanced_Linux_Sound_Architecture
+[0]: https://www.alsa-project.org/wiki/Main_Page
+[1]: https://wiki.gentoo.org/wiki/ALSA
+[2]: https://wiki.archlinux.org/index.php/Advanced_Linux_Sound_Architecture

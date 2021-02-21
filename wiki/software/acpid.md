@@ -112,4 +112,4 @@ complex multi-file system used by busybox.
 References
 ----------
 
-[0] https://sourceforge.net/projects/acpid2
+[0]: https://sourceforge.net/projects/acpid2

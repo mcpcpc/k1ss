@@ -57,4 +57,4 @@ and run the following command.
 References
 ----------
 
-[0]  https://www.kernel.org/doc/Documentation/efi-stub.txt
+[0]: https://www.kernel.org/doc/Documentation/efi-stub.txt

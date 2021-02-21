@@ -57,9 +57,9 @@ A system's hostname can be set by simply creating a /etc/hostname file:
 
 Remember to replace HOSTNAME with the string of your choosing.
 
-> NOTE: Valid characters for hostnames include ASCII letters from A to Z,
-> digits from 0 to 9, and the hyphen character (-). A hostname may not start
->with a hyphen.
+NOTE: Valid characters for hostnames include ASCII letters from A to Z,
+      digits from 0 to 9, and the hyphen character (-). A hostname may
+      not start with a hyphen.
 
 Managed via runsv
 -----------------
@@ -74,7 +74,7 @@ To start the new managed service, use the following command:
     $ sv up dhcpcd
 
 Tips and Tricks
-________________________________________________________________________________
+---------------
 
 *   A list of possible INTERFACE names can be obtained by running the following:
 
@@ -103,8 +103,8 @@ ________________________________________________________________________________
     255.255.255.0. Also, GATEWAY and DNS_SERVER are the same in this example.
 
 References
-________________________________________________________________________________
+----------
 
-[0] https://github.com/rsmarples/dhcpcd
-[1] https://wiki.archlinux.org/index.php/Network_configuration
-[2] https://wiki.gentoo.org/wiki/Dhcpcd
+[0]: https://github.com/rsmarples/dhcpcd
+[1]: https://wiki.archlinux.org/index.php/Network_configuration
+[2]: https://wiki.gentoo.org/wiki/Dhcpcd

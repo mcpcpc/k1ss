@@ -42,6 +42,6 @@ the headers, the utilities, and the functions documented in that standard.
 References
 ----------
 
-[0] https://en.wikipedia.org/wiki/Man_page
-[1] https://mandoc.bsd.lv/
-[2] https://kernel.org/doc/man-pages/
+[0]: https://en.wikipedia.org/wiki/Man_page
+[1]: https://mandoc.bsd.lv/
+[2]: https://kernel.org/doc/man-pages/

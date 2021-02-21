@@ -193,7 +193,7 @@ formats, and recommended minimum sizes:
 |                            |                                                 |
     
 The boot partition is generally only used for storing kernels or an initramfs.
-As these files are usually very small (<20MB), 256MB is more than enough to
+As these files are usually very small ( less than 20MB), 256MB is more than enough to
 accomodate most use-cases. 512MB is plenty. A separate BOOT is only required on
 UEFI systems.
 
@@ -499,17 +499,17 @@ mounted, and exit the emergency shell.
 [5.0] References
 ----------------
 
-[0]  https://refspecs.linuxfoundation.org/fhs.shtml
-[1]  http://linuxfromscratch.org/lfs/view/stable/chapter02/creatingpartition.html
-[2]  https://man7.org/linux/man-pages/man8/fdisk.8.html
-[3]  http://rodsbooks.com/gdisk/
-[4]  https://linux.die.net/man/8/cfdisk
-[5]  https://gnu.org/software/parted/manual/parted.html
-[6]  https://gparted.org/
-[7]  https://bugzilla.kernel.org/show_bug.cgi?id=207585
-[8]  https://github.com/jedavies-dev/kiss-zfs 
-[9]  https://wiki.archlinux.org/index.php/file_systems 
-[10] https://kiss.armaanb.net/package-manager#6.3
-[11] https://wiki.archlinux.org/index.php/Fstab#Identifying_filesystems
-[12] https://linux.die.net/man/8/dump
-[13] https://man7.org/linux/man-pages/man5/fstab.5.html
+[0]: https://refspecs.linuxfoundation.org/fhs.shtml
+[1]: http://linuxfromscratch.org/lfs/view/stable/chapter02/creatingpartition.html
+[2]: https://man7.org/linux/man-pages/man8/fdisk.8.html
+[3]: http://rodsbooks.com/gdisk/
+[4]: https://linux.die.net/man/8/cfdisk
+[5]: https://gnu.org/software/parted/manual/parted.html
+[6]: https://gparted.org/
+[7]: https://bugzilla.kernel.org/show_bug.cgi?id=207585
+[8]: https://github.com/jedavies-dev/kiss-zfs 
+[9]: https://wiki.archlinux.org/index.php/file_systems 
+[10]: https://kiss.armaanb.net/package-manager#6.3
+[11]: https://wiki.archlinux.org/index.php/Fstab#Identifying_filesystems
+[12]: https://linux.die.net/man/8/dump
+[13]: https://man7.org/linux/man-pages/man5/fstab.5.html
