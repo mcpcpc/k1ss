@@ -371,7 +371,7 @@ and USB drivers are built with [*] (=y) and not [m] (=m).
 A patch may be required for some kernels when built with GCC 10.1.0. Please read
 the link (and the patch itself for more information). @/news/20200509a
 
-> TIP: The Wiki contains a basic kernel configuration page. @/wiki/kernel/config
+TIP: The Wiki contains a basic kernel configuration page. @/wiki/kernel/config
 
 [8.1] Install required packages
 -------------------------------
@@ -388,9 +388,9 @@ the link (and the patch itself for more information). @/news/20200509a
     $ kiss b perl
     $ kiss i perl
 
-> TIP: A patch can be applied to remove this requirement.
->         - @/wiki/kernel/config#5.0
->         - /usr/share/doc/kiss/wiki/kernel/patches/kernel-no-perl.patch
+TIP: A patch can be applied to remove this requirement.
+*   @/wiki/kernel/config#5.0
+*   /usr/share/doc/kiss/wiki/kernel/patches/kernel-no-perl.patch
 
 [8.2] Download the kernel sources
 ---------------------------------
@@ -454,7 +454,7 @@ Store the generated config for reuse later:
 
     $ cp .config /path/to/somewhere
 
-> TIP: The kernel can backup its own .config file. @/wiki/kernel/config#2.0
+TIP: The kernel can backup its own .config file. @/wiki/kernel/config#2.0
 
 [8.5] Build the kernel
 ----------------------
