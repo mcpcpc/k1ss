@@ -14,50 +14,6 @@ From this point on, the guide assumes you have booted a live-CD, are logged
 in as root, have your disks, partitions and filesystems setup and have an
 internet connection.
 
-[1.0] The Process
------------------
-
-- Install KISS                                                             [2.0]
-    - Download the latest release                                          [2.1]
-    - Verify the checksums                                                 [2.2]
-    - Verify the signature                                                 [2.3]
-    - Unpack the tarball                                                   [2.4]
-    - Enter the chroot                                                     [2.5]
-- Setup repositories                                                       [3.0]
-    - KISS_PATH                                                            [3.1]
-    - Official repositories                                                [3.2]
-    - Community                                                            [3.3]
-- Enable repository signing                                                [4.0]
-    - Build and install gnupg1                                             [4.1]
-    - Import My Key                                                        [4.2]
-    - Enable Signature Verification                                        [4.3]
-- Rebuild KISS                                                             [5.0]
-    - Modify Compiler Options                                              [5.1]
-    - Update All Base Packages                                             [5.2]
-    - Rebuild All Packages                                                 [5.3]
-- Userspace tools                                                          [6.0]
-    - Filesystems                                                          [6.1]
-    - Device management                                                    [6.2]
-    - WiFi                                                                 [6.3]
-    - Dynamic IP addressing                                                [6.4]
-- The hostname                                                             [7.0]
-- The kernel                                                               [8.0]
-    - Install required packages                                            [8.1]
-    - Download the kernel sources                                          [8.2]
-    - Download firmware blobs                                              [8.3]
-    - Configure the kernel                                                 [8.4]
-    - Build the kernel                                                     [8.5]
-    - Install the kernel                                                   [8.6]
-- The bootloader                                                           [9.0]
-    - Build and install grub                                               [9.1]
-    - Setup grub                                                           [9.2]
-- Install init scripts                                                    [10.0]
-- Set a root password                                                     [11.0]
-- Add a normal user                                                       [12.0]
-- Install Xorg                                                            [13.0]
-    - Add your user to the relevant groups                                [13.1]
-- Further steps                                                           [14.0]
-
 [2.0] Install KISS
 ------------------
 
