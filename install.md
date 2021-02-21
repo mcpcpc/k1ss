@@ -179,7 +179,7 @@ There are many more repositories in existence, each providing a unique set of
 software. These are all independently created and managed by users. This has
 been called the "KISS Universe".
 
-*   <https://k1ss.net/wiki/community/repositories>
+*   <{{ "/" | absolute_url }}wiki/community/repositories>
 *   <https://github.com/topics/kiss-repo>
 
 NOTE: It may be desirable to save this step for post-installation.
