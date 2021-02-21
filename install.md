@@ -398,7 +398,7 @@ Kernel releases:
 *   <https://www.fsfla.org> (libre)
 
 A larger list of kernels can be found here:
-https://wiki.archlinux.org/index.php/Kernel
+<https://wiki.archlinux.org/index.php/Kernel>
 
 Download the kernel sources:
 
