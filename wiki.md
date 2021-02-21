@@ -2,6 +2,9 @@
 layout: default
 ---
 
+Wiki
+====
+
 Welcome to the KISS WIKI. Documentation and information about KISS and Linux in 
 general. Written by the Community.
 
