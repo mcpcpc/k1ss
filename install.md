@@ -591,4 +591,4 @@ If you encountered any issues, don't hesitate to open an issue on one of our
 GitHub repositories, post on <https://reddit.com/r/kisslinux> or join the
 IRC server.
 
-See: <https://k1ss.net/contact>
+See: <{{ site.baseurl }}/contact>
