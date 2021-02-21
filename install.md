@@ -310,7 +310,7 @@ XFS:
 
 NOTE: If you choose to not install eudev, mdev will automatically be used in its 
 place. Eudev is recommended as a lot of software requires it. See: 
-@/wiki/dev/replacing-udev for more information.
+<wiki/dev/replacing-udev.md> for more information.
 
 Needed for blkid support in eudev (recommended but not required):
 
