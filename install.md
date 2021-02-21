@@ -21,7 +21,7 @@ NOTE: Disks should be setup and fully mounted to /mnt.
 
 Start by declaring a variable.
 
-    $ url=https://github.com/kiss-community/repo/releases/download/2020.9-2  
+    $ url={{ site.kiss.git }}/repo/releases/download/2020.9-2  
 
 [2.1] Download the latest release
 ---------------------------------
@@ -152,7 +152,7 @@ and a lot of other useful software.
 
 Clone the repository to the directory of your choosing.
 
-    $ git clone https://github.com/kiss-community/repo 
+    $ git clone {{ site.kiss.git }}/repo 
 
 This will be cloned to a directory called 'repo'. This directory contains
 multiple KISS repositories (core, extra, testing and xorg). Core and Extra must
@@ -167,7 +167,7 @@ a lot of useful software.
 
 Clone the repository to the directory of your choosing.
 
-    $ git clone https://github.com/kiss-community/community
+    $ git clone {{ site.kiss.git }}/community
 
 This will be cloned to a directory called 'community'. This directory contains a 
 single KISS repository bearing the same name.
@@ -179,7 +179,7 @@ There are many more repositories in existence, each providing a unique set of
 software. These are all independently created and managed by users. This has
 been called the "KISS Universe".
 
-*   <{{ "/" | absolute_url }}wiki/community/repositories>
+*   <{{ site.kiss.web }}/wiki/community/repositories>
 *   <https://github.com/topics/kiss-repo>
 
 NOTE: It may be desirable to save this step for post-installation.
@@ -313,7 +313,7 @@ XFS:
 
 NOTE: If you choose to not install eudev, mdev will automatically be used in its 
 place. Eudev is recommended as a lot of software requires it. See: 
-<{{ "/" | absolute_url }}wiki/dev/replacing-udev> for more information.
+<{{ site.kiss.web }}/wiki/dev/replacing-udev> for more information.
 
 Needed for blkid support in eudev (recommended but not required):
 
@@ -371,7 +371,7 @@ and USB drivers are built with [*] (=y) and not [m] (=m).
 A patch may be required for some kernels when built with GCC 10.1.0. Please read
 the link (and the patch itself for more information). @/news/20200509a
 
-TIP: The Wiki contains a basic kernel configuration page. <{{ absolute_url }}/wiki/kernel/config>
+TIP: The Wiki contains a basic kernel configuration page. <{{ site.kiss.web }}/wiki/kernel/config>
 
 [8.1] Install required packages
 -------------------------------
@@ -389,7 +389,7 @@ TIP: The Wiki contains a basic kernel configuration page. <{{ absolute_url }}/wi
     $ kiss i perl
 
 TIP: A patch can be applied to remove this requirement.
-*   <{{ "/" | absolute_url }}wiki/kernel/config#5.0>
+*   <{{{ site.kiss.web }}wiki/kernel/config#5.0>
 *   /usr/share/doc/kiss/wiki/kernel/patches/kernel-no-perl.patch
 
 [8.2] Download the kernel sources
