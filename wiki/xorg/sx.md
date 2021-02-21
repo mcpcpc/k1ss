@@ -1,8 +1,8 @@
 SX
 ==
 
-sx is a simple alternative to both xinit and startx for starting an Xorg 
-server [0].
+sx is a simple alternative to both xinit and startx for starting an Xorg server
+[0].
 
 Configuration
 -------------
@@ -12,7 +12,7 @@ Ensure that you have sx installed first:
     $ kiss b sx
     $ kiss i sx
 
-The default XDG_DATA_HOME and XDG_CONFIG_HOME directories can be modified via 
+The default XDG_DATA_HOME and XDG_CONFIG_HOME directories can be modified via
 environment variables:
 
     $ echo "export XDG_DATA_HOME=$HOME/.config" >> ~/.profile
@@ -24,8 +24,8 @@ Create the required directories and rc file:
     $ touch ~/.config/sx/sxrc
     $ chmod +x ~/.config/sx/sxrc
 
-At this point, you can add content to your sxrc file. For example, if you
-wanted to start sowm window manager, you could add the following:
+At this point, you can add content to your sxrc file. For example, if you wanted
+to start sowm window manager, you could add the following:
 
     $ echo "exec sowm" >> ~/.config/sx/sxrc
 
@@ -46,3 +46,4 @@ References
 ----------
 
 [0] https://github.com/Earnestly/sx
+

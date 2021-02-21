@@ -1,9 +1,9 @@
-XORG-SERVER 
+XORG-SERVER
 ===========
 
-The xorg-server, part of the X.Org releases, is the main component of the X 
-Window system which abstracts the hardware and provides the foundation for most 
-graphical user interfaces, like desktop environments or window managers, and 
+The xorg-server, part of the X.Org releases, is the main component of the X
+Window system which abstracts the hardware and provides the foundation for most
+graphical user interfaces, like desktop environments or window managers, and
 their applications [0].
 
 [1.0] Getting Started
@@ -25,7 +25,7 @@ and configure _ONE_ of the following packages:
 [2.0] Graphics Drivers
 ----------------------
 
-Depending on your graphics card hardware, one of the following graphics card 
+Depending on your graphics card hardware, one of the following graphics card
 packages should also be installed:
 
 *   xf86-video-amdgpu
@@ -34,19 +34,19 @@ packages should also be installed:
 *   xf86-video-nouveau
 *   xf86-video-vesa
 
-Note: xf86-video-intel is not needed for Intel GPUs as the generic modesetting 
+Note: xf86-video-intel is not needed for Intel GPUs as the generic modesetting
       driver built into Xorg works really well.
 
 [3.0] Window Managers
 ---------------------
 
-Note: Installing a window manager is entirely optional and based on user 
+Note: Installing a window manager is entirely optional and based on user
       preference.
 
-A window manager (WM) is system software that controls the placement and 
-appearance of windows within a windowing system in a graphical user interface. 
-There are many great WM solutions available for KISS, most of which have been 
-contributed by individuals via the Community repository. 
+A window manager (WM) is system software that controls the placement and
+appearance of windows within a windowing system in a graphical user interface.
+There are many great WM solutions available for KISS, most of which have been
+contributed by individuals via the Community repository.
 
 The following is a snapshot of some of the available WMs at this time:
 
@@ -74,18 +74,19 @@ The following is a snapshot of some of the available WMs at this time:
 [4.0] VNC
 ---------
 
-A Virtual Network Computing (VNC) is a graphical desktop-sharing system that 
-uses the Remote Frame Buffer protocol (RFB) to remotely control another computer.
-The following VNC tools are currently offered through the community repository:
+A Virtual Network Computing (VNC) is a graphical desktop-sharing system that
+uses the Remote Frame Buffer protocol (RFB) to remotely control another
+computer. The following VNC tools are currently offered through the community
+repository:
 
 *   x11vnc (#/wiki/software/x11vnc)
 
 [5.0] x11-forwarding
 --------------------
 
-What if you need to access your applications remotely (with no additional 
-applications)? The solution is to utilize X server's "baked in" X11 forwarding 
-solution. For for more information, check out the @/x11-forwarding article.  
+What if you need to access your applications remotely (with no additional
+applications)? The solution is to utilize X server's "baked in" X11 forwarding
+solution. For for more information, check out the @/x11-forwarding article.
 
 [6.0] References
 ----------------
@@ -96,3 +97,4 @@ solution. For for more information, check out the @/x11-forwarding article.
 [3] https://dwm.suckless.org/
 [4] https://github.com/dylanaraps/sowm
 [5] https://github.com/mcpcpc/xwm
+

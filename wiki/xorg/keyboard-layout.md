@@ -22,16 +22,17 @@ Exiting xorg configuration files
 Create 00-keyboard.conf in /etc/X11/xorg.conf.d/ and edit the Xkb* options
 below to suit your needs. [0]
 
-    Section "InputClass" 
+    Section "InputClass"
         Identifier          "system-keyboard"
         MatchIsKeyboard     "on"
         Option "XkbLayout"  "de"
         Option "XkbModel"   "pc105"
         Option "XkbVariant" ",qwertz"
         Option "XkbOptions" "grp:alt_shift_toggle"
-    EndSection 
+    EndSection
 
 References
 ----------
 
 [0] https://www.x.org/releases/X11R7.5/doc/input/XKB-Config.html
+

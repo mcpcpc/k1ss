@@ -6,16 +6,15 @@ X11 connections through an existing SSH session. This is used to run X11
 programs on a server while the ssh-client displays the graphical window through
 the user's X11-server [0].
 
-
 Dependencies
 ------------
 
-In most cases, you will already have the required dependencies. At minimum, 
+In most cases, you will already have the required dependencies. At minimum,
 ensure that you have the following installed:
 
     $ kiss b xorg-server
     $ kiss i xorg-server
-    $ kiss b xauth 
+    $ kiss b xauth
     $ kiss i xauth
 
 Remote Server Configuration
@@ -72,21 +71,21 @@ Tips and Tricks
         $ ssh -X -C user@localhost
 
 *   You can further improve your connection speed by using a cypher to connect
-    to the remove server. This can be passed as an argument using the "-c" 
-    switch at the initialization of a new SSH connection [5]. 
-  
+    to the remove server. This can be passed as an argument using the "-c"
+    switch at the initialization of a new SSH connection [5].
+
         $ ssh -X -C -c aes256-ctr user@localhost
-  
+
 *   Your remote system most likely has many cypher options already available for
-    you to choose from (es128-ctr, aes192-ctr, aes256-ctr, arcfour256, 
-    arcfour128, aes128-cbc, 3des-cbc, blowfish-cbc, cast128-cbc, aes192-cbc, 
+    you to choose from (es128-ctr, aes192-ctr, aes256-ctr, arcfour256,
+    arcfour128, aes128-cbc, 3des-cbc, blowfish-cbc, cast128-cbc, aes192-cbc,
     aes256-cbc, arcfour, etc.) and each will vary in performance and security.
-    Check out websites that benchmark the various security cyphers and choose the
-    one that works best for you [6]. 
+    Check out websites that benchmark the various security cyphers and choose
+	the one that works best for you [6].
 *   Can you forward an entire desktop session?  Why yes, you can! Instructions
     for doing so vary per client, server configuration, and platform [7]. If you
-    chose vcxsrv as your client on a Windows host, then I would recommend checking
-    out the following youtube video:
+    chose vcxsrv as your client on a Windows host, then I would recommend
+	checking out the following youtube video:
     "Linux and Windows | X11 Forwarding with SSH | VNC Alternative" by knary
     https://www.youtube.com/watch?v=UWlsS6Jaibc
 
@@ -101,3 +100,4 @@ References
 [5] https://cyberciti.biz/faq/speeding-up-ssh-x11-forwarding-with-unix-osx-linux-bsd/
 [6] https://blog.famzah.net/2010/06/11/openssh-ciphers-performance-benchmark/
 [7] https://blog.warbel.net/index.php/2018/02/21/using-xnest-or-putty-vcxsrv-to-start-a-full-remote-session/
+
