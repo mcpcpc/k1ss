@@ -2,6 +2,9 @@
 layout: default
 ---
 
+Guidestones
+===========
+
 Below are a set of notes which make KISS... KISS. I felt the need to define in
 as much detail as possible philosophy behind the distribution.
 
