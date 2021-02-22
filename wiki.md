@@ -51,4 +51,4 @@ with the following style requirements:
 Article Index
 -------------
 
-{% for file in site.static_files %}{% if file.path contains 'wiki/' %}<{{ site.baseurl }}{{ file.path }}>{% endif %}<br>{% endfor %}
+{% for file in site.static_files %}{% if file.path contains 'wiki/' %}<{{ site.baseurl }}{{ file.path[0] }}>{% endif %}<br>{% endfor %}
