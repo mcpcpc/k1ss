@@ -3,7 +3,7 @@ layout: default
 title: contact
 ---
 
-COMTACT
+CONTACT
 =======
 
 Feel free to contact me (Dylan Araps) at any of the following:
