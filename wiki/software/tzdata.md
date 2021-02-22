@@ -35,9 +35,6 @@ As an optional final step, remove the tzdata package.
 
     $ kiss r tzdata
 
-References
-----------
-
 [0]: https://github.com/eggert/tz
 [1]: https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Base#Timezone
 [2]: https://wiki.archlinux.org/index.php/System_time
