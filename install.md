@@ -1,4 +1,4 @@
-Installing KISS Linux
+INSTALLING KISS LINUX
 =====================
 
 Welcome to the installation guide for KISS Linux.

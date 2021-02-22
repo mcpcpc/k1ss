@@ -3,7 +3,7 @@ layout: default
 title: home
 ---
 
-KISS Linux
+KISS LINUX
 ==========
 
 An independent Linux(R) distribution with a focus on simplicity and the concept

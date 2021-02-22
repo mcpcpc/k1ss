@@ -3,7 +3,7 @@ layout: default
 title: guidestones
 ---
 
-Guidestones
+GUIDESTONES
 ===========
 
 Below are a set of notes which make KISS... KISS. I felt the need to define in
