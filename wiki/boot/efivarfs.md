@@ -12,4 +12,4 @@ to the security implications in doing so [0],[1].
     $ umount /sys/firmware/efi/efivars/
 
 [0]: https://www.kernel.org/doc/Documentation/filesystems/efivarfs.txt
-[1]: https://github.com/systemd/systemd/issues/2402> "Mount efivarfs read-only
+[1]: https://github.com/systemd/systemd/issues/2402
