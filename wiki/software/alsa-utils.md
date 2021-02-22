@@ -52,9 +52,6 @@ Tips and tricks
 *   More "complex" .asoundrc configuration file examples can be found on the 
     Gentoo Wiki [1] and Arch Linux Wiki [2].
 
-References
-----------
-
 [0]: https://www.alsa-project.org/wiki/Main_Page
 [1]: https://wiki.gentoo.org/wiki/ALSA
 [2]: https://wiki.archlinux.org/index.php/Advanced_Linux_Sound_Architecture
