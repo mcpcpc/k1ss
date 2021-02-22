@@ -556,9 +556,6 @@ contribution is welcome!
 For a current list of project milestones, check out the first section of the
 README at $/dilyn-corner/KISS-kde.
 
-[7.0] References
-----------------
-
 [0]: https://kde.org
 [1]: https://qt.io
 [2]: https://kiss.armaanb.net/guidestones
