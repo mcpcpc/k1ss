@@ -31,8 +31,5 @@ below to suit your needs. [0]
         Option "XkbOptions" "grp:alt_shift_toggle"
     EndSection
 
-References
-----------
-
 [0]: https://www.x.org/releases/X11R7.5/doc/input/XKB-Config.html
 
