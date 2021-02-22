@@ -41,7 +41,7 @@ Run command during shutdown:
     # Save system time to hwclock.
     echo "hwclock -w" > /etc/rc.d/hwclock.pre.shutdown
 
-> TIP: .post.shutdown can also be used.
+TIP: .post.shutdown can also be used.
 
 Using /etc/inittab
 ------------------
