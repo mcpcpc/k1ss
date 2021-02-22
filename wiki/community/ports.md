@@ -9,22 +9,21 @@ easier.
 aarch64
 -------
 
-Source: $/jedavies-dev/kiss-aarch64
+Source: <{{ site.kiss.gh }}/jedavies-dev/kiss-aarch64>
 
 armv7
 -----
 
-Source: $/jedavies-dev/kiss-armv7
+Source: <{{ site.kiss.gh }}/jedavies-dev/kiss-armv7>
 
 ppc64le
 -------
 
-Source: $/jedavies-dev/kiss-ppc64le
+Source: <{{ site.kiss.gh }}/jedavies-dev/kiss-ppc64le>
 
 i686
 ----
 
-Source: $/arvl130/kiss32-repo        (musl)
-        $/arvl130/kiss32-uclibc-repo (uclibc)
-        $/arvl130/kiss32-glibc-repo  (glibc)
-
+Source: <{{ site.kiss.gh }}/arvl130/kiss32-repo>        (musl)
+        <{{ site.kiss.gh }}/arvl130/kiss32-uclibc-repo> (uclibc)
+        <{{ site.kiss.gh }}/arvl130/kiss32-glibc-repo>  (glibc)
