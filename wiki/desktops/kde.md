@@ -188,7 +188,8 @@ missing dependencies.
 These are the only requirements for building plasma-desktop.
 
 NOTE: in order to build certain extras, coreutils is required. Specifically:
-elogind, libblockdev, and udisks2 require three separate programs. Patches are welcome to resolve this! coreutils provides files which conflict with other
+elogind, libblockdev, and udisks2 require three separate programs. Patches are
+welcome to resolve this! coreutils provides files which conflict with other
 KISS packages, such as busybox. To ensure we are using the correct programs
 when we attempt to build these extras, we use the alternatives system! For more 
 information on this system, see [5]. This is not required if you do not care
