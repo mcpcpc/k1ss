@@ -1,5 +1,5 @@
-INSTALLING KISS LINUX
-=====================
+INSTALLATION
+============
 
 Welcome to the installation guide for KISS Linux.
 

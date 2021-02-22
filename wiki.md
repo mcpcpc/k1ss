@@ -3,8 +3,8 @@ layout: default
 title: wiki
 ---
 
-KISS WIKI
-=========
+WIKI
+====
 
 Welcome to the KISS WIKI. Documentation and information about KISS and Linux in 
 general. Written by the Community.
