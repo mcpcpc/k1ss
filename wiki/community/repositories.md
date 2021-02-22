@@ -9,28 +9,28 @@ Periish's Repositories
 These repositories by Periish contain everything from DBus, PulseAudio and Bluez
 to XFCE4, podman and more.
 
-Source: $/periish/kiss-all
+Source: <{{ site.kiss.gh }}/periish/kiss-all>
 
 KDE
 ---
 
 A KISS repository for KDE and friends.
 
-Source: $/dilyn-corner/KISS-kde
+Source: <{{ site.kiss.gh }}/dilyn-corner/KISS-kde>
 
 Games
 -----
 
 50+ open source games from a myriad of genres.
 
-Source: $/sdsddsd1/kiss-games
+Source: <{{ site.kiss.gh }}/sdsddsd1/kiss-games>
 
 LLVM
 ----
 
 A kiss-repo structure to build standalone LLVM.
 
-Source: $/konimex/kiss-llvm
+Source: <{{ site.kiss.gh }}/konimex/kiss-llvm>
 
 ZFS
 ---
@@ -38,7 +38,7 @@ ZFS
 This repository provides ZFS on Linux and contains the userland, utilities,
 kernel modules and event daemon (zed).
 
-Source: $/jedavies-dev/kiss-zfs
+Source: <{{ site.kiss.gh }}/jedavies-dev/kiss-zfs>
 
 WYVERKISS
 ---------
@@ -46,25 +46,25 @@ WYVERKISS
 Wyverkiss is an alternative rootfs for KISS Linux. If KISS goes GNU, we go the
 opposite.
 
-Source: $/wyvertux/wyverkiss
+Source: <{{ site.kiss.gh }}/wyvertux/wyverkiss>
 
 Flatpak
 -------
 
 Flatpak and friends.
 
-Source: $/dylanaraps/kiss-flatpak
+Source: <{{ site.kiss.gh }}/dylanaraps/kiss-flatpak>
 
 Fonts
 -----
 
 Fonts packaged for KISS Linux.
 
-Source: $/Himmalerin/kiss-fonts
+Source: <{{ site.kiss.gh }}/Himmalerin/kiss-fonts>
 
 Docker
 ------
 
 Docker and its dependencies.
 
-Source: $/cemkeylan/cpt-docker
+Source: <{{ site.kiss.gh }}/cemkeylan/cpt-docker>
