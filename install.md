@@ -180,7 +180,7 @@ software. These are all independently created and managed by users. This has
 been called the "KISS Universe".
 
 *   <{{ site.kiss.web }}/wiki/community/repositories>
-*   <https://github.com/topics/kiss-repo>
+*   <{{ site.kiss.gh }}/topics/kiss-repo>
 
 NOTE: It may be desirable to save this step for post-installation.
 
