@@ -1,9 +1,9 @@
-EFIVARFS [0]
-============
+EFIVARFS
+========
 
 To use efibootmgr and other software to manipulate the UEFI boot entries, the
 efivars filesystem must be mounted. This isn't handled automatically by KISS due
-to the security implications in doing so. [1]
+to the security implications in doing so [0][1].
 
     # Mount efivars.
     $ mount -t efivarfs none /sys/firmware/efi/efivars/
