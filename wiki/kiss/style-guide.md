@@ -156,6 +156,7 @@ Good:
 Bad:
 
     gcc -o file file.c
+    
 Good:
 
     "${CC:-cc}" -o file file.c
