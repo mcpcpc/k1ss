@@ -29,7 +29,7 @@ Using /etc/rc.d
 ---------------
 
 This method of configuration works with every init system which uses the KISS 
-init framework. See $/kisslinux/init
+init framework. See <{{ site.kiss.git }}/kisslinux/init>
 
 Run command during boot:
 
