@@ -362,9 +362,9 @@ not done this before, below are a few guides to get you started.
 *   <https://kernelnewbies.org/KernelBuild>
 
 The Linux kernel is not managed by the package manager. The kernel is managed 
-manually by the user. (Rationale: @/faq#7.3)
+manually by the user. (Rationale: <{{ site.kiss.web }}/wiki/kiss/faq#7.3)>
 
-KISS does not support booting using an initramfs (see @/faq#7.2). When
+KISS does not support booting using an initramfs (see <{{ site.kiss.git }}/wiki/faq#7.2>). When
 configuring your kernel ensure that all required file-system, disk controller
 and USB drivers are built with [*] (=y) and not [m] (=m).
 
@@ -389,7 +389,7 @@ TIP: The Wiki contains a basic kernel configuration page. <{{ site.kiss.web }}/w
     $ kiss i perl
 
 TIP: A patch can be applied to remove this requirement.
-*   <{{{ site.kiss.web }}wiki/kernel/config#5.0>
+*   <{{ site.kiss.web }}/wiki/kernel/config#5.0>
 *   /usr/share/doc/kiss/wiki/kernel/patches/kernel-no-perl.patch
 
 [8.2] Download the kernel sources
@@ -454,7 +454,7 @@ Store the generated config for reuse later:
 
     $ cp .config /path/to/somewhere
 
-TIP: The kernel can backup its own .config file. <{{ absolute_url }}/wiki/kernel/config#2.0>
+TIP: The kernel can backup its own .config file. <{{ site.kiss.web }}/wiki/kernel/config#2.0>
 
 [8.5] Build the kernel
 ----------------------
