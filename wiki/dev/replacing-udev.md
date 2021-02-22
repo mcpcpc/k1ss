@@ -128,20 +128,20 @@ Purging EUDEV
 
 *   Disable the udevd service
 
-    # From this point forward any device manager hotplugging functionality will be
-    # unusable.
-    $ unlink /var/service/udevd
+        # From this point forward any device manager hotplugging functionality will be
+        # unusable.
+        $ unlink /var/service/udevd
 
 *   Remove the eudev package
 
-    # The removal is forced as the packages which depend on eudev will be rebuilt.
-    $ KISS_FORCE=1 kiss r eudev
+        # The removal is forced as the packages which depend on eudev will be rebuilt.
+        $ KISS_FORCE=1 kiss r eudev
 
 *   Generate a list of all packages which need to be rebuilt
 
-    $ kiss-revdepends eudev
-    libinput/depends:eudev
-    xorg-server/depends:eudev
+        $ kiss-revdepends eudev
+        libinput/depends:eudev
+        xorg-server/depends:eudev
 
 *   Rebuild all required packages
 
@@ -153,20 +153,20 @@ Purging EUDEV
           the package you are trying to rebuild has a mandatory dependency on
           eudev (and you cannot continue this exercise).
 
-    $ kiss b libinput xorg-server
+        $ kiss b libinput xorg-server
 
 *   Verify that the eudev dependence is gone
 
-    # The following command should output nothing. If it does not, the outputted
+        # The following command should output nothing. If it does not, the outputted
     packages require a rebuild.
-    $ kiss-revdepends eudev
+        $ kiss-revdepends eudev
 
 Changing Device Managers
 ------------------------
 
 *   busybox mdev: Simply enable the `mdev` service.
 
-    $ ln -s /etc/sv/mdev/ /var/service
+        $ ln -s /etc/sv/mdev/ /var/service
 
 *   Other device managers: Open an issue in $/kisslinux/init as the init scripts
     will need support for other device managers.
