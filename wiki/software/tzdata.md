@@ -3,7 +3,7 @@ TZDATA
 
 The Time Zone Database (called tz, tzdb or zoneinfo) contains code and data that
 represent the history of local time for many representative locations around the 
-globe [0].  
+globe. [0]
 
 Configuration
 -------------

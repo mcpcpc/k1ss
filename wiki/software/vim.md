@@ -6,7 +6,7 @@ have been added: multi-level undo, syntax highlighting, command line history,
 on-line help, spell checking, filename completion, block operations, script
 language, etc. There is also a Graphical User Interface (GUI) available. Still,
 vi compatibility is maintained, those who have vi "in the fingers" will feel at
-home [0].
+home. [0]
 
 Configuration
 -------------

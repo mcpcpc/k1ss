@@ -5,7 +5,7 @@ wpa_supplicant is a cross-platform supplicant with support for WEP, WPA and WPA2
 (IEEE 802.11i). It is suitable for desktops, laptops and embedded systems. It is 
 the IEEE 802.1X/WPA component that is used in the client stations. It implements
 key negotiation with a WPA authenticator and it controls the roaming and IEEE 
-802.11 authentication/association of the wireless driver [0]. 
+802.11 authentication/association of the wireless driver. [0]
 
 Configuration
 -------------
