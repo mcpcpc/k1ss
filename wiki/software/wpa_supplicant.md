@@ -37,7 +37,7 @@ For additional network requirements, refer to the "wpa_supplicant" Arch Linux
 Wiki page [0].
 
 Generating a Passphrase
-________________________________________________________________________________
+-----------------------
 
 NOTE: This section is not required but HIGHLY recommended since storing your
       password in clear text is not good practice. 
