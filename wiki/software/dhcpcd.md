@@ -102,9 +102,6 @@ Tips and Tricks
     Notice the "/24" suffix, which is an abbreviation for the subnet mask
     255.255.255.0. Also, GATEWAY and DNS_SERVER are the same in this example.
 
-References
-----------
-
 [0]: https://github.com/rsmarples/dhcpcd
 [1]: https://wiki.archlinux.org/index.php/Network_configuration
 [2]: https://wiki.gentoo.org/wiki/Dhcpcd
