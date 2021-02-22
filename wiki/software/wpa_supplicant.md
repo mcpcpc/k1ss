@@ -93,7 +93,4 @@ Tips and Tricks
     wpa_supplicant in the foreground (i.e. without the -B option) for better 
     debugging messages.
 
-References
-----------
-
 [0]: https://wiki.archlinux.org/index.php/wpa_supplicant
