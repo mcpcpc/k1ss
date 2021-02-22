@@ -205,9 +205,6 @@ enter the reason for initiating a PR (i.e. "git: new article") and press the
 Note: Pay attention to which branch is being merged into the master branch of
       the repository :kisslinux/wiki".
 
-[5.0] References
-----------------
-
 [0]: https://git-scm.com
 [1]: https://www.atlassian.com/git/tutorials/git-forks-and-upstreams
 [2]: https://www.devroom.io/2011/07/05/git-squash-your-latests-commits-into-one/
