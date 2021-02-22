@@ -496,9 +496,6 @@ into an emergency shell! Even a small typo will result in this. If it occurs,
 simply check the fstab for errors, mount the partitions that failed to be
 mounted, and exit the emergency shell.
 
-[5.0] References
-----------------
-
 [0]: https://refspecs.linuxfoundation.org/fhs.shtml
 [1]: http://linuxfromscratch.org/lfs/view/stable/chapter02/creatingpartition.html
 [2]: https://man7.org/linux/man-pages/man8/fdisk.8.html
