@@ -58,10 +58,10 @@ Preparation
         Device Node (319):      "/dev/input/event4"
         Device Product ID (320):        1, 1
 
-   The "Device Node (XXX):" line displays the location in /dev/ of my keyboard
-   and is the value we will use when configuring Xorg. My keyboard is located
-   at /dev/input/event4. This command should be repeated for any other input
-   devices.
+    The "Device Node (XXX):" line displays the location in /dev/ of my keyboard
+    and is the value we will use when configuring Xorg. My keyboard is located
+    at /dev/input/event4. This command should be repeated for any other input
+    devices.
 
 Configuring Xorg
 ----------------
