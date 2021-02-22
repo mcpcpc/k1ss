@@ -166,13 +166,13 @@ GNU AUTOTOOLS
 -------------
 
 [0400] Use the following style:
-
-   ./configure \
+    
+    ./configure \
        --prefix=/usr \
        --more_args_here
 
-   make
-   make DESTDIR="$1" install
+    make
+    make DESTDIR="$1" install
 
 [0401] Avoid running ./autogen.sh, autoreconf or similar tools prior to starting
 the build process. If there are no pre-generated configure or Makefiles, an
@@ -185,55 +185,55 @@ MESON
 -----
 
 [0600] Use the following style:
+    
+    export DESTDIR="$1"
 
-   export DESTDIR="$1"
-
-   meson \
+    meson \
        --prefix=/usr \
        -Dexample=false \
        . output
 
-   ninja -C output
-   ninja -C output install
+    ninja -C output
+    ninja -C output install
 
 CMAKE
 -----
 
 [0800] Use the following style:
+    
+    export DESTDIR="$1"
 
-   export DESTDIR="$1"
-
-   cmake -B build \
+    cmake -B build \
        -DCMAKE_INSTALL_PREFIX=/usr \
        -DFLAG=1
 
-   cmake --build   build
-   cmake --install build
+    cmake --build   build
+    cmake --install build
 
 MAKE
 ----
 
 [1000] Use one of the following style when applicable:
 
-   make
-   make DESTDIR="$1" PREFIX=/usr install
+    make
+    make DESTDIR="$1" PREFIX=/usr install
 
 
-   make PREFIX=/usr
-   make DESTDIR="$1" install
+    make PREFIX=/usr
+    make DESTDIR="$1" install
 
 
-   make PREFIX=/usr
-   make DESTDIR="$1" PREFIX=/usr install
+    make PREFIX=/usr
+    make DESTDIR="$1" PREFIX=/usr install
 
 For packages which require a few variables be set, prefer this style.
-
-   make \
+    
+    make \
        PREFIX=/usr \
        SBINDIR=/usr/bin \
        OPT="$CFLAGS"
 
-   make \
+    make \
        DESTDIR="$1" \
        PREFIX=/usr \
        install
@@ -256,24 +256,24 @@ RUST
 ----
 
 [1050] Use the following style:
+    
+    cargo build --release
 
-   cargo build --release
-
-   install -Dm755 target/release/rg "$1/usr/bin/rg"
+    install -Dm755 target/release/rg "$1/usr/bin/rg"
 
 GO
 --
 
 [1100] Use the following style:
+    
+    export GOPATH="$PWD/go"
+    export GO111MODULE=on
 
-   export GOPATH="$PWD/go"
-   export GO111MODULE=on
-
-   go build \
+    go build \
        -modcacherw \
        -trimpath
 
-   install -Dm755 lazygit "$1/usr/bin/lazygit"
+    install -Dm755 lazygit "$1/usr/bin/lazygit"
 
 PYTHON
 ------
