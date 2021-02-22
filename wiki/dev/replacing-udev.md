@@ -1,23 +1,23 @@
 REPLACING UDEV
---------------
+==============
 
 As of the 20/01/2020, it is now possible to replace eudev with the device
 manager of your choosing. This Wiki page will cover replacing eudev with busybox mdev, however the steps are more or less the same for all other device managers (smdev, vdev, ...).
 
-CAVEATS
+Caveats
 -------
 
 *   Xorg will be unable to automatically detect input devices.
 *   Libinput will be unable to use its quirks system.
 
-BENEFITS
+Benefits
 --------
 
 *   Use any device manager, swap between them or use none at all.
 *   Alternatives are simpler and lighter.
 *   Faster boot process.
 
-PREPARATION
+Preparation
 -----------
 
 1. Make note of your current XKB rules, model and layout.
@@ -61,7 +61,7 @@ Xorg compiled without eudev may require manual configuration to correctly set
    at /dev/input/event4. This command should be repeated for any other input
    devices.
 
-CONFIGURING XORG
+Configuring Xorg
 ----------------
 
 When Xorg is built without eudev, Xorg will be unable to automatically find and
@@ -122,7 +122,7 @@ NOTE: The below files should live in /etc/X11/xorg.conf.d/.
       Option     "Tapping" "true"
   EndSection
 
-PURGING EUDEV
+Purging EUDEV
 -------------
 
 * Disable the udevd service
@@ -163,7 +163,7 @@ PURGING EUDEV
 
   $ kiss-revdepends eudev
 
-CHANGING DEVICE MANAGERS
+Changing Device Managers
 ------------------------
 
 * busybox mdev
@@ -177,7 +177,7 @@ CHANGING DEVICE MANAGERS
   Open an issue in $/kisslinux/init as the init scripts will need support for
   other device managers.
 
-REBOOT
+Reboot
 ------
 
 If all went well, you should now be using mdev as your device manager while
