@@ -109,7 +109,4 @@ $1=button/mute, $2=MUTE, $3=00000080, $4=00000000, $5=K. The event parameters
 provide an easy way to handle all events in a single script instead of the more
 complex multi-file system used by busybox.
 
-References
-----------
-
 [0]: https://sourceforge.net/projects/acpid2
