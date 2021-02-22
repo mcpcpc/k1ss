@@ -103,8 +103,5 @@ In addition to manipulating values in /sys/block/zramX/*, users can use the
 zramctl program provided by util-linux to manage their zram devices. See [1] for
 more information.
 
-References
-----------
-
 [0]: https://kernel.org/doc/Documentation/blockdev/zram.txt
 [1]: https://man7.org/linux/man-pages/man8/zramctl.8.html
