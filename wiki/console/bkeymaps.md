@@ -24,7 +24,4 @@ To load a keymap at login, add the following command to your .profile.
     # Load keymap using kbd's loadkeys.                                            
     $ loadkeys file
 
-References
-----------
-    
 [0]: https://dev.alpinelinux.org/bkeymaps/
