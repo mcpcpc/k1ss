@@ -17,18 +17,18 @@ kiss-find
 
 Search for packages in all known kiss repositories.
 
-Source: https://git.ebc.li/kiss/custom/src/branch/main/custom/kiss-find
+Source: <https://git.ebc.li/kiss/custom/src/branch/main/custom/kiss-find>
 
 kiss-rmdeps
 -----------
 
 Remove dependencies recursively.
 
-Source: https://gist.github.com/FriendlyNeighborhoodShane/41593680b39c0c04cd82b5497ca25a26
+Source: <https://gist.github.com/FriendlyNeighborhoodShane/41593680b39c0c04cd82b5497ca25a26>
 
 kiss-steal
 ----------
 
 Copy packages from any KISS repo automatically
 
-Source: https://git.ebc.li/kiss/custom/src/branch/main/custom/kiss-steal
+Source: <https://git.ebc.li/kiss/custom/src/branch/main/custom/kiss-steal>

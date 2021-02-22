@@ -19,7 +19,7 @@ Carbs Linux is an in-development Linux distribution with a suckless mindset. The
 base system will consist of only the necessary programs to create a Linux
 distribution.
 
-Source: https://carbslinux.org/
+Source: <https://carbslinux.org/>
 
 Pine Linux
 ----------
@@ -27,7 +27,7 @@ Pine Linux
 An experimental linux distro with the goal of being secure, fast, and fully
 suckless.
 
-Source: https://sr.ht/~fultonbrowne/Pine-linux/
+Source: <https://sr.ht/~fultonbrowne/Pine-linux/>
 
 Mue Linux
 ---------
@@ -35,7 +35,7 @@ Mue Linux
 Mue Linux is an attempt at a minimalistic linux system with strong ideals.
 You can find more information about the ideals here https://muevoid.org/ideals
 
-Source: https://github.com/muevoid/mue-linux/
+Source: <https://github.com/muevoid/mue-linux/>
 
 Glasnost Linux
 --------------
@@ -43,4 +43,4 @@ Glasnost Linux
 Glasnost Linux is a Linux® distribution using the Clang/LLVM toolchain and musl
 libc.
 
-Source:  https://www.glasnost.org/
+Source:  <https://www.glasnost.org/>
