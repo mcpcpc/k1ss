@@ -3,7 +3,7 @@ COMMUNITY REPOSITORIES
 
 Software repositories created and maintained by members of the KISS Community.
 
-PERIISH'S REPOSITORIES
+Periish's Repositories
 ----------------------
 
 These repositories by Periish contain everything from DBus, PulseAudio and Bluez
@@ -18,7 +18,7 @@ A KISS repository for KDE and friends.
 
 Source: $/dilyn-corner/KISS-kde
 
-GAMES
+Games
 -----
 
 50+ open source games from a myriad of genres.
@@ -48,21 +48,21 @@ opposite.
 
 Source: $/wyvertux/wyverkiss
 
-FLATPAK
+Flatpak
 -------
 
 Flatpak and friends.
 
 Source: $/dylanaraps/kiss-flatpak
 
-FONTS
+Fonts
 -----
 
 Fonts packaged for KISS Linux.
 
 Source: $/Himmalerin/kiss-fonts
 
-DOCKER
+Docker
 ------
 
 Docker and its dependencies.
