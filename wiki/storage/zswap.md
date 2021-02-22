@@ -65,9 +65,6 @@ compressed page eviction; it can only reject new pages when full.
 
 For more information on z3fold and zsmalloc, see [3] and [4].
 
-References
-----------
-
 [0]: https://kernel.org/doc/html/latest/vm/zswap.html
 [1]: https://lkml.iu.edu/hypermail/linux/kernel/1212.1/01472.html
 [2]: https://github.com/lz4/lz4
