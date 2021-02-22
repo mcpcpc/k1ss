@@ -545,7 +545,7 @@ Source code: $/kisslinux/init
 ------------------------------
 
 To install Xorg, the input drivers and a basic default set of fonts, run the 
-following commands. See @/wiki/xorg
+following commands. See <{{ site.kiss.web }}/wiki/xorg>
 
     $ kiss b xorg-server xinit xf86-input-libinput
 
