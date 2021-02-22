@@ -86,8 +86,5 @@ By running this command in your ssh session
 
         $ export TERM=xterm
 
-References
-----------
-
 [0]: https://www.openssh.com/openbsd.html
 [1]: https://wiki.gentoo.org/wiki/SSH
