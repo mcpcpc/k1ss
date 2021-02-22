@@ -526,7 +526,7 @@ The default init is busybox init (though nothing ties you to it). The below
 commands install the bootup and shutdown scripts as well as the default inittab 
 config.
 
-Source code: $/kisslinux/init
+Source code: <{{ site.kiss.git }}/init>
 
     $ kiss b baseinit
     $ kiss i baseinit
