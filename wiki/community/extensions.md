@@ -10,7 +10,7 @@ kiss-bin
 
 Make dealing with binary package repositories easier.
 
-Source: $/CarbsLinux/kiss-bin
+Source: <{{ site.kiss.gh }}/CarbsLinux/kiss-bin>
 
 kiss-find
 ---------
