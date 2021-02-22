@@ -29,8 +29,5 @@ Below are a few examples of *basic* rules that could be set:
 
 Refer to OpenBSD doas.conf manual page [1] for more information.
 
-References
-----------
-
 [0]: https://github.com/Duncaen/OpenDoas
 [1]: https://man.openbsd.org/doas.conf.5
