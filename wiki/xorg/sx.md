@@ -42,8 +42,5 @@ Add the following to the bottom of your ~/.profile file:
 
 If you would like to remain logged in when the X session ends, remove exec.
 
-References
-----------
-
 [0]: https://github.com/Earnestly/sx
 
