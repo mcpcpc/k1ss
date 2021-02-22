@@ -89,9 +89,6 @@ Tips and Tricks
     "Linux and Windows | X11 Forwarding with SSH | VNC Alternative" by knary
     https://www.youtube.com/watch?v=UWlsS6Jaibc
 
-References
-----------
-
 [0]: https://wiki.archlinux.org/index.php/OpenSSH#X11_forwarding
 [1]: https://sourceforge.net/projects/vcxsrv/
 [2]: https://mobaxterm.mobatek.net/
@@ -100,4 +97,3 @@ References
 [5]: https://cyberciti.biz/faq/speeding-up-ssh-x11-forwarding-with-unix-osx-linux-bsd/
 [6]: https://blog.famzah.net/2010/06/11/openssh-ciphers-performance-benchmark/
 [7]: https://blog.warbel.net/index.php/2018/02/21/using-xnest-or-putty-vcxsrv-to-start-a-full-remote-session/
-
