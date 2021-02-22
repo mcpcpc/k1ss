@@ -34,9 +34,5 @@ Add the following to the bottom of your ~/.profile file:
 
 If you would like to remain logged in when the X session ends, remove exec.
 
-References
-----------
-
 [0]: https://www.x.org/releases/X11R7.6/doc/man/man1/xinit.1.xhtml
 [1]: https://wiki.archlinux.org/index.php/Xinit
-
