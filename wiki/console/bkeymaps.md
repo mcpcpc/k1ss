@@ -1,7 +1,7 @@
-BKEYMAPS [0]
-============
+BKEYMAPS 
+========
 
-Binary keymaps to set the keyboard layout.
+Binary keymaps to set the keyboard layout [0].
 
 Install keymaps
 ---------------
