@@ -191,8 +191,6 @@ might look something like this:
     syntax on
     set bs=2 ls=2 shm=at tw=72 sw=4 ts=4 sts=4 ww=<,>,h,l
 
-References
-----------
 
 [0]: https://github.com/vim/vim
 [1]: http://www.guckes.net/vim/setup.html
