@@ -46,7 +46,7 @@ with the following style requirements:
 *   Character width does not exceed 80. 
     An exception may be made for strings where a CR-LF cannot be reasonably 
     placed or would impact readability (e.g. long URLs).
-*   All date/times formatted per ISO 8601.
+*   All date and time related strings formatted per ISO 8601.
 
 Article Index
 -------------
