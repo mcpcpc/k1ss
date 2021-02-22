@@ -5,4 +5,5 @@ gems:
 kiss:
   web: https://mcpcpc.com/k1ss
   git: https://github.com/kiss-community
+  gh:  https://github.com
   
