@@ -88,13 +88,9 @@ What if you need to access your applications remotely (with no additional
 applications)? The solution is to utilize X server's "baked in" X11 forwarding
 solution. For for more information, check out the @/x11-forwarding article.
 
-[6.0] References
-----------------
-
 [0]: https://www.x.org/wiki/
 [1]: https://github.com/venam/2bwm
 [2]: https://github.com/baskerville/bspwm
 [3]: https://dwm.suckless.org/
 [4]: https://github.com/dylanaraps/sowm
 [5]: https://github.com/mcpcpc/xwm
-
