@@ -10,7 +10,7 @@ Wyvertux
 Wyvertux is an experimental Linux distribution that aims to completely remove
 GNU utilities (if it's even possible) from the Linux build system.
 
-Source: $/wyvertux/wyvertux
+Source: <{{ site.kiss.gh }}/wyvertux/wyvertux>
 
 Carbs Linux
 -----------
