@@ -51,4 +51,4 @@ with the following style requirements:
 Article Index
 -------------
 
-{% for file in site.pages %}{% if file.path contains 'wiki/' %}<{{ site.kiss.web }}/{{ file.path | replace: ".md", ".html" }}><br>{% endif %}{% endfor %}
+{% for file in site.pages %}{% if file.path contains 'wiki/' %}[{{ file.path | replace: ".md", ".html" }}]({{ site.kiss.web }}/{{ file.path | replace: ".md", ".html" }})<br>{% endif %}{% endfor %}
