@@ -51,4 +51,4 @@ with the following style requirements:
 Article Index
 -------------
 
-{% for image in site.static_files %}{% if image.path contains 'wiki/' %}[{{ image.path }}]({{ site.baseurl }}{{ image.path }}){% endif %}<br>{% endfor %}
+{% for image in site.static_files %}{% if image.path contains 'wiki/' %}[{{ image.path[0] }}]({{ site.baseurl }}{{ image.path }}){% endif %}<br>{% endfor %}
