@@ -10,7 +10,7 @@ Wyvertux
 Wyvertux is an experimental Linux distribution that aims to completely remove
 GNU utilities (if it's even possible) from the Linux build system.
 
-Source: <{{ site.kiss.gh }}/wyvertux/wyvertux>
+Source: <{{ site.user }}/wyvertux/wyvertux>
 
 Carbs Linux
 -----------
@@ -35,7 +35,7 @@ Mue Linux
 Mue Linux is an attempt at a minimalistic linux system with strong ideals.
 You can find more information about the ideals here https://muevoid.org/ideals
 
-Source: <https://github.com/muevoid/mue-linux/>
+Source: <{{ site.user }}/muevoid/mue-linux/>
 
 Glasnost Linux
 --------------

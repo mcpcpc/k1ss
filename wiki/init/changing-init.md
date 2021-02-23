@@ -12,8 +12,8 @@ nothing is tightly coupled or dependent on a specific init or service manager.
 [1.0] Rebooting after switching init systems
 --------------------------------------------
 
-After switching init systems, your running init system may not accept the
-new poweroff commands. You will need to reboot/poweroff using the running init's
+After switching init systems, your running init system may not accept the new
+poweroff commands. You will need to reboot/poweroff using the running init's
 utilities for the new utilities to work. These commands are for the init system
 currently running on your system and not the one you are switching to.
 
@@ -23,7 +23,7 @@ currently running on your system and not the one you are switching to.
     # Runit
     $ runit-init 6
 
-    # sinit/shinit and Hummingbird 
+    # sinit/shinit and Hummingbird
     $ kill -s INT 1
 
 [2.0] runit
@@ -36,7 +36,7 @@ Begin by first verifying that runit is installed.
 
 Finally, use the alternatives system to swap to runit.
 
-    # See #/package-manager#3.2 for more information.
+    # See <{{ site.wiki }}/package-manager#3.2> for more information.
     $ kiss a runit /usr/bin/init
     $ kiss a runit /usr/bin/poweroff
     $ kiss a runit /usr/bin/reboot
@@ -54,14 +54,14 @@ Then, swap to Hummingbird by using the alternatives system.
     $ kiss a hummingbird-git /usr/bin/init
     $ kiss a hummingbird-git /usr/bin/reboot
 
-Once you have booted using Hummingbird, take note that the command used to
-turn the system off is "shutdown".
+Once you have booted using Hummingbird, take note that the command used to turn
+the system off is "shutdown".
 
 [3.1] Setting up runsvdir
 -------------------------
 
-Hummingbird doesn't provide a service manager, and doesn't read from
-inittab either. Some people find it useful to have one, such as runsvdir.
+Hummingbird doesn't provide a service manager, and doesn't read from inittab
+either. Some people find it useful to have one, such as runsvdir.
 
     $ mkdir /etc/rc.d
     $ echo 'runsvdir -P /var/service &' > /etc/rc.d/runsvdir.boot

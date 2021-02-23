@@ -26,7 +26,7 @@ Linux manuals
 The Linux man-pages project [2] documents the Linux kernel and C library
 interfaces that are employed by user-space programs.
 
-    $ kiss b man-pages 
+    $ kiss b man-pages
     $ kiss i man-pages
 
 POSIX manuals

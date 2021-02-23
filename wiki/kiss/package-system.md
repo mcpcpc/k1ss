@@ -42,12 +42,12 @@ installed to the system.
 Build:
 
     #!/bin/sh -e
-    
+
     # Disable stripping (add this only if needed).
     :> nostrip
 
     ./configure \
-         --prefix=/usr                                                         
+         --prefix=/usr
 
     make
     make DESTDIR="$1" install
@@ -67,10 +67,10 @@ The depends file can be omitted entirely if the package has no dependencies.
 Depends:
 
     # Comments are supported.
-    
+
     # Perl is needed at compile time.
     perl make
-    
+
     # zlib is needed at runtime.
     zlib
 
@@ -91,12 +91,12 @@ Adding a suffix of '?no-extract' to the source URL will prevent the package
 manager from automatically extracting the source (if a tarball or zip).
 
 Sources:
-    
+
     https://example.com/dhcpcd-8.0.2.tar.xz
     files/dhcpcd.run
 
 Sources (usage with second field):
-    
+
     https://example.com/gcc-9.1.0.tar.xz  gcc
     https://example.com/gmp-6.1.2.tar.xz  gcc/gmp
     https://example.com/mpfr-4.0.2.tar.xz gcc/mpfr
@@ -105,13 +105,13 @@ Sources (usage with second field):
 Sources (usage with Git):
 
     git+https://github.com/dylanaraps/eiwd
-    
+
     # Grabbing a specific branch.
     git+https://github.com/dylanaraps/eiwd@branch
-    
+
     # Grabbing a specific commit.
     git+https://github.com/dylanaraps/eiwd#commit
-    
+
 Sources (usage with automatic source extraction disabled):
 
     https://example.com/zlib-1.2.0.tar.xz?no-extract
@@ -146,7 +146,7 @@ is that it be executable.
 Pre-remove:
 
     #!/bin/sh -e
-    
+
     printf 'No one has used this yet!\n'
     printf 'I have no example!\n'
 
@@ -160,7 +160,7 @@ agnostic and the only requirement is that it be executable.
 Post-install:
 
     #!/bin/sh -e
-    
+
     fc-cache -vf
 
 [8.0] patches/*
@@ -184,13 +184,13 @@ Sources (usage with patches):
 Build (usage with patches):
 
     #!/bin/sh -e
-    
+
     patch -p1 < rxvt-unicode-kerning.patch
     patch -p1 < gentables.patch
-    
+
     ./configure \
          --prefix=/usr
-         
+
     make
     make DESTDIR="$1" install
 
@@ -209,12 +209,12 @@ Sources (usage with local files):
 
     https://example.com/kiss-1.0.0.tar.gz
     files/kiss_path.sh
-    
+
 Build (usage with local files):
 
     #!/bin/sh -e
-    
+
     install -D kiss "$1/usr/bin/kiss"
-    
+
     # Accessible directly in '$PWD'.
     install -D kiss_path.sh "$1/etc/kiss_path.sh"

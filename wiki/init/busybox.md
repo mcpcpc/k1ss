@@ -28,8 +28,8 @@ busybox-init only /etc/inittab file.
 Using /etc/rc.d
 ---------------
 
-This method of configuration works with every init system which uses the KISS 
-init framework. See <{{ site.kiss.git }}/kisslinux/init>
+This method of configuration works with every init system which uses the KISS
+init framework. See <{{ site.git }}/kisslinux/init>
 
 Run command during boot:
 
@@ -50,7 +50,7 @@ Run command during boot:
 
     # Load the iwlwifi kernel module.
     ::once:/bin/modprobe iwlwifi
-    
+
 Run command during shutdown:
 
     # Save system time to hwclock.

@@ -4,7 +4,7 @@ X11-FORWARDING
 X11-Forwarding is a secure shell feature, which allows one to forward/tunnel
 X11 connections through an existing SSH session. This is used to run X11
 programs on a server while the ssh-client displays the graphical window through
-the user's X11-server [0].
+the user's X11-server. [0]
 
 Dependencies
 ------------

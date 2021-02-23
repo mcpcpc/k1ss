@@ -2,8 +2,9 @@ gems:
   - jekyll-sitemap
   - md2gemini
 
-kiss:
-  web: https://mcpcpc.com/k1ss
-  git: https://github.com/kiss-community
-  gh:  https://github.com
-  
+kiss: https://mcpcpc.com/k1ss
+wiki: https://mcpcpc.com/k1ss/wiki
+blog: https://mcpcpc.com/k1ss/blog
+news: https://mcpcpc.com/k1ss/news
+git:  https://github.com/kiss-community
+

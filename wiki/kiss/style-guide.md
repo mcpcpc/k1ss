@@ -32,7 +32,7 @@ GENERAL
 same rules above may apply to other software at the discretion of the BDFL.
 
 Examples: dbus, systemd, polkit, gettext, intltool, pulseaudio, pipewire, pam,
-          wayland, logind, ConsoleKit, libsn, electron and all Desktop 
+          wayland, logind, ConsoleKit, libsn, electron and all Desktop
           Environments.
 
 [0001] No new packages shall use GTK2 as it will be removed once Firefox drops
@@ -156,7 +156,7 @@ Good:
 Bad:
 
     gcc -o file file.c
-    
+
 Good:
 
     "${CC:-cc}" -o file file.c
@@ -167,7 +167,7 @@ GNU AUTOTOOLS
 -------------
 
 [0400] Use the following style:
-    
+
     ./configure \
        --prefix=/usr \
        --more_args_here
@@ -186,7 +186,7 @@ MESON
 -----
 
 [0600] Use the following style:
-    
+
     export DESTDIR="$1"
 
     meson \
@@ -201,7 +201,7 @@ CMAKE
 -----
 
 [0800] Use the following style:
-    
+
     export DESTDIR="$1"
 
     cmake -B build \
@@ -228,7 +228,7 @@ MAKE
     make DESTDIR="$1" PREFIX=/usr install
 
 For packages which require a few variables be set, prefer this style.
-    
+
     make \
        PREFIX=/usr \
        SBINDIR=/usr/bin \
@@ -257,7 +257,7 @@ RUST
 ----
 
 [1050] Use the following style:
-    
+
     cargo build --release
 
     install -Dm755 target/release/rg "$1/usr/bin/rg"
@@ -266,7 +266,7 @@ GO
 --
 
 [1100] Use the following style:
-    
+
     export GOPATH="$PWD/go"
     export GO111MODULE=on
 

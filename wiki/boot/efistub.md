@@ -17,10 +17,10 @@ The kernel must be configured to support acting as an EFISTUB.
 
 The UEFI variables must be mounted.
 
-See: @/efivarfs
+See: <{{ site.wiki }}/efivarfs>
 
-> TIP: Keep your kernel's name as 'vmlinuz' to avoid having to update the
->      EFI entries with each kernel update.
+TIP: Keep your kernel's name as 'vmlinuz' to avoid having to update the
+     EFI entries with each kernel update.
 
 Create an UEFI boot entry
 -------------------------
@@ -29,7 +29,7 @@ Use the following command to create a boot entry. Replace /dev/sdXN with your
 EFI system partition and /dev/sdYM with your root partition. Check to see that
 the entry was added with 'efibootmgr --verbose'.
 
-    $ efibootmgr \                                                              
+    $ efibootmgr \
           --create \
           --disk     /dev/sdX \
           --part     N \

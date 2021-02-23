@@ -3,14 +3,15 @@ XINIT
 
 The xinit program is used to start the X Window System server and a first client
 program on systems that are not using a display manager such as xdm or in
-environments that use multiple window systems [0].
+environments that use multiple window systems. [0]
 
 Configuration
 -------------
 
 Ensure that you have xinit installed first:
 
-    $ kiss b xinit && kiss i xinit
+    $ kiss b xinit
+    $ kiss i xinit
 
 Create the required rc file as a regular user:
 

@@ -55,7 +55,7 @@ comprehended by mere mortals.
 
     # Graphical configuration tools (requires a working Xorg server and QT/GTK)
     $ make xconfig  # Requires qt5.
-    $ make gconfig  # Requires gtk+3. 
+    $ make gconfig  # Requires gtk+3.
 
 Another option you may find very useful to easily trim down general (default,
 distro, etc.) configuration files is:
@@ -78,7 +78,7 @@ When these options are disabled (is the case by default unless 'allyesconfig' is
 used), the kernel builds just fine.
 
     The following options are mandatory (when using busybox) (=n).
-    
+
     CONFIG_IKHEADERS         This option enables access to the in-kernel
                              headers that are generated during the build
                              process. These can be used to build eBPF tracing,
@@ -91,8 +91,8 @@ The kernel can be configured to store its configuration file to later make it
 accessible via /proc/config.gz. Storing the .config in the kernel ensures that
 you will never lose your config so long as you have its kernel.
 
-    The following options are recommended (=y).
-    
+    The following options are recommended (=y)
+
     CONFIG_IKCONFIG          Store the .config in the kernel.
     CONFIG_IKCONFIG_PROC     Make the .config accessible as /proc/config.gz
 
@@ -106,6 +106,7 @@ to build the kernel.
 A patch can be applied which adds a POSIX shell implementation of the perl
 script. This fully removes the perl requirement.
 
-@/patches/kernel-no-perl.patch  (Written by $/E5ten)
+<{{ site.wiki }}/patches/kernel-no-perl.patch>  (Written by
+<{{ site.user }}/E5ten>)
 
 TIP: All links like this one are also available via 'kiss help'!

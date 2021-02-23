@@ -28,7 +28,7 @@ strength of KISS is not in its software choices but in its software omissions.
 
 Most major distributions tend to use GNU's C library whereas KISS uses musl.
 
-Musl has better support for static linking, is smaller in size and has an 
+Musl has better support for static linking, is smaller in size and has an
 emphasis on correctness + conformance to standards. The dynamic runtime is a
 single file with a stable ABI allowing for worry-free and race-free updates.
 
@@ -41,7 +41,7 @@ all that is needed in the majority of cases and this overall situation has
 improved immensely in recent years.
 
 To paint a clearer picture; our Firefox package no longer requires a series of
-patches for musl compatibility as the portability issues were fixed upstream 
+patches for musl compatibility as the portability issues were fixed upstream
 (Thanks to $/michaelforney).
 
 More information: https://wiki.musl-libc.org/design-concepts.html
@@ -70,9 +70,9 @@ The service manager provided by busybox is its own implementation of the runit
 family of utilities. Writing services for this system is really nice as services
 are no larger than a line or two a file.
 
-The boot-up and power-off procedures however, are not covered by busybox and must
-be implemented externally. KISS provides an init-agnostic and portable base with
-which any init and service manager can be used.
+The boot-up and power-off procedures however, are not covered by busybox and
+must be implemented externally. KISS provides an init-agnostic and portable base
+with which any init and service manager can be used.
 
 More information: $/kiss-community/init
 
@@ -142,4 +142,4 @@ The Community have packaged this entire list (and then some) for those looking
 to use this software. This is #1 the strength of the distribution: a highly
 opinionated and minimal base with limitless extensibility.
 
-See: @/wiki/community/repositories
+See: <{{ site.wiki }}/community/repositories>

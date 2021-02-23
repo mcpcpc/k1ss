@@ -157,16 +157,16 @@ In other words, no changes need to be made to packages. In fact, nothing
 needs to be done at all. It's entirely automatic.
 
 List available alternatives ('a' is an alias to 'alternatives'):
-    
+
     $ kiss a
     gnugrep /usr/bin/grep
     ncurses /usr/bin/clear
-    
+
 Swap to GNU grep:
-    
+
     $ kiss a gnugrep /usr/bin/grep
     -> Swapping '/usr/bin/grep' from busybox to gnugrep
-    
+
 Swap back to busybox grep:
 
     $ kiss a busybox /usr/bin/grep
@@ -366,7 +366,7 @@ Step 2 - copy the package to the new repository:
 Step 3 - add the new repository to the /START/ of your KISS_PATH:
 
     $ export KISS_PATH=/path/to/no_updates:$KISS_PATH
-    
+
 The package manager will search KISS_PATH in order. It will see that the
 no_updates repository provides PKG_NAME and the version matches that which is
 installed. No updates will again happen for the package.
@@ -375,10 +375,10 @@ installed. No updates will again happen for the package.
 -----------------------
 
 If you would like to package something in your own repository but would like the
-package manager to prefer other repositories before yours, simply add your 
+package manager to prefer other repositories before yours, simply add your
 repository to the end of KISS_PATH.
 
-The moment that your package is available elsewhere, the package manager will 
+The moment that your package is available elsewhere, the package manager will
 prefer the new location to yours. The list is searched (in order) and the first
 match is picked.
 
@@ -445,7 +445,7 @@ be defined to remove them from packages.
         post-build)
             # Ensure that '$DEST' is set.
             : "${DEST:?DEST is unset}"
-            
+
             rm -rf "$DEST/usr/share/gettext" \
                    "$DEST/usr/share/polkit-1" \
                    "$DEST/usr/share/locale" \
@@ -462,7 +462,7 @@ package build process and resulting tarball creation in memory. The benefit of
 this is a nice speedup throughout (especially when used alongside ccache [0]).
 
 > NOTE: '/tmp' must be mounted as 'tmpfs' for this to work.
-    
+
     case $TYPE in
         pre-extract)
             case $PKG in
@@ -550,16 +550,16 @@ Example utility, kiss-depends (kiss depends, kiss de):
 
     #!/bin/sh -ef
     # Display a package's dependencies
-    
+
     # Ignore shellcheck as we want the warning's behavior.
     # shellcheck disable=2015
     [ "$1" ] && kiss l "${1:-null}" >/dev/null || {
         printf 'usage: kiss-depends [pkg]\n'
         exit 1
     }
-    
+
     cat "$KISS_ROOT/var/db/kiss/installed/$1/depends" 2>/dev/null
-    
+
 [8.0] Tips and Tricks
 ---------------------
 
@@ -581,7 +581,7 @@ available in Community as 'gnugrep'.
 Step 1 - install GNU grep:
 
     $ kiss b gnugrep && kiss i gnugrep
-    
+
 Step 2 - swap to GNU grep:
 
     $ kiss a gnugrep /usr/bin/grep

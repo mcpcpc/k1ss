@@ -6,7 +6,8 @@ Using setxkbmap
 
 First, install setxkbmap:
 
-    $ kiss b setxkbmap && kiss i setxkbmap
+    $ kiss b setxkbmap
+    $ kiss i setxkbmap
 
 Available layouts can be found in /usr/share/X11/xkb/symbols/ and set from the
 command line:

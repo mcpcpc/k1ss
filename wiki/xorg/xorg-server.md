@@ -4,7 +4,7 @@ XORG-SERVER
 The xorg-server, part of the X.Org releases, is the main component of the X
 Window system which abstracts the hardware and provides the foundation for most
 graphical user interfaces, like desktop environments or window managers, and
-their applications [0].
+their applications. [0]
 
 [1.0] Getting Started
 ---------------------

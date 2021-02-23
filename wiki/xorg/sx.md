@@ -1,8 +1,8 @@
 SX
 ==
 
-sx is a simple alternative to both xinit and startx for starting an Xorg server
-[0].
+sx is a simple alternative to both xinit and startx for starting an Xorg server.
+[0]
 
 Configuration
 -------------

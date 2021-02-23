@@ -24,5 +24,6 @@ Add it to your ~/.profile or /etc/profile to make the change permanent.
 To change the console font _before_ a user has logged in, add the following to
 your /etc/inittab or /etc/rc.conf.
 
-    # /etc/rc.conf                                                                 
+    # /etc/rc.conf
     /usr/bin/setfont /usr/share/consolefonts/FONT_NAME -C /dev/tty1
+

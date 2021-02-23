@@ -3,7 +3,7 @@ X11VNC
 
 x11vnc allows one to view remotely and interact with real X displays (i.e. a
 display corresponding to a physical monitor, keyboard, and mouse) with any VNC
-viewer [0].
+viewer. [0]
 
 Dependencies
 ------------
@@ -16,7 +16,8 @@ Configuration
 
 First verify that you have x11vnc installed:
 
-    $ kiss b x11vnc && kiss i x11vnc
+    $ kiss b x11vnc
+    $ kiss i x11vnc
 
 Assuming that you have an X session already running, you can start x11vnc from
 a virtual terminal:

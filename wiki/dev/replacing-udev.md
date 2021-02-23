@@ -1,7 +1,7 @@
 REPLACING UDEV
 ==============
 
-As of the 20/01/2020, it is now possible to replace eudev with the device
+As of the 2020-01-20, it is now possible to replace eudev with the device
 manager of your choosing. This Wiki page will cover replacing eudev with
 busybox mdev, however the steps are more or less the same for all other
 device managers (smdev, vdev, ...).
@@ -128,13 +128,14 @@ Purging EUDEV
 
 *   Disable the udevd service
 
-        # From this point forward any device manager hotplugging functionality will be
-        # unusable.
+        # From this point forward any device manager hotplugging functionality
+        # will be unusable.
         $ unlink /var/service/udevd
 
 *   Remove the eudev package
 
-        # The removal is forced as the packages which depend on eudev will be rebuilt.
+        # The removal is forced as the packages which depend on eudev will be
+		# rebuilt.
         $ KISS_FORCE=1 kiss r eudev
 
 *   Generate a list of all packages which need to be rebuilt
@@ -145,9 +146,9 @@ Purging EUDEV
 
 *   Rebuild all required packages
 
-    NOTE: Some packages may have a mandatory dependency on eudev. You may receive
-          errors when attempting to rebuild them. Simply re-install eudev until
-          you are able to investigate further.
+    NOTE: Some packages may have a mandatory dependency on eudev. You may
+          receive errors when attempting to rebuild them. Simply re-install
+          eudev until you are able to investigate further.
 
     NOTE: If the package manager pulls in eudev as part of the rebuild process,
           the package you are trying to rebuild has a mandatory dependency on
@@ -157,8 +158,8 @@ Purging EUDEV
 
 *   Verify that the eudev dependence is gone
 
-        # The following command should output nothing. If it does not, the outputted
-    packages require a rebuild.
+        # The following command should output nothing. If it does not, the
+        # outputted packages require a rebuild.
         $ kiss-revdepends eudev
 
 Changing Device Managers

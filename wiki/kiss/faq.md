@@ -58,20 +58,23 @@ This includes:
 *   The repositories with full git history.
 
     The repository updates are simply a 'git pull' which results in each user
-    having a full copy of the git repositories on their machine at /var/db/kiss/.
+    having a full copy of the git repositories on their machine at
+    /var/db/kiss/.
 
 *   The package manager and the kiss-* scripts.
 
     As these are all simple shell scripts, the installed "binaries" _are_ the
-    unchanged source code. All of these are self-contained and separate programs.
+    unchanged source code. All of these are self-contained and separate
+    programs.
 
     The 'kiss-outdated' script allows one to check their system for outdated
     packages against the repology.org database independent of whether or not
     repology has support for KISS itself.
 
-    The 'kiss-export' script allows one to convert an installed package back into
-    a redistributable and installable binary tarball. Simply run
-    'kiss-export pkg_name' and a tarball will be created in the current directory.
+    The 'kiss-export' script allows one to convert an installed package back
+    into a redistributable and installable binary tarball. Simply run
+    'kiss-export pkg_name' and a tarball will be created in the current
+    directory.
 
 *   The distribution's documentation.
 
@@ -81,9 +84,9 @@ This includes:
 
 *   The init scripts.
 
-    In addition to the reasoning given for the package manager above, KISS has no
-    lock-in regarding how the machine boots. Were the init scripts to disappear,
-    there would be no real loss.
+    In addition to the reasoning given for the package manager above, KISS has
+    no lock-in regarding how the machine boots. Were the init scripts to
+    disappear, there would be no real loss.
 
     To continue further, the init scripts need not change. There is no need to
     update them. Any extensions to them can be made via the /etc/rc.d directory
@@ -127,9 +130,9 @@ init-agnostic way and act as a base for every init to use.
 [5.4] What coreutils does KISS use?
 -----------------------------------
 
-KISS uses busybox coreutils by default. There is however, no lock-in and the user
-may use whatever they like. All shell code is written in portable POSIX shell and
-coreutils invocations.
+KISS uses busybox coreutils by default. There is however, no lock-in and the
+user may use whatever they like. All shell code is written in portable POSIX
+shell and coreutils invocations.
 
 *   One exception is made for 'sed -i' which isn't POSIX but is far too useful
     to do away with. Many sed implementations include -i so this is more of a
@@ -159,8 +162,9 @@ Workarounds:
 *   Running your browser inside a chroot (containing a glibc based
     distribution).
 
-*   Running the Flatpak (available here $/dylanaraps/kiss-flatpak) version of
-    the browser. NOTE: Requires pulseaudio ($/periish/kiss-all)
+*   Running the Flatpak (available here
+    <{{ site.user }}/dylanaraps/kiss-flatpak>) version of the browser.
+	NOTE: Requires pulseaudio (<{{ site.user }}/periish/kiss-all>)
 
 *   Using something such as Nix to run the browser.
 
@@ -175,8 +179,7 @@ Workarounds:
 Short answer: With one command? You can't.
 
 The package manager does not do recursive dependency removal on removal of a
-package. This error-prone automation will not be added to the package
-manager.
+package. This error-prone automation will not be added to the package manager.
 
 Instead, the workflow is to remove the single package and then look at the
 output of the 'kiss-orphans' command to see what can now be removed. This

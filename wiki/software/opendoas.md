@@ -1,9 +1,9 @@
 OPENDOAS
 ========
 
-doas is a minimal replacement for the venerable sudo. It was initially written 
-by Ted Unangst of the OpenBSD project to provide 95% of the features of sudo 
-with a fraction of the codebase [0].
+doas is a minimal replacement for the venerable sudo. It was initially written
+by Ted Unangst of the OpenBSD project to provide 95% of the features of sudo
+with a fraction of the codebase. [0]
 
 Configuration
 -------------
@@ -13,14 +13,14 @@ Begin by first verifying that you have opendoas installed:
     $ kiss b opendoas
     $ kiss i opendoas
 
-Using your preferred text editor, modify the /etc/doas.conf file. Within the 
+Using your preferred text editor, modify the /etc/doas.conf file. Within the
 doas.conf, there are plenty of examples of rules to choose from and modify.
 
-Below are a few examples of *basic* rules that could be set:  
+Below are a few examples of *basic* rules that could be set:
 
     # Allow a specific regular user, USER, to escalate to root permissions.
     permit USER
-    
+
     # Allow a specific group (i.e. "wheel") to escalate to root permissions.
     permit wheel
 
