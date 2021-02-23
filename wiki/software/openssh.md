@@ -78,13 +78,13 @@ Tips and tricks
 Troubleshooting
 ---------------
 
-*   You can fix errors such as this one
+You can fix errors such as this one
 
-        top error: Error opening terminal: xterm-256color
+    top error: Error opening terminal: xterm-256color
 
 By running this command in your ssh session
 
-        $ export TERM=xterm
+    $ export TERM=xterm
 
 [0]: https://www.openssh.com/openbsd.html
 [1]: https://wiki.gentoo.org/wiki/SSH
