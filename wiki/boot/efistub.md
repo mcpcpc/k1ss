@@ -54,7 +54,4 @@ and run the following command.
 
     $ efibootmgr --bootnum XXXX --delete-bootnum
 
-References
-----------
-
 [0]: https://www.kernel.org/doc/Documentation/efi-stub.txt
