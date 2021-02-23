@@ -2,7 +2,7 @@ EFISTUB
 =======
 
 The Linux kernel has the ability to act as an EFI executable which simplifies
-the boot process by removing the need for a bootloader [0].
+the boot process by removing the need for a bootloader. [0]
 
 Prerequisites
 -------------
