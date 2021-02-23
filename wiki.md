@@ -44,9 +44,9 @@ with the following style requirements:
 *   Syntax is pandoc markdown (strict).
     See <https://pandoc.org/MANUAL.html#pandocs-markdown> for more information.
 *   Character width does not exceed 80.
-    An exception may be made for strings where a CR-LF cannot be reasonably
+    Exceptions may be made for strings where a CR-LF cannot be reasonably
     placed or would impact readability (e.g. long URLs).
-*   All date and time related strings formatted per ISO 8601.
+*   All date and time related strings formatted per ISO 8601 (e.g. YYYY-MM-DD).
 
 Article Index
 -------------
