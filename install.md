@@ -216,11 +216,11 @@ If the GNU keyserver fails on your network, try an alternative mirror.
 
 Import my public key:
 
-    $ gpg --keyserver keys.gnupg.net --recv-key 46D62DD9F1DE636E
+    $ gpg --keyserver keys.gnupg.net --recv-key {{ site.pkey }}
 
 Trust my public key:
 
-    $ echo trusted-key 0x46d62dd9f1de636e >>/root/.gnupg/gpg.conf
+    $ echo trusted-key 0x{{ site.pkey }} >>/root/.gnupg/gpg.conf
 
 [4.3] Enable signature verification
 -----------------------------------
