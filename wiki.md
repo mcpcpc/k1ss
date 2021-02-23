@@ -14,7 +14,7 @@ Usage
 
 The wiki article index was designed for viewing in a terminal or your preferred
 markdown viewer. For example, one could use 'curl' to download any one of the
-articles below and pipe the resulting output into a terminal pager program:
+articles below and pipe the resulting output into a terminal pager application:
 
     curl {{ site.wiki }}/boot/efistub.md | less
 
