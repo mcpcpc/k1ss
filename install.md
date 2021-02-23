@@ -26,12 +26,12 @@ NOTE: Disks should be setup and fully mounted to /mnt.
 
 Start by declaring a variable.
 
-    $ url={{ site.git }}/repo/releases/download/2020.9-2
+    $ url={{ site.git }}/repo/releases/download/{{ site.tver }}
 
 [2.1] Download the latest release
 ---------------------------------
 
-    $ wget "$url/kiss-chroot-2020.9-2.tar.xz"
+    $ wget "$url/kiss-chroot-{{ site.tver }}.tar.xz"
 
 [2.2] Verify the checksums (recommended)
 ----------------------------------------
@@ -39,8 +39,8 @@ Start by declaring a variable.
 This step verifies that the release matches the checksums generated uponits
 creation and also ensures that the download completed successfully.
 
-    $ wget "$url/kiss-chroot-2020.9-2.tar.xz.sha256"
-    $ sha256sum -c < kiss-chroot-2020.9-2.tar.xz.sha256
+    $ wget "$url/kiss-chroot-{{ site.tver }}.tar.xz.sha256"
+    $ sha256sum -c < kiss-chroot-{{ site.tver }}.tar.xz.sha256
 
 [2.3] Verify the signature (recommended)
 ----------------------------------------
@@ -51,7 +51,7 @@ another machine (with the same tarball).
 
 Download the armored ASCII file:
 
-    $ wget "$url/kiss-chroot-2020.9-2.tar.xz.asc"
+    $ wget "$url/kiss-chroot-{{ site.tver }}.tar.xz.asc"
 
 Import my public key (if this fails, try another keyserver):
 
@@ -59,7 +59,7 @@ Import my public key (if this fails, try another keyserver):
 
 Verify the signature:
 
-    $ gpg --verify "kiss-chroot-2020.9-2.tar.xz.asc"
+    $ gpg --verify "kiss-chroot-{{ site.tver }}.tar.xz.asc"
 
 [2.4] Unpack the tarball
 ------------------------
@@ -68,7 +68,7 @@ This step effectively installs KISS to /mnt. The tarball contains a full system
 minus the bootloader, kernel and optional utilities.
 
     $ cd /mnt
-    $ tar xvf /path/to/kiss-chroot-2020.9-2.tar.xz
+    $ tar xvf /path/to/kiss-chroot-{{ site.tver }}.tar.xz
 
 [2.5] Enter the chroot
 ----------------------
