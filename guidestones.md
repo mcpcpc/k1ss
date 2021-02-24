@@ -6,14 +6,14 @@ title: guidestones
 GUIDESTONES
 ===========
 
-*   Below are a set of notes which make KISS... KISS. I felt the need to define in
+Below are a set of notes which make KISS... KISS. I felt the need to define in
 as much detail as possible philosophy behind the distribution.
 
-*   There is no requirement to follow or even agree with my words. Some of the
+There is no requirement to follow or even agree with my words. Some of the
 technical details for how packages are written will apply to package inclusion
 in the official repositories however.
 
-*   Bear in mind, I develop and release KISS for free. I owe you nothing. Any help
+Bear in mind, I develop and release KISS for free. I owe you nothing. Any help
 I provide is at my own discretion. KISS is my gift to you from the love of what
 I do. I hope you find it as useful as I have.
 
