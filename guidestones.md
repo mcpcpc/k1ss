@@ -70,111 +70,111 @@ not be implemented if it requires gross hacks to accomplish.
 *   Only target the English language. English is the World Language. What we write
 our code in and what we use to communicate.
 
-All shell code must be written in a safe way, pass the shellcheck linter and
+*   All shell code must be written in a safe way, pass the shellcheck linter and
 match the style of any existing code.
 
-All distribution tooling and shell code must be written in a portable way. 
+*   All distribution tooling and shell code must be written in a portable way. 
 Otherwise, the user will be locked into a single coreutils and shell.
 
-One exception is made for 'sed -i' as it is too useful to let go of. The '-i' 
+*   One exception is made for 'sed -i' as it is too useful to let go of. The '-i' 
 flag has rather good support across implementations regardless.
 
-Avoid the next new shiny thing until or unless certain that it brings real 
+*   Avoid the next new shiny thing until or unless certain that it brings real 
 improvements over what it is intended to replace.
 
-The above excludes versions of the same software. Software should always be kept
+*   The above excludes versions of the same software. Software should always be kept
 up-to-date unless there is a blocker in doing so.
 
-Continue to work towards the removal of unneeded software, patching existing 
+*   Continue to work towards the removal of unneeded software, patching existing 
 software or writing replacements if required.
 
-There shall never be rules centred around speech or the way in which one must
+*   There shall never be rules centred around speech or the way in which one must
 carry themselves to communicate. Do unto others as you would have them do unto
 you.
 
 Official Repositories
 ---------------------
 
-The number of packages in the repositories shall never exceed that which is 
+*   The number of packages in the repositories shall never exceed that which is 
 maintainable by a single person with minimal effort.
 
-Any packages unsuitable for the repositories must be kept in user or 3rd-party 
+*   Any packages unsuitable for the repositories must be kept in user or 3rd-party 
 repositories.
 
-The repositories (excluding Community) must remain a useful base containing 
+*   The repositories (excluding Community) must remain a useful base containing 
 everything up to a Graphical session with a browser and media player. They shall
 go no further.
 
-All software in the repositories must be F(L)OSS. See above point if proprietary 
+*   All software in the repositories must be F(L)OSS. See above point if proprietary 
 software is needed.
 
-The build process of a package should not require a network connection,
+*   The build process of a package should not require a network connection,
 otherwise signature verification and checksums are useless.
 
-Avoid patches for single line changes. Patches require rewriting on changes of
+*   Avoid patches for single line changes. Patches require rewriting on changes of
 the sources whereas a simple call to 'sed' can stand the test of time.
 
-Avoid running autogen.sh or autotools in builds if pre-generated files already
+*   Avoid running autogen.sh or autotools in builds if pre-generated files already
 exist.
 
-Sources must use HTTPS where possible. If no HTTPS source is available one must
+*   Sources must use HTTPS where possible. If no HTTPS source is available one must
 be sought out or created by the BDFL of KISS.
 
-Install files to '/usr/{bin,lib,share}' always. The singular directory ensures 
+*   Install files to '/usr/{bin,lib,share}' always. The singular directory ensures 
 simplicity and keeps KISS tooling and user scripts simple.
 
-The following list of software must never make its way into the repositories as
+*   The following list of software must never make its way into the repositories as
 their inclusion will open the floodgates for software which unoptionally depends
 on them.
 dbus, systemd, polkit, gettext, intltool, pulseaudio, pipewire, pam, wayland, 
 logind, ConsoleKit, libsn, electron and all DEs.
 
-These above rules may apply to other software at the discretion of the BDFL.
+*   These above rules may apply to other software at the discretion of the BDFL.
 
-No package shall ship with telemetry enabled by default and if at all feasible
+*   No package shall ship with telemetry enabled by default and if at all feasible
 it must be patched out entirely.
 
 Community Repository
 --------------------
 
-The community repository is maintained by the users of KISS. Each maintainer is 
+*   The community repository is maintained by the users of KISS. Each maintainer is 
 responsible for the packages they have opted to add.
 
-The BDFL's only responsibility is to review pull requests sent to this
+*   The BDFL's only responsibility is to review pull requests sent to this
 repository.
 
-Only the maintainer of a package is allowed to make any changes to said package. Don't send pull requests for packages you do not own.
+*   Only the maintainer of a package is allowed to make any changes to said package. Don't send pull requests for packages you do not own.
 
-Contact the maintainer of the package via their set git email if you would like
+*   Contact the maintainer of the package via their set git email if you would like
 to report an out-of-date package or request changes.
 
 Package Manager
 ---------------
 
-The package manager must not exceed 1000 lines of code. This number excludes
+*   The package manager must not exceed 1000 lines of code. This number excludes
 blank lines and comments which make up around 50% of the program's current size.
 
-The user is smart, the package manager is dumb. The package manager is written
+*   The user is smart, the package manager is dumb. The package manager is written
 under the assumption that the user has some kind of functioning brain in their
 skull.
 
-There are some things which can't be, shouldn't be and won't be automated.
+*   There are some things which can't be, shouldn't be and won't be automated.
 Firstly, for my sanity and secondly, for yours.
 
-Prefer extensibility through scripts over baking every additional feature into
+*   Prefer extensibility through scripts over baking every additional feature into
 the package manager.
 
-Circular dependencies are a bug and not a feature. See: freetype-harfbuzz
+*   Circular dependencies are a bug and not a feature. See: freetype-harfbuzz
 
 Init System
 -----------
 
-The user should not be tied to a single provider of PID 1. No unrelated piece of 
+*   The user should not be tied to a single provider of PID 1. No unrelated piece of 
 software should require a specific init be in use.
 
-No software violating the above rule shall be included in the official
+*   No software violating the above rule shall be included in the official
 repositories as it paves the road for the inclusion of software that will
 explicitly depend on it.
 
-The boot and shutdown scripts shall be written in an init-agnostic fashion and
+*   The boot and shutdown scripts shall be written in an init-agnostic fashion and
 work with all init systems which require it as a means of starting the machine.
