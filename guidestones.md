@@ -6,14 +6,14 @@ title: guidestones
 GUIDESTONES
 ===========
 
-Below are a set of notes which make KISS... KISS. I felt the need to define in
+*   Below are a set of notes which make KISS... KISS. I felt the need to define in
 as much detail as possible philosophy behind the distribution.
 
-There is no requirement to follow or even agree with my words. Some of the
+*   There is no requirement to follow or even agree with my words. Some of the
 technical details for how packages are written will apply to package inclusion
 in the official repositories however.
 
-Bear in mind, I develop and release KISS for free. I owe you nothing. Any help
+*   Bear in mind, I develop and release KISS for free. I owe you nothing. Any help
 I provide is at my own discretion. KISS is my gift to you from the love of what
 I do. I hope you find it as useful as I have.
 
@@ -22,52 +22,52 @@ I do. I hope you find it as useful as I have.
 Users
 -----
 
-KISS is the vessel with which to shape your system in your own way and to
+*   KISS is the vessel with which to shape your system in your own way and to
 optionally share your ideas with others.
 
-Every user has the means to keep their entire system up-to-date without the need
+*   Every user has the means to keep their entire system up-to-date without the need
 for or reliance on the BDFL. Every KISS install contains the entirety of the 
 repositories with full history.
 
-If a piece of software is missing, package it! If it is suitable for inclusion
+*   If a piece of software is missing, package it! If it is suitable for inclusion
 in the repositories, send a pull request. If it is not, keep it in your own 
 repository and/or share it with others.
 
-Don't ask a question to ask a question. If you have a question, out with it or 
+*   Don't ask a question to ask a question. If you have a question, out with it or 
 forever hold your peace.
 
-If you have a problem, think about it first. Present as much information as
+*   If you have a problem, think about it first. Present as much information as
 possible and logs if applicable. The more information given to those willing to 
 help, the higher the chance and quicker the speed of resolution.
 
-Most importantly. LEARN TO LEARN. Don't jump into irc at a moment's notice. Try
+*   Most importantly. LEARN TO LEARN. Don't jump into irc at a moment's notice. Try
 and solve the issue yourself first. Learn to solve your own problems, gain a 
 better understanding over your system and take control. Be a doer.
 
 KISS
 ----
 
-There must always be a sole commander-in-chief in charge of the distribution.
+*   There must always be a sole commander-in-chief in charge of the distribution.
 There must never be a below governance structure.
 
-With great power comes great responsibility. The user must have some kind of
+*   With great power comes great responsibility. The user must have some kind of
 brain in their skull and must exercise its use where necessary.
 
-Prefer less software over more software where possible. e.g If all a library
+*   Prefer less software over more software where possible. e.g If all a library
 does is make the cursor spin while waiting for a program to launch, it should be 
 purged.
 
-Favour usability over ideals. If software B is simpler than software A but is 
+*   Favour usability over ideals. If software B is simpler than software A but is 
 missing essential functionality (for all users), software A shall be the default 
 provider.
 
-User choice matters. Maintain this strict philosophy while at the same time
+*   User choice matters. Maintain this strict philosophy while at the same time
 keeping the ability to go against this philosophy open to all.
 
-The ends do not justify the means. A package, fix, feature or what have you will
+*   The ends do not justify the means. A package, fix, feature or what have you will
 not be implemented if it requires gross hacks to accomplish.
 
-Only target the English language. English is the World Language. What we write
+*   Only target the English language. English is the World Language. What we write
 our code in and what we use to communicate.
 
 All shell code must be written in a safe way, pass the shellcheck linter and
