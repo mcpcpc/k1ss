@@ -145,8 +145,9 @@ This user's KISS_PATH could look like this:
 *   This is a per-user configuration using ~/.profile
 *   The package manager will search this list in the order it is defined.
 
-> TIP: Run '. ~/.profile' for changes to immediately take effect.
-> TIP: Run 'echo "$KISS_PATH"' to check if properly set.
+TIP: Run '. ~/.profile' for changes to immediately take effect.
+
+TIP: Run 'echo "$KISS_PATH"' to check if properly set.
 
 [3.2] Official repositories
 ---------------------------
