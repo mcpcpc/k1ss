@@ -1,7 +1,9 @@
 gems:
   - jekyll-sitemap
   - md2gemini
-
+  - jekyll-feed
+  
+url: https://mcpcpc.com/k1ss
 kiss: https://mcpcpc.com/k1ss
 wiki: https://mcpcpc.com/k1ss/wiki
 blog: https://mcpcpc.com/k1ss/blog
