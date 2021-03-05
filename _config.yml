@@ -3,12 +3,12 @@ gems:
   - md2gemini
   - jekyll-feed
   
-url: https://mcpcpc.com
-kiss: https://mcpcpc.com/k1ss
-wiki: https://mcpcpc.com/k1ss/wiki
-blog: https://mcpcpc.com/k1ss/blog
-news: https://mcpcpc.com/k1ss/news
-git:  https://github.com/kiss-community
-user: https://github.com
+url: https://mcpcpc.github.io
+kiss: https://mcpcpc.github.io/k1ss
+wiki: https://mcpcpc.github.io/k1ss/wiki
+blog: https://mcpcpc.github.io/k1ss/blog
+news: https://mcpcpc.github.io/k1ss/news
+git:  https://mcpcpc.github.io/kiss-community
+user: https://mcpcpc.github.io
 pkey: 46D62DD9F1DE636E
 tver: 2020.9-2
